@@ -1,9 +1,9 @@
 ---
 
 title : (Big) Data Analytics for Business
-subtitle : Session 2-3, Dimensionality Reduction and Derived Attributes
-author : Theos Evgeniou
-job : Professor, INSEAD
+subtitle : Segmentation in the Boating Industry
+author : T. Evgeniou and J. Niessing
+job : INSEAD
 widgets : []
 mode : selfcontained 
 
