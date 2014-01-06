@@ -10,7 +10,7 @@ rm(list = ls()) # clean up the workspace
 datafile_name="MarketData"
 
 # Please ENTER a name that describes the data for this project
-data_name="MBA Applicants"
+data_name="Boating Company"
 
 load(paste("data",datafile_name,sep="/")) # this contains only the matrix ProjectData
 
@@ -21,7 +21,8 @@ numb_factors_used = 2
 rotation_used="varimax"
 
 # Please ENTER then original raw attributes to use (default is 1:ncol(ProjectData), namely all of them)
-attributes_used=1:ncol(ProjectData)
+attributes_used=1:ncol(ProjectData) 
+# c(1,3,45,54)
 
 # Please enter the minimum number below which you would like not to print - this makes the readability of the tables easier. Default values are either 10e6 (to print everything) or 0.5. Try both to see the difference.
 MIN_VALUE=0.5
@@ -40,15 +41,16 @@ source("R/library.R")
 
 ######################################################################
 
-unlink( "TMPdirSlides", recursive = TRUE )      
-dir.create( "TMPdirSlides" )
-setwd( "TMPdirSlides" )
-file.copy( "../doc/Slides.Rmd","Slides.Rmd", overwrite = T )
-slidify( "Slides.Rmd" )
-file.copy( 'Slides.html', "../doc/Slides.html", overwrite = T )
-setwd( "../" )
-unlink( "TMPdirSlides", recursive = TRUE )      
-
+if (0){ 
+  unlink( "TMPdirSlides", recursive = TRUE )      
+  dir.create( "TMPdirSlides" )
+  setwd( "TMPdirSlides" )
+  file.copy( "../doc/Slides.Rmd","Slides.Rmd", overwrite = T )
+  slidify( "Slides.Rmd" )
+  file.copy( 'Slides.html', "../doc/Slides.html", overwrite = T )
+  setwd( "../" )
+  unlink( "TMPdirSlides", recursive = TRUE )      
+}
 
 unlink( "TMPdirReport", recursive = TRUE )      
 dir.create( "TMPdirReport" )
