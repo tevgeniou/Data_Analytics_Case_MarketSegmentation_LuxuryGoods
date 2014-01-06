@@ -9,6 +9,7 @@ rm(list = ls()) # clean up the workspace
 # Please ENTER the name of the file with the data used. The file should contain a matrix with one row per observation (e.g. person) and one column per attribute. THE NAME OF THIS MATRIX NEEDS TO BE ProjectData (otherwise you will need to replace the name of the ProjectData variable below with whatever your variable name is, which you can see in your Workspace window after you load your file)
 datafile_name="MarketData"
 
+
 # Please ENTER a name that describes the data for this project
 data_name="MBA Applicants"
 
