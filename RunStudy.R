@@ -21,12 +21,25 @@ numb_factors_used = 2
 # Please ENTER the rotation eventually used (e.g. "none", "varimax", "quatimax", "promax", "oblimin", "simplimax", and "cluster" - see help(principal)). Defauls is "varimax"
 rotation_used="varimax"
 
+# Please ENTER the selection criterions for the factors to use. 
+# Choices: "eigenvalue", "variance"
+
+factor_selectionciterion = "eigenvalue"
+
 # Please ENTER then original raw attributes to use (default is 1:ncol(ProjectData), namely all of them)
-attributes_used=1:ncol(ProjectData) 
-# c(1,3,45,54)
+factor_attributes_used= paste("Q1",1:29,sep="_")
+
+# Please ENTER the distance metric eventually used for the clustering in case of hierarchical clustering (e.g. "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski" - see help(dist)). Defauls is "euclidean"
+distance_used="euclidean"
+
+# Please ENTER then original raw attributes to use for the segmentation (the "segmentation attributes")
+segmentation_attributes_used=1:ncol(ProjectData)
+
+# Please ENTER then original raw attributes to use for the profiling of the segments (the "profiling attributes")
+profile_attributes_used=1:ncol(ProjectData)
 
 # Please enter the minimum number below which you would like not to print - this makes the readability of the tables easier. Default values are either 10e6 (to print everything) or 0.5. Try both to see the difference.
-MIN_VALUE=0.5
+MIN_VALUE=0
 
 
 # Would you like to also start a web application once the report and slides are generated?
@@ -37,8 +50,9 @@ strat_webapp <- 0
 
 ######################################################################
 
-ProjectDataFactor=ProjectData[,attributes_used]
+ProjectDataFactor=ProjectData[,factor_attributes_used]
 source("R/library.R")
+source("R/heatmapOutput.R")
 
 ######################################################################
 

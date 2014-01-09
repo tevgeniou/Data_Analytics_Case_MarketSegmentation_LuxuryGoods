@@ -1,27 +1,24 @@
 # Required R libraries (need to be installed - it can take a few minutes the first time you run the project)
 
-if (require(devtools)==FALSE){install.packages("devtools"); library(devtools)}
-if (require(slidifyLibraries)==FALSE){install_github("slidifyLibraries", "ramnathv"); library(slidifyLibraries)}
-if (require(slidify)==FALSE){install_github("slidify", "ramnathv")}; library(slidify)
-if (require(shiny)==FALSE){install.packages("shiny")}; library(shiny)
-if (require(knitr)==FALSE){install.packages("knitr")}; library(knitr)
+# installs all necessary libraries from CRAN
+get_libraries <- function(filenames_list) { 
+  lapply(filenames_list,function(thelibrary){    
+    if (do.call(require,list(thelibrary)) == FALSE) 
+      do.call(install.packages,list(thelibrary)) 
+    do.call(library,list(thelibrary))
+  })
+}
 
+libraries_used=c("devtools","shiny","knitr","graphics","grDevices","xtable",
+                 "Hmisc","vegan","fpc","GPArotation","FactoMineR","cluster",
+                 "psych")
+get_libraries(libraries_used)
 
-if (require(ggplot2)==FALSE){install.packages("ggplot2")}; library(ggplot2)
-if (require(png)==FALSE){install.packages("png")}; library(png)
-if (require(grid)==FALSE){install.packages("xtable")}; library(grid)
-if (require(xtable)==FALSE){install.packages("xtable")}; library(xtable)
-if (require(colorspace)==FALSE){install.packages("colorspace")}; library(colorspace)
+if (require(slidifyLibraries) == FALSE) 
+  install_github("slidifyLibraries", "ramnathv")
+if (require(slidify) == FALSE) 
+  install_github("slidify", "ramnathv") 
 
-
-if (require(Hmisc)==FALSE){install.packages("Hmisc")}; library(Hmisc)
-if (require(vegan)==FALSE){install.packages("vegan")}; library(vegan)
-if (require(fpc)==FALSE){install.packages("fpc")}; library(fpc)
-if (require(GPArotation)==FALSE){install.packages("GPArotation")}; library(GPArotation)
-if (require(cluster)==FALSE){install.packages("cluster")}; library(cluster)
-if (require(FactoMineR)==FALSE){install.packages("FactoMineR")}; library(FactoMineR)
-if (require(psych)==FALSE){install.packages("psych")}; library(psych)
-if (require(class)==FALSE){install.packages("class")}; library(class)
 #############
 
 corstars <- function(x){
@@ -37,4 +34,11 @@ corstars <- function(x){
   colnames(Rnew) <- paste(colnames(x), "", sep = "")
   Rnew <- as.data.frame(Rnew)
   return(Rnew)
+}
+
+my_summary <- function(thedata){
+  res = apply(thedata, 2, function(r) c(min(r), quantile(r, 0.25), quantile(r, 0.5), mean(r), quantile(r, 0.75), max(r), sd(r)))
+  colnames(res) <- colnames(thedata)
+  rownames(res) <- c("min", "25%", "median", "mean", "75%", "max", "std")
+  res
 }
