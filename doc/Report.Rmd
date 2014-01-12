@@ -6,6 +6,7 @@ Customer Segmentation in the Boating Industry
 ========================================================
 
 **J. Niessing, INSEAD**
+
 **T. Evgeniou, INSEAD**
 
 
@@ -20,18 +21,18 @@ The team believed that in order to develop a strategy for North America, they ne
 The Data
 --------------------------------------------
 
-With the aid of a market research firm, the boating company gathered various data about the boating market in the US through interviews with almost 3,000 boat owners and intenders. The data consisted, among others, 29 attitudes towards boating, which respondents indicated on a 5-point scale (Q. 1, 1-29 shown in the survey below).
+With the aid of a market research firm, the boating company gathered various data about the boating market in the US through interviews with almost 3,000 boat owners and intenders. The data consisted, among others, 29 attitudes towards boating, which respondents indicated on a 5-point scale (Q. 1, 1-29 shown in the survey in the appendix).
 
-Other types of information had been collected, such as demographics (Q. 11-15 in the survey). Finally, the boating company had compiled information about the boats, such as the length of the boat they owned, how they used their boats, and the price of the boats (Q. 2-10 in the survey). Segmentation of the market would be done using all this data. 
+Other types of information had been collected, such as demographics (Q. 11-15 in the survey). Finally, the boating company had compiled information about the boats, such as the length of the boat they owned, how they used their boats, and the price of the boats (Q. 2-10 in the survey). A segmentation of the market would be done using all this data. 
 
-
-### The Approach
+The Approach
+--------------------------------------------
 
 Based on past experience, the decision was made to develop a segmentation that was mostly driven by attitudes that consumer held regarding boating – the attitudinal data from the 29 questions in Q.1.
 
-## Factor Analysis
+### Factor Analysis
 
-As a first step, CreeqBoat decided to simplify the data by grouping the 29 questions into a few meaningful sets/factors. This could be done using a standard method: factor analysis. The objective is to summarize information (the variation) in correlated raw attributes to a smaller number of manageable factors - which are typically uncorrelated or independent. In the process one decreases the number of raw attributes while keeping most of the information in the data in a statistical sense.This data reduction technique is a very useful step in helping interpreting the data and make better decisions. It also helps to identify the key variables that should be used in the segmentation procedure. 
+As a first step, the company decided to simplify the data by grouping the 29 questions into a few meaningful sets/factors. This could be done using a standard method: factor analysis. The objective is to summarize information (the variation) in correlated raw attributes to a smaller number of manageable factors - which are typically uncorrelated or independent. In the process one decreases the number of raw attributes while keeping most of the information in the data in a statistical sense.This data reduction technique is a very useful step in helping interpreting the data and make better decisions. It also helps to identify the key variables that should be used in the segmentation procedure. 
 
 We first have to read the whole dataset, which is in CSV format.
 
@@ -46,7 +47,10 @@ Every factor analysis has three basic decision points:
 - Choose a rotation method.  
 
 
-The first thing to do is to look at the correlation matrix. It usually gives a first glance at the inter-relationships between variables and it is often an input for factor analysis (i.e. eigenvalue decomposition of the correlation matrix). 
+Sometimes it makes sense to run a quick correlation matrix before the factor analysis. It usually gives a first glance at the inter-relationships between variables and it is often an input for factor analysis (i.e. eigenvalue decomposition of the correlation matrix). In this example the correlaton matrix for the 29 attitudes looks like this: 
+
+THEOS: Replace variable number with actual question text (i sent you the excel file=)
+Could you do this here for the matrix but also going forward? E.g. factor loadings?
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
 thecor=cor(ProjectDataFactor)
@@ -58,9 +62,37 @@ cat(renderHeatmapX(thecor, border=1))
 ```
 ** = correlation is significant at 1% level; * = correlation is significant at 5% level
 
-###Number of Factors
+### Number of Factors
 
-A common basic visualization is the Screeplot, which depicts the eigenvalues of the factors and thus allows gaining a quick overview on how many factors should be retained:
+There are three commen ways to select the number of factors:
+
+1. All factors with eigenvalue larger than 1
+
+2. Based on the cumulative variance we would like to explain (e.g. at least 50% for example).
+
+3. Pick the number of factrors corresponding to the "elbow" of the scree plot
+
+The first two approaches to select the number of factors/derived variables are based on statistical criteria and can be seen in the following table: 
+
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+Variance_Explained_Table_results<-PCA(ProjectDataFactor, graph=FALSE)
+Variance_Explained_Table<-Variance_Explained_Table_results$eig
+## print result in a clean-slate table
+#Variance_Explained_Table[abs(Variance_Explained_Table)<MIN_VALUE]<-NA
+print(xtable(Variance_Explained_Table, caption="Eigenvalues and Variance Explained", digits=3), type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+```
+
+
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+if (factor_selectionciterion == "eigenvalue")
+  factors_selected = which(eigenvalues > 1)
+if (factor_selectionciterion == "variance")
+  factors_selected = 1:head(which(Variance_Explained_Table[,"cumulative percentage of variance"]>65),1)
+```
+
+In this data 5 factors have an eigenvalue > 1. But the team didn't only wanted to select the number based on statistical criteria. They looked at different factor solutions (varying from 4 to 14 factors in total) and realized that they would loose too much information if they would only go with 5 factors. Based on business sense and based on the explained variance the team decided to use 10 factors. As shown in the table above these 10 factors explain over 65% of the explained variance. 
+
+A common basic visualization when running the factor analysis is the Screeplot, which depicts the eigenvalues of the factors and thus allows gaining a quick overview on how many factors should be retained:
 
 ```{r Fig1, echo=FALSE, comment=NA, results='asis', message=FALSE, echo=FALSE, fig.align='center', fig=TRUE}
 Unrotated_Results<-principal(ProjectDataFactor, nfactors=ncol(ProjectDataFactor), rotate=rotation_used)
@@ -73,45 +105,9 @@ minor.tick(nx=5, ny=2)
 abline(h=1,lty=2,col=colors()[34]) 
 ```
 
-and this is the variance explained table ... (JOERG, EDIT!)
+Based on this screeplot you could say that the selected number of factors should be between 3 and 6 factors but as mentioned above the team decided to use 10 factors based on the explained variance because the explained variance was the key selection criterion in this case. 
 
-```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
-Variance_Explained_Table_results<-PCA(ProjectDataFactor, graph=FALSE)
-Variance_Explained_Table<-Variance_Explained_Table_results$eig
-## print result in a clean-slate table
-#Variance_Explained_Table[abs(Variance_Explained_Table)<MIN_VALUE]<-NA
-print(xtable(Variance_Explained_Table, caption="Eigenvalues and Variance Explained", digits=3), type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
-```
-
-
-We can select the number of factors based on at least three criteria:
-
-1. All factors with eigenvalue larger than 1
-
-2. Pick the number of factrors corresponding to the "elbow" of the scree plot
-
-3. Based on the cumulative variance we would like to explain (e.g. at least 50% for example).
-
-```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
-if (factor_selectionciterion == "eigenvalue")
-  factors_selected = which(eigenvalues > 1)
-if (factor_selectionciterion == "variance")
-  factors_selected = 1:head(which(Variance_Explained_Table[,"cumulative percentage of variance"]>0.5),1)
-```
-
-
-<blockquote> <p>
-For example, in this case, based on the `r factor_selectionciterion` criterion, we select `r length(factors_selected)` factors.
-</p> </blockquote>
-
-From the screeplot, we can infer that there are between 3 and 5 factors (with eigenvalue equal or above 1) that summarize well the variance of the sample. Although factor analysis usually involves looking at the sensitivity of the results when considering the retention of different numbers of factors, in this example we look only at the results when retaining 5 factors.
-
-There are other ways to define the optimal number of factors that are
-<a href="http://inseaddataanalytics.github.io/INSEADjan2014/Report_s23.html" target="_blank"> <strong>explained here.</strong> </a> 
-
-
-
-###Extraction Method
+### Extraction Method
 
 The extraction method will produce factor loadings for every item on every extracted factor. Researchers hope their results will show what is called simple structure, with most items having a large loading on one factor but small loadings on other factors.
 
@@ -122,7 +118,7 @@ There at least five extraction methods. The evidence supports the use of one of 
 
 The extraction and rotation steps are usually specificed in the same command in R (next subsection shows such commands).
 
-###Rotation Method
+### Rotation Method
 
 Once an initial solution is obtained, the loadings are rotated. Rotation is a way of maximizing high loadings and minimizing low loadings so that the simplest possible structure is achieved.
 
@@ -155,31 +151,32 @@ print(xtable(UnRotated_Factors, caption=paste(paste("All PCA factors selected av
 <p> </p>
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
-Rotated_Results<-principal(ProjectDataFactor, nfactors=ncol(ProjectDataFactor), rotate=rotation_used,score=TRUE)
 if (factor_selectionciterion == "eigenvalue")
-  factors_selected_tmp = which(Rotated_Results$values > 1)
-Rotated_Factors<-Rotated_Results$loadings[,factors_selected_tmp]
+  factors_selected_tmp = which(UnRotated_Results$values> 1)
+Rotated_Results<-principal(ProjectDataFactor, nfactors=max(factors_selected_tmp), rotate=rotation_used,score=TRUE)
+Rotated_Factors<-Rotated_Results$loadings
 Rotated_Factors<-as.data.frame(unclass(Rotated_Factors))
 colnames(Rotated_Factors)<-paste("Component",1:ncol(Rotated_Factors),sep=" ")
-
 Rotated_Factors[abs(Rotated_Factors) < MIN_VALUE]<-NA
 
 print(xtable(Rotated_Factors, caption=paste(paste(paste("All PCA factors available with Rotation",rotation_used),"(values less than",MIN_VALUE),"are not shown)"), digits=3), type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE,include.colnames = TRUE)
 ```
 
-From the factor analysis above, we can identify the attitudinal questions that clearly load into a single derived factor (i.e. a construct). Based on this, we can have an idea of the underlying construct (not observed in the data) that determines the attitudes of different customers. For instance, Q1_3, Q1_9 and Q1_26 load into the same factor. Looking at the description of these questions in the Case Boats(A), we can have an idea of the construct that determines the customer responses to these attitude questions. The questions have the following statements:
+THEOS: Could you sort loadings so that is easier to read? Also highlight the loadings over 0.4 in green. 
 
-Q1_3: "The brand of Boat I buy says a lot about who I am"
+From the factor analysis above, we can identify the attitudinal questions that clearly load into a single derived factor (i.e. a construct). Based on this, we can have an idea of the underlying construct (not observed in the data) that determines the attitudes of different customers. For instance, Q1_27, Q1_28 and Q1_20 load strongly into the same factor (besides other attitudes). Looking at the description of these questions, we can have an idea of the construct that determines the customer responses to these attitude questions. The questions have the following statements:
 
-Q1_9: "I see my boat as a status of symbol"
+Q1_27: "Boating is the number one thing I do with my spare time"
 
-Q1_26: "Having a powerful boat is what is most important to me"
+Q1_28: "Boating is my true passion in life"
 
-Based on these descriptions, we could say that the first factor measures a construct of "Personal Image". We do not observe the extent to which personal image is important for the respondents (the questionnaire does not ask a direct question about something called "personal image"); however, the actual questions Q1_3, Q1_9 and Q1_26 allow deriving such construct.
+Q1_20: "When not on my boat, I often find myself doing boating related activities"
 
-Based on principal component analysis, we can obtain 5 factor scores for each of almost 3000 customers. These new derived variables can be used instead of the whole 19 attitudinal variables for further analysis. Once we decided the factors to use (like in this example now 5), we typically replace the original data with a new dataset where each observation (row) is now described not using the original raw attributes but using instead the selected factors/derived attributes. 
+Based on the descriptions of the attitudes that are loading into the first factor, we could say that the first factor measures a construct of "Passion and expertise around boating". We do not observe the extent to which personal image is important for the respondents (the questionnaire does not ask a direct question about something called "personal image"); however, the actual attitudes allow deriving such construct.
 
-The factor scores are useful because they allow comparing customers based on few attitude dimensions (in this case 5 of them). For creating market segments, we will use these `r length(factors_selected)` derived variables (constructs) instead of the 19 raw attitudinal variables. For example the factro scores for the first 5 people are:
+Based on principal component analysis, we can obtain 10 factor scores for each of almost 3000 customers. These new derived variables can be used instead of the whole 29 attitudinal variables for further analysis. Once we decided the factors to use (like in this example now 10), we typically replace the original data with a new dataset where each observation (row) is now described not using the original raw attributes but using instead the selected factors/derived attributes. 
+
+The factor scores are useful because they allow comparing customers based on few attitude dimensions (in this case 10 of them). For creating market segments, we could use these `r length(factors_selected)` derived variables (constructs) instead of the 29 raw attitudinal variables. For example the factro scores for the first 5 people are:
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
 NEW_ProjectData <- Rotated_Results$scores[,1:sum(eigenvalues>=1),drop=F]
@@ -187,50 +184,71 @@ colnames(NEW_ProjectData)<-paste("Derived Variable (Factor)",1:ncol(NEW_ProjectD
 print(xtable(head(NEW_ProjectData,5) ,paste("Sample Data described using the selected Factors:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
 ```
 
-####Cluster Analysis
+Instead of the derived constructs we could also use 'a' single statement from each factor as a proxy for the factor. Usually researchers pick the attitudes with the highest factor loading (eg. for the first factor we would use Q1_27: "Boating is the number one thing I do with my spare time"). This is the approach that we would like to follow here. So for the 2nd step - the cluster analysis - we are using the following 10 statements instead of the full list of 29 statements:
 
-Based on the factor analysis, we will select certain attitudes that allow us to segment customers. We can combine attitude constructs with demographic data and measurements of boat preferences.
+THEOS: show a list of the 10 statements with the highest factor loading in each factor. 
 
-Clustering organizes things that are close into groups. This will allow us to define different market segments. In cluster analysis we have to define:
+Cluster Analysis
+--------------------------------------------
+
+Clustering organizes observations that are close into groups. This will allow us to define different market segments. In cluster analysis we have to define:
 
 How do we define close?
 How do we group things?
 How do we visualize the grouping?
 How do we interpret the grouping?
 
-Clustering analysis involves calculating how different indivudals in the sample are based on a series of attributes. For instance, in the factor analysis we calculated for each individual in the sample 5 factor scores that summarize well the variance of the 19 attitude questions. People that are similar in such 5 factors can then be grouped together.
+Clustering analysis involves calculating how different indivudals in the sample are based on a series of attributes. For instance, in the factor analysis we calculated for each individual in the sample 10 factor scores that summarize well the variance of the 29 attitudional questions. 
 
-People that are similar in terms of their attitudinal characteristics can be grouped together. The dendrogram allows having a quick visualization of how different customers stick together. The dendrogram groups customers 'little by little' based on the how different the 5 factor scores are. People with similar attitudes would stick together and depending on where you cut the dendogram tree you can have different groups or segments. The question of how many groups or clusters we will have depends on the structure of the data but also involves some intuition or knowledge about the market so that the solutions makes not only sense from a statistical perspective but also from a business perspective. Based on the first results we propose to create 3 clusters, which represent different market segments. To find the best solution from a business perspective we have to follow an interative process where we profile several cluster solutions to understand what the clusters stand for. Once this is done we select the optimal solution based on the cluster profiles and the statistical critera. For now we'll proceed with the three cluster solution. 
+People that are similar in terms of the 10 selected attitudinal characteristics can be grouped together. The dendrogram allows having a quick visualization of how different customers stick together. The dendrogram groups customers 'little by little' based on the how different the 10 attitudes are. People with similar attitudes would stick together and depending on where you cut the dendogram tree you can have different groups or segments. The question of how many groups or clusters we will have depends on the structure of the data but also involves some intuition or knowledge about the market so that the solutions makes not only sense from a statistical perspective but also from a business perspective. So clustering is a very iterative process where the team needs to look at many different solutions to identify the optimal solutions. The optimal solution can only be identified if we profile these solutions and interpret and compare the different segment profiles. 
 
-The figure left is the Dendrogram. The one on the right displays the discriminant coordinates when we define 3 groups:
+Based on the first results we propose to create 3 clusters, which represent different market segments. After looking at different segment profiles (3-7 segment solutions) we have decided to move on with a 5 cluster solution as the optimal solution from a business perspective in the boating industry. 
 
-THEOS add cluster dendogramm
+The figure left is the Dendrogram. The one on the right displays the discriminant coordinates when we define the 5 groups:
 
-###Defining the Market Segments
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+Hierarchical_Cluster_distances<-dist(ProjectData_segment,method="euclidean")
+Hierarchical_Cluster <- hclust(Hierarchical_Cluster_distances, method="ward")
+plot(Hierarchical_Cluster,main = NULL, sub=NULL,labels = 1:nrow(ProjectData_segment), xlab="Our Observations", cex.lab=1, cex.axis=1) # display dendogram
+# draw dendogram with red borders around the 3 clusters
+rect.hclust(Hierarchical_Cluster, k=numb_clusters_used, border="red") 
+```
 
-We will create 3 market segments, based on the groups identified by cluster analysis (recall that cluster analysis calculates differences/similarities of customers based on 5 factor scores that summarize the attitudes of customers). Below we have the number of observations (i.e. the number of customers of the sample) in each market segment:
+### Defining the Market Segments
+
+We will create 5 market segments, based on the groups identified by cluster analysis (recall that cluster analysis calculates differences/similarities of customers based on 10 attitudes that stand as proxies for the 10 identified factors). Below we have the number of observations (i.e. the number of customers of the sample) in each market segment:
 
 THEOS:ADD TABLE
 
-Based on these three sub-samples of the data, we can actually look at differences across groups in variables such as income, age, boat preferences, etc. and determine if those differences are significant from a statistical point of view when the data is continuous (e.g. the level income). The usual approach is to use ANOVA (or MANOVA if we want to compare multiple variables across groups at the same time).
+In a next step we can fully profile each of the 5 segments using the other variables from the survey. We can for example look at differences across groups in variables such as income, age, boat preferences, etc. and determine if those differences are significant from a statistical point of view when the data is continuous (e.g. the level income). The usual approach is to use ANOVA (or MANOVA if we want to compare multiple variables across groups at the same time).
 
-In this example most of the variables are categorical. In such cases we can look at the frequency of each of the categories of a variable for each segment group (segment profile). Each variable can be used to decscribe the segments. Ideally we find variables where segments differ a lot but it could also be the case that segments are very similar for some variables. Eg. in the table below we can see that each of the 3 segments have a similar proportion of people in each income category. Therefore, we cannot say that one segment is necessarily wealthier than the other.
+In this example most of the variables are categorical. In such cases we can look at the frequency of each of the categories of a variable for each segment group (segment profile). Each variable can be used to decscribe the segments. Ideally we find variables where segments differ a lot but it could also be the case that segments are very similar for some variables. Eg. in the table below we can see that each of the 5 segments have a similar proportion of people in each income category. Therefore, we cannot say that one segment is necessarily wealthier than the other.
 
-THEOS SHOW TABLE
+THEOS SHOW Segment profiles using some examples variables
 
 This is why finding the optimal solution is a very itereative. We need interpret not only the statistical criteria. It is even more important to look at different profiles to find the solution that makes the most business sense.
 
-After a few iterations we have decided to choose a XXX segment solution. The profiles of some of the key variables can be find in the table below.
+After a few iterations we have decided to finally choose a 5 segment solution. The profiles of some of the key variables can be find in the table below.
 
-THEOS SHOW TABLE
+THEOS SHOW full profile for the 5 segment solution
 
-The complete survey
+
+APPENDIX: The complete survey
 --------------------------------------------
 
 **ATTITUDES / NEEDS / MOTIVATIONS**
+
 1. Listed below are some statements regarding attitudes and beliefs you may or may not have regarding boating.  Using the scale provided, please indicate how much you agree or disagree with each statement.
 
-Strongly Disagree (1), Disagree (2), Neither Agree or Disagree (3), Agree (4), Strongly Agree (5)
+Strongly Disagree (1)
+
+Disagree (2)
+
+Neither Agree or Disagree (3)
+
+Agree (4)
+
+Strongly Agree (5)
  
 1.  When buying a boat, I do a lot of shopping around and visit multiple dealers
 2.	When buying a boat, getting the lowest price is more important than the boat brand
@@ -263,31 +281,49 @@ Strongly Disagree (1), Disagree (2), Neither Agree or Disagree (3), Agree (4), S
 29.	Boating is one of many things I do in my spare time
 
 **PURCHASE PROCESS AND BEHAVIOR**
+
 2. How many powerboats do you currently own?
  
 3. How likely would you be to purchase a new boat in the future?
 
-  a. Definitely will 
-  b. Probably will 
-  c. Might or might not 
-  d. Probably will not
-  e. Definitely will not 
+Definitely will not (1)
+
+Probably will not (2)
+
+Might or might not (3)
+
+Probably will (4)
+
+Definitely will (5) 
 
 4. Not including any taxes, fees or accessories, approximately how much did you pay for your boat? How much are you planning to spend on your new boat?
 
-  a. Less than $5K  
+  a. Less than $5K
+  
   b. $5K to $9K
+  
   c. $10K to $14K
+  
   d. $15K to $19K
+  
   e. $20K to $24K
+  
   f. $25K to $29K
+  
   g. $30K to $49K
+  
   h. $50K to $59K
+  
   i. $60K to $79K
+  
   j. $80K to $99K
+  
   k. $100K to $149K
+  
   l. $150K to $199K
+  
   m. $200 or more
+  
   n. Don’t know
 
 5. What is the horse power of your engine? What horse power are you looking for? 
@@ -301,6 +337,7 @@ Strongly Disagree (1), Disagree (2), Neither Agree or Disagree (3), Agree (4), S
   7. 251 – 350 HP
   8. > 350 HP
   9. Don’t Know
+
 
 6. What is the length of your boat? What is the length of the boat you are considering buying? (e.g., 20 feet) 
 
@@ -322,7 +359,11 @@ Never (1), Rarely (2), Sometimes (3), Often (4), Most of the time (5)
 
 9. Below is a list of activities that may or may not do while boating. Using the scale provided, please indicate how often you engage in each of these activities.  
 
-Never (1), Rarely (2), Sometimes (3), Often (4), Most of the time (5)
+Never (1)
+Rarely (2)
+Sometimes (3) 
+Often (4)
+Most of the time (5)
   
   1.	Fishing
   2.	Swimming
@@ -333,6 +374,7 @@ Never (1), Rarely (2), Sometimes (3), Often (4), Most of the time (5)
 10. During your boating season, how many days out of the year do you typically use your boat?
 
 **DEMOGRAPHICS**
+
 11. What is your gender? 
 	1. Male 	
 	2. Female 	
@@ -378,60 +420,109 @@ Never (1), Rarely (2), Sometimes (3), Often (4), Most of the time (5)
 15.   What is your age?
 
 **BOATS: BRAND EQUITY **
+
 16. Below are various statements that could describe brand’s PRODUCTS, IMAGE or REPUTATION. Please indicate how much you agree or disagree with the statements for the following brand that you are familiar with: INSERT BRAND THAT NEEDS TO BE RATED (eg. Alumacraft, Bayliner, etc)
 
+Strongly Disagree (1)
 
-Strongly Disagree
-	Disagree	Neither Agree nor Disagree	Agree	Strongly Agree
-1	2	3	4	5
+Disagree (2)
+
+Neither Agree or Disagree (3)
+
+Agree (4)
+
+Strongly Agree (5)
 
 
 Origin/ Heritage
+
 1.	Is a brand that has been around for a long time Brand reputation
+
 2.	Has best in-class customer service
+
 3.	Has a strong dealer network Brand leadership
+
 4.	Is a leader in cutting edge technology
+
 5.	Is a leader in safety 
+
 6.	Is known for its innovative products 
+
 Users of the brand
+
 7.	Is a brand for people who are serious about boating
+
 8.	Is a good brand for people that are new to boating
+
 9.	Is a brand I see in the water all the time
+
 Boating Experience
+
 10.	Offers boats that provide a fast and powerful boating experience
+
 11.	Offers the best boats for socializing
+
 12.	Offers the best boats for water sports (e.g., tubing, ski, wakeboard)
+
 Aesthetics
+
 13.	Offers boats with superior interior style
+
 14.	Offers boats with superior exterior style
+
 15.	Offers boats that stand out from the crowd
+
 16.	Offers boats that look cool
+
 Product Quality/ Reliability/ Innovation
+
 17.	Offers boats that can handle rough weather or choppy water
+
 18.	Offers boats that can handle frequent and heavy usage
+
 19.	Offers a wide breadth of product offerings and accessories
+
 Product Safety
+
 20.	Offers boats that I can move around safely
+
 Ease of use / convenience
+
 21.	Offers boats that are easy to maintain and/or repair
+
 22.	Offers boats that are easy to use
+
 23.	Offers boats that are easy to clean up
+
 Value/Price
+
 24.	Is low price
+
 Emotional Benefits
+
 25.	Is a brand that gives me peace of mind
+
 26.	Makes me feel I made a smart decision
+
 Self Expressive Benefits
+
 27.	Is a brand that impresses others
 
-BOATS: BRAND FUNNEL
+
+
+BOATS: 
+
+BRAND FUNNEL
+
 17. How likely would you be to recommend that brand to other boaters?   
 		
-	0=would not recommend/don’t know 		
-  1=would definitely recommend
+0=would not recommend/don’t know 		
+
+1=would definitely recommend
 
 18. If you were buying a new boat all over again, would you buy that brand in the future? 
 
-	0=no						
-  1=yes
+0=no						
+
+1=yes
 
