@@ -2,7 +2,7 @@
 <style type="text/css"> body {padding: 10px 30px 10px 30px;} table,th, td {text-align: center;} </style>
 
 
-Customer Segmentation in the Boating Industry
+Customer Segmentation in the Boating Industry (DRAFT)
 ========================================================
 
 **J. Niessing, INSEAD**
