@@ -49,9 +49,6 @@ Every factor analysis has three basic decision points:
 
 Sometimes it makes sense to run a quick correlation matrix before the factor analysis. It usually gives a first glance at the inter-relationships between variables and it is often an input for factor analysis (i.e. eigenvalue decomposition of the correlation matrix). In this example the correlaton matrix for the 29 attitudes looks like this: 
 
-THEOS: Replace variable number with actual question text (i sent you the excel file=)
-Could you do this here for the matrix but also going forward? E.g. factor loadings?
-
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
 thecor=cor(ProjectDataFactor)
 colnames(thecor)<-colnames(thecor)
@@ -79,13 +76,12 @@ Variance_Explained_Table_results<-PCA(ProjectDataFactor, graph=FALSE)
 Variance_Explained_Table<-Variance_Explained_Table_results$eig
 ## print result in a clean-slate table
 #Variance_Explained_Table[abs(Variance_Explained_Table)<MIN_VALUE]<-NA
-print(xtable(Variance_Explained_Table, caption="Eigenvalues and Variance Explained", digits=3), type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
 ```
 
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
 if (factor_selectionciterion == "eigenvalue")
-  factors_selected = which(eigenvalues > 1)
+  factors_selected = which(Variance_Explained_Table_results$eig$eigenvalue > 1)
 if (factor_selectionciterion == "variance")
   factors_selected = 1:head(which(Variance_Explained_Table[,"cumulative percentage of variance"]>65),1)
 ```
@@ -157,12 +153,14 @@ Rotated_Results<-principal(ProjectDataFactor, nfactors=max(factors_selected_tmp)
 Rotated_Factors<-Rotated_Results$loadings
 Rotated_Factors<-as.data.frame(unclass(Rotated_Factors))
 colnames(Rotated_Factors)<-paste("Component",1:ncol(Rotated_Factors),sep=" ")
+
+sorted_rows <- sort(Rotated_Factors[,1], decreasing = TRUE, index.return = TRUE)$ix
+Rotated_Factors <- Rotated_Factors[sorted_rows,]
 Rotated_Factors[abs(Rotated_Factors) < MIN_VALUE]<-NA
+
 
 print(xtable(Rotated_Factors, caption=paste(paste(paste("All PCA factors available with Rotation",rotation_used),"(values less than",MIN_VALUE),"are not shown)"), digits=3), type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE,include.colnames = TRUE)
 ```
-
-THEOS: Could you sort loadings so that is easier to read? Also highlight the loadings over 0.4 in green. 
 
 From the factor analysis above, we can identify the attitudinal questions that clearly load into a single derived factor (i.e. a construct). Based on this, we can have an idea of the underlying construct (not observed in the data) that determines the attitudes of different customers. For instance, Q1_27, Q1_28 and Q1_20 load strongly into the same factor (besides other attitudes). Looking at the description of these questions, we can have an idea of the construct that determines the customer responses to these attitude questions. The questions have the following statements:
 
@@ -186,7 +184,12 @@ print(xtable(head(NEW_ProjectData,5) ,paste("Sample Data described using the sel
 
 Instead of the derived constructs we could also use 'a' single statement from each factor as a proxy for the factor. Usually researchers pick the attitudes with the highest factor loading (eg. for the first factor we would use Q1_27: "Boating is the number one thing I do with my spare time"). This is the approach that we would like to follow here. So for the 2nd step - the cluster analysis - we are using the following 10 statements instead of the full list of 29 statements:
 
-THEOS: show a list of the 10 statements with the highest factor loading in each factor. 
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+large_loadings <-as.matrix(rownames(Rotated_Factors)[apply(Rotated_Factors,2,which.max)],ncol=1)
+rownames(large_loadings)<-paste("Factor",1:nrow(large_loadings), sep=" ")
+print(xtable(large_loadings ,paste("Raw attributes with highest loading per factor:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
 
 Cluster Analysis
 --------------------------------------------
@@ -204,7 +207,14 @@ People that are similar in terms of the 10 selected attitudinal characteristics 
 
 Based on the first results we propose to create 3 clusters, which represent different market segments. After looking at different segment profiles (3-7 segment solutions) we have decided to move on with a 5 cluster solution as the optimal solution from a business perspective in the boating industry. 
 
-The figure left is the Dendrogram. The one on the right displays the discriminant coordinates when we define the 5 groups:
+The figure below is the Dendrogram. 
+
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+# THESE ARE THE SEGMENTATION ATTRIBUTES USED
+segmentation_attributes_used=large_loadings
+ProjectData_segment= ProjectData[,segmentation_attributes_used]
+
+```
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
 Hierarchical_Cluster_distances<-dist(ProjectData_segment,method="euclidean")
@@ -214,23 +224,53 @@ plot(Hierarchical_Cluster,main = NULL, sub=NULL,labels = 1:nrow(ProjectData_segm
 rect.hclust(Hierarchical_Cluster, k=numb_clusters_used, border="red") 
 ```
 
+while this figure displays the heights of the dendrogram branches as we move from smaller to larger segments:
+
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+plot(Hierarchical_Cluster$height[length(Hierarchical_Cluster$height):1],type="l")
+```
+
+
 ### Defining the Market Segments
 
-We will create 5 market segments, based on the groups identified by cluster analysis (recall that cluster analysis calculates differences/similarities of customers based on 10 attitudes that stand as proxies for the 10 identified factors). Below we have the number of observations (i.e. the number of customers of the sample) in each market segment:
+We will create `r numb_clusters_used` market segments, based on the groups identified by cluster analysis (recall that cluster analysis calculates differences/similarities of customers based on 10 attitudes that stand as proxies for the 10 identified factors). Below we have the number of observations (i.e. the number of customers of the sample) in each market segment:
 
-THEOS:ADD TABLE
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+cluster_memberships_hclust <- as.vector(cutree(Hierarchical_Cluster, k=numb_clusters_used)) # cut tree into 3 clusters
+cluster_ids_hclust=unique(cluster_memberships_hclust)
+
+cluster_sizes <- matrix(sapply(cluster_ids_hclust, function(i) sum(cluster_memberships_hclust==i)), nrow=1)
+colnames(cluster_sizes) <-paste("Size of Cluster", 1:length(cluster_ids_hclust), sep=" ")
+
+print(xtable(cluster_sizes ,paste("Size of Clusters:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
+
 
 In a next step we can fully profile each of the 5 segments using the other variables from the survey. We can for example look at differences across groups in variables such as income, age, boat preferences, etc. and determine if those differences are significant from a statistical point of view when the data is continuous (e.g. the level income). The usual approach is to use ANOVA (or MANOVA if we want to compare multiple variables across groups at the same time).
 
 In this example most of the variables are categorical. In such cases we can look at the frequency of each of the categories of a variable for each segment group (segment profile). Each variable can be used to decscribe the segments. Ideally we find variables where segments differ a lot but it could also be the case that segments are very similar for some variables. Eg. in the table below we can see that each of the 5 segments have a similar proportion of people in each income category. Therefore, we cannot say that one segment is necessarily wealthier than the other.
 
-THEOS SHOW Segment profiles using some examples variables
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+income_table <- matrix(sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),"Q12_HOUSEHOLD income" ])), nrow=1)
+colnames(income_table) <-paste("Average Income of Cluster", 1:length(cluster_ids_hclust), sep=" ")
+
+print(xtable(income_table ,paste("Average income per clusters:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
 
 This is why finding the optimal solution is a very itereative. We need interpret not only the statistical criteria. It is even more important to look at different profiles to find the solution that makes the most business sense.
 
 After a few iterations we have decided to finally choose a 5 segment solution. The profiles of some of the key variables can be find in the table below.
 
-THEOS SHOW full profile for the 5 segment solution
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+profile_table <- Reduce(rbind, lapply(profile_attributes_used, function(profile_id) (sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),profile_id ])))))
+colnames(profile_table) <-paste("Average of Cluster", 1:length(cluster_ids_hclust), sep=" ")
+rownames(profile_table)<- colnames(ProjectData)[profile_attributes_used]
+
+print(xtable(profile_table ,paste("Average value per clusters:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
 
 
 APPENDIX: The complete survey

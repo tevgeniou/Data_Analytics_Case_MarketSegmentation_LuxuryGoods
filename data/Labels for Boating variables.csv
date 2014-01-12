@@ -1,0 +1,82 @@
+RESPID;RESPID
+Q1_1;Q1_1_When buying a boat, I do a lot of shopping around and visit multiple dealers
+Q1_2;Q1_2_When buying a boat, getting the lowest price is more important than the boat brand
+Q1_3;Q1_3_The brand of boat I buy says a lot about who I am
+Q1_4;Q1_4_I only consider buying a boat from a reputable brand
+Q1_5;Q1_5_I am willing to pay a premium for a brand with a reputation for high quality
+Q1_6;Q1_6_Owning a boat is a way of rewarding myself for my hard work
+Q1_7;Q1_7_Owning a boat gives me a sense of achievement
+Q1_8;Q1_8_When buying a boat, functionality is more important than style
+Q1_9;Q1_9_I see my boat as a status symbol
+Q1_10;Q1_10_When buying a boat, I rely more on expert opinion than my own (e.g. consumer reports, salespeople)
+Q1_11;Q1_11_I tend to perform minor boat repairs and maintenance on my own
+Q1_12;Q1_12_When it comes to boating, I tend to prefer a basic boat with little to no frills
+Q1_13;Q1_13_When buying a boat, I tend to buy the latest and greatest
+Q1_14;Q1_14_When buying accessories for my boat, I tend to buy the latest and greatest
+Q1_15;Q1_15_I am serious about the technology on my boat
+Q1_16;Q1_16_People tend to come to me for advice about boating
+Q1_17;Q1_17_I consider myself more knowledgeable about boating than the rest of my boating peers
+Q1_18;Q1_18_Boating gives me a feeling of adventure
+Q1_19;Q1_19_Boating allows me to experience nature
+Q1_20;Q1_20_When not on my boat, I often find myself doing boating related activities
+Q1_21;Q1_21_Boating helps me escape from everyday life and relax
+Q1_22;Q1_22_Boating helps me stay active
+Q1_23;Q1_23_Boating allows me to excel in the sports that I am passionate about  (e.g. fishing, racing, water sports)
+Q1_24;Q1_24_Boating gives me an outlet to socialize with family and/or friends
+Q1_25;Q1_25_Being in charge of my boat is very important to me
+Q1_26;Q1_26_Having a powerful boat is what is most important to me
+Q1_27;Q1_27_Boating is the number one thing I do with my spare time
+Q1_28;Q1_28_Boating is my true passion in life
+Q1_29;Q1_29_Boating is one of many things I do in my spare time
+Q2;Q2_How many powerboats do you currently own?
+Q2_Cluster;Q2_Cluster_Own a boat?
+Q3;Q3_How likely would you be to purchase a new boat in the future?
+Q4;Q4_Approximately how much did you pay for your current Boat?
+Q5;Q5_What is the horse power of your engine brand/current boat engine? (the boat you want to buy)
+Q6;Q6_Length of Boat (in Feet)
+Q7_1;Q7_1_I normally boat alone
+Q7_2;Q7_2_I boat with my spouse or significant other
+Q7_3;Q7_3_I boat with my family, including kids
+Q7_4;Q7_4_I boat with my friends
+Q8;Q8_How would you rate your experience regarding boating?
+Q9_1;Q9_1_Fishing - Below is a list of activities that may or may not do while boating. Please indicate how often you engage in each of these activities
+Q9_2;Q9_2_Swimming - Below is a list of activities that may or may not do while boating. Please indicate how often you engage in each of these activities
+Q9_3;Q9_3_Cruising - Below is a list of activities that may or may not do while boating. Please indicate how often you engage in each of these activities
+Q9_4;Q9_4_Water Sports - Below is a list of activities that may or may not do while boating. Please indicate how often you engage in each of these activities
+Q9_5;Q9_5_Entertaining/socializing - Below is a list of activities that may or may not do while boating. Please indicate how often you engage in each of these activities
+Q10;Q10_During your boating season, how many days out of the year do you typically use your boat
+Q11;Q11_Gender
+Q12;Q12_HOUSEHOLD income
+Q13;Q13_Are you now married, widowed, divorced, separated, never married, or living with a partner?
+Q14;Q14_Current Employment Status
+Q15Age_cluster;Q15_Age in cluster
+Brandrated_Q16;Q16_Name of the Brand rated
+Q16_1;Q16_1_Is a brand that has been around for a long time
+Q16_2;Q16_2_Has best in-class customer service
+Q16_3;Q16_3_Has a strong dealer network
+Q16_4;Q16_4_Is a leader in cutting edge technology
+Q16_5;Q16_5_Is a leader in safety
+Q16_6;Q16_6_Is known for its innovative products
+Q16_7;Q16_7_Is a brand for people who are serious about boating
+Q16_8;Q16_8_Is a good brand for people that are new to boating
+Q16_9;Q16_9_Is a brand I see in the water all the time
+Q16_10;Q16_10_Offers boats that provide a fast and powerful boating experience
+Q16_11;Q16_11_Offers the best boats for socializing
+Q16_12;Q16_12_Offers the best boats for water sports (e.g., tubing, ski, wakeboard)
+Q16_13;Q16_13_Offers boats with superior interior style
+Q16_14;Q16_14_Offers boats with superior exterior style
+Q16_15;Q16_15_Offers boats that stand out from the crowd
+Q16_16;Q16_16_Offers boats that look cool
+Q16_17;Q16_17_Offers boats that can handle rough weather or choppy water
+Q16_18;Q16_18_Offers boats that can handle frequent and heavy usage
+Q16_19;Q16_19_Offers a wide breadth of product offerings and accessories
+Q16_20;Q16_20_Offers boats that I can move around safely
+Q16_21;Q16_21_Offers boats that are easy to maintain and/or repair
+Q16_22;Q16_22_Offers boats that are easy to use
+Q16_23;Q16_23_Offers boats that are easy to clean up
+Q16_24;Q16_24_Has low prices
+Q16_25;Q16_25_Is a brand that gives me peace of mind
+Q16_26;Q16_26_Makes me feel I made a smart decision
+Q16_27;Q16_27_Is a brand that impresses others
+Q17;Q17_Recommend
+Q18;Q18_PurchaseFuture
