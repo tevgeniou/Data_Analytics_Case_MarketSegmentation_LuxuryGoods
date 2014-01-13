@@ -5014,7 +5014,14 @@ button.close {
 <body>
 <p><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"></p>
 
-<style type="text/css"> body {padding: 10px 30px 10px 30px;} table,th, td {text-align: center;} </style>
+<style type="text/css"> body {padding: 10px 30px 10px 30px;} table,th, td {text-align: center;}</style>
+
+<style>
+td.tableRow
+{
+text-align:center;
+}
+</style>
 
 <h1>Customer Segmentation in the Boating Industry (DRAFT)</h1>
 
@@ -6073,14 +6080,14 @@ button.close {
 
 <!-- Table generated in R 2.15.3 by googleVis 0.4.7 package -->
 
-<!-- Mon Jan 13 17:49:13 2014 -->
+<!-- Mon Jan 13 21:24:32 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTableID363061916461 () {
+function gvisDataTableID10ccf9161fc () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -6261,26 +6268,31 @@ var datajson =
 ];
 data.addColumn('string','Components');
 data.addColumn('number','Eigenvalue');
-data.addColumn('number','Percentage of explained variance');
-data.addColumn('number','Cumulative percentage of explained variance');
+data.addColumn('number','Percentage_of_explained_variance');
+data.addColumn('number','Cumulative_percentage_of_explained_variance');
 data.addRows(datajson);
 return(data);
 }
  
 // jsDrawChart
-function drawChartTableID363061916461() {
-var data = gvisDataTableID363061916461();
+function drawChartTableID10ccf9161fc() {
+var data = gvisDataTableID10ccf9161fc();
 var options = {};
 options["allowHtml"] = true;
-options["width"] =   1240;
-options["height"] =    380;
-options["allowHTML"] = false;
+options["width"] =   1200;
+options["height"] =    400;
+options["allowHTML"] = true;
 options["page"] = "disable";
-options["pageSize"] =     15;
-options["showRowNumber"] = false;
+
+  var dataFormat1 = new google.visualization.NumberFormat({pattern:"#.##"});
+  dataFormat1.format(data, 1);
+  var dataFormat2 = new google.visualization.NumberFormat({pattern:"#.##"});
+  dataFormat2.format(data, 2);
+  var dataFormat3 = new google.visualization.NumberFormat({pattern:"#.##"});
+  dataFormat3.format(data, 3);
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableID363061916461')
+    document.getElementById('TableID10ccf9161fc')
     );
     chart.draw(data,options);
     
@@ -6304,9 +6316,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableID363061916461);
+callbacks.push(drawChartTableID10ccf9161fc);
 })();
-function displayChartTableID363061916461() {
+function displayChartTableID10ccf9161fc() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -6332,17 +6344,20 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID363061916461"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID10ccf9161fc"></script>
  
 
 <!-- divChart -->
 
-<div id="TableID363061916461"
-  style="width: 1240px; height: 380px;">
+<div id="TableID10ccf9161fc"
+  style="width: 1200px; height: 400px;">
 </div>
 
 <pre><code>Error: undefined columns selected
 </code></pre>
+
+<p><br>
+<br></p>
 
 <p>In this data 5 factors have an eigenvalue &gt; 1. But the team didn&#39;t only wanted to select the number based on statistical criteria. They looked at different factor solutions (varying from 4 to 14 factors in total) and realized that they would loose too much information if they would only go with 5 factors. Based on business sense and based on the explained variance the team decided to use 10 factors. As shown in the table above these 10 factors explain over 65% of the explained variance. </p>
 
@@ -6352,14 +6367,14 @@ callbacks.shift()();
 
 <!-- LineChart generated in R 2.15.3 by googleVis 0.4.7 package -->
 
-<!-- Mon Jan 13 17:49:13 2014 -->
+<!-- Mon Jan 13 21:24:33 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartID36304bd654a9 () {
+function gvisDataLineChartID10cc49f16762 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -6517,8 +6532,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartID36304bd654a9() {
-var data = gvisDataLineChartID36304bd654a9();
+function drawChartLineChartID10cc49f16762() {
+var data = gvisDataLineChartID10cc49f16762();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Scree plot";
@@ -6530,7 +6545,7 @@ options["vAxes"] = [{title:'Eigenvalues'}];
 options["series"] = [{color:'green',pointSize:12, targetAxisIndex: 0}];
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartID36304bd654a9')
+    document.getElementById('LineChartID10cc49f16762')
     );
     chart.draw(data,options);
     
@@ -6554,9 +6569,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartID36304bd654a9);
+callbacks.push(drawChartLineChartID10cc49f16762);
 })();
-function displayChartLineChartID36304bd654a9() {
+function displayChartLineChartID10cc49f16762() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -6582,12 +6597,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID36304bd654a9"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID10cc49f16762"></script>
  
 
 <!-- divChart -->
 
-<div id="LineChartID36304bd654a9"
+<div id="LineChartID10cc49f16762"
   style="width: 900px; height: 600px;">
 </div>
 
