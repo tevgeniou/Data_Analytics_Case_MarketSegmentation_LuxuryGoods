@@ -66,7 +66,7 @@ ProjectDataFactor=ProjectData[,factor_attributes_used]
 
 ######################################################################
 
-if (0){ 
+if (1){ 
   unlink( "TMPdirSlides", recursive = TRUE )      
   dir.create( "TMPdirSlides" )
   setwd( "TMPdirSlides" )
