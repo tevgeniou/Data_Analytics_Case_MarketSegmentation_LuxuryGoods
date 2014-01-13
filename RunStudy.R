@@ -30,7 +30,7 @@ rotation_used="varimax"
 # Please ENTER the selection criterions for the factors to use. 
 # Choices: "eigenvalue", "variance"
 
-factor_selectionciterion = "eigenvalue"
+factor_selectionciterion = "variance"
 
 # Please ENTER then original raw attributes to use (default is 1:ncol(ProjectData), namely all of them)
 factor_attributes_used= which(sapply(colnames(ProjectData), function (s) str_detect(s,"Q1_")))

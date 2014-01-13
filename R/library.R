@@ -11,7 +11,7 @@ get_libraries <- function(filenames_list) {
 
 libraries_used=c("devtools","shiny","knitr","graphics","grDevices","xtable",
                  "Hmisc","vegan","fpc","GPArotation","FactoMineR","cluster",
-                 "psych","stringr")
+                 "psych","stringr","googleVis")
 get_libraries(libraries_used)
 
 if (require(slidifyLibraries) == FALSE) 
