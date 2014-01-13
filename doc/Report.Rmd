@@ -72,7 +72,7 @@ There are three commen ways to select the number of factors:
 The first two approaches to select the number of factors/derived variables are based on statistical criteria and can be seen in the following table: 
 
 
-```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+```{r echo=FALSE, comment=NA, warning=FALSE, error=FALSE,message=FALSE,results='asis'}
 Variance_Explained_Table_results<-PCA(ProjectDataFactor, graph=FALSE)
 Variance_Explained_Table<-Variance_Explained_Table_results$eig
 ## print result in a clean-slate table
@@ -81,11 +81,11 @@ print(xtable(Variance_Explained_Table, caption="Eigenvalues and Variance Explain
 
 row=1:nrow(Variance_Explained_Table)
 name<-paste("Component No:",row,sep="")
-Variance_Explained_Table<-cbind(names,Variance_Explained_Table)
+Variance_Explained_Table<-cbind(name,Variance_Explained_Table)
+Variance_Explained_Table<-as.data.frame(Variance_Explained_Table)
 colnames(Variance_Explained_Table)<-c("Components", "Eigenvalue", "Percentage of explained variance", "Cumulative percentage of explained variance")
-print(gvisTable(as.data.frame(Variance_Explained_Table), options=list(width=1024, height=400,allowHTML=TRUE,page='disable',pageSize=15,showRowNumber=FALSE)),'chart')
+print(gvisTable(Variance_Explained_Table, options=list(width=1200, height=380,allowHTML=TRUE,page='disable',pageSize=15,showRowNumber=FALSE)),'chart')
 ```
-
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
 if (factor_selectionciterion == "eigenvalue")
@@ -93,6 +93,8 @@ if (factor_selectionciterion == "eigenvalue")
 if (factor_selectionciterion == "variance")
   factors_selected = 1:head(which(Variance_Explained_Table[,"cumulative percentage of variance"]>65),1)
 ```
+
+
 
 In this data 5 factors have an eigenvalue > 1. But the team didn't only wanted to select the number based on statistical criteria. They looked at different factor solutions (varying from 4 to 14 factors in total) and realized that they would loose too much information if they would only go with 5 factors. Based on business sense and based on the explained variance the team decided to use 10 factors. As shown in the table above these 10 factors explain over 65% of the explained variance. 
 
