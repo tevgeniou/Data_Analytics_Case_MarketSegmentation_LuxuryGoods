@@ -81,6 +81,7 @@ The first two approaches to select the number of factors/derived variables are b
 ```{r echo=FALSE, comment=NA, warning=FALSE, error=FALSE,message=FALSE,results='asis'}
 Variance_Explained_Table_results<-PCA(ProjectDataFactor, graph=FALSE)
 Variance_Explained_Table<-Variance_Explained_Table_results$eig
+Variance_Explained_Table_copy<-Variance_Explained_Table
 ## print result in a clean-slate table
 #Variance_Explained_Table[abs(Variance_Explained_Table)<MIN_VALUE]<-NA
 print(xtable(Variance_Explained_Table, caption="Eigenvalues and Variance Explained", digits=3), type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
@@ -97,14 +98,14 @@ m<-gvisTable(Variance_Explained_Table,options=list(width=1200, height=400,allowH
 print(m,'chart')
 ```
 
+
 ```{r echo=FALSE, comment=NA, warning=FALSE,message=FALSE,results='asis'}
 if (factor_selectionciterion == "eigenvalue")
-  factors_selected = which(Variance_Explained_Table_results$eig$eigenvalue > 1)
+  factors_selected = which(Variance_Explained_Table_copy$eig$eigenvalue > 1)
 if (factor_selectionciterion == "variance")
-  factors_selected = 1:head(which(Variance_Explained_Table[,"Cumulative percentage of explained variance"]>65),1)
+  factors_selected = 1:head(which(Variance_Explained_Table_copy[,"cumulative percentage of variance"]>65),1)
 ```
-<br>
-<br>
+
 
 In this data 5 factors have an eigenvalue > 1. But the team didn't only wanted to select the number based on statistical criteria. They looked at different factor solutions (varying from 4 to 14 factors in total) and realized that they would loose too much information if they would only go with 5 factors. Based on business sense and based on the explained variance the team decided to use 10 factors. As shown in the table above these 10 factors explain over 65% of the explained variance. 
 
