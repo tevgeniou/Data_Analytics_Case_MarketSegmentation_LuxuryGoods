@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>What is Dimensionality Deduction and Factor Analysis?</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<hr/>
+
+<p>title : (Big) Data Analytics for Business
+subtitle : Segmentation in the Boating Industry
+author : T. Evgeniou and J. Niessing
+job : INSEAD
+widgets : []
+mode : selfcontained </p>
+
+<hr/>
+
+<h2>What is Dimensionality Deduction and Factor Analysis?</h2>
+
+<p>Derive new data variables which are linear combinations of the original ones and capture most of the information in the data. </p>
+
+<p>Is typically used as a first step in Data Analytics</p>
+
+<p>Can also be used to solve multicollinearity issues in regression.</p>
+
+<hr/>
+
+<h2>Factor Analysis: Key idea</h2>
+
+<ol>
+<li><p>Transform the original variables (ONLY the x&#39;s) into a smaller set of factors</p></li>
+<li><p>Understand the underlying structure of the data and the new factors</p></li>
+<li><p>Use the factors for subsequent analysis</p></li>
+</ol>
+
+<pre><code>## Error: could not find function &quot;readPNG&quot;
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;grid.raster&quot;
+</code></pre>
+
+<hr/>
+
+<h2>Key Questions</h2>
+
+<ol>
+<li><p>Can we really simplify the data by grouping the columns?</p></li>
+<li><p>How many factors should we use?</p></li>
+<li><p>How good are the factors we found?</p></li>
+<li><p>How interpretable are the factors we found? </p></li>
+</ol>
+
+<hr/>
+
+<h2>Dimensionality Reduction and Factor Analysis: 8 (Easy) Steps</h2>
+
+<ol>
+<li><p>Confirm the data are metric (interval scale) </p></li>
+<li><p>Decide whether to scale standardize the data</p></li>
+<li><p>Check the correlation matrix to see if Factor Analysis makes sense</p></li>
+<li><p>Develop a scree plot and decide on the number of factors to be derived</p></li>
+<li><p>Interpret the factors and Consider rotation of factors (technical but useful)</p></li>
+<li><p>Save factor scores for subsequent analyses</p></li>
+</ol>
+
+<hr/>
+
+<h2>Applying Factor Analysis: Evaluating MBA Applications</h2>
+
+<p>Variables available:</p>
+
+<ul>
+<li>GPA</li>
+<li>GMAT score</li>
+<li>Scholarships, fellowships won</li>
+<li>Evidence of Communications skills </li>
+<li>Prior Job Experience</li>
+<li>Organizational Experience</li>
+<li>Other extra curricular achievements</li>
+</ul>
+
+<p>Which variables do you believe correlate with  each other?
+What do these variables capture?</p>
+
+<hr/>
+
+<h2>Step 1: Confirm the data are metric (interval scale)</h2>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<hr/>
+
+<h2>Step 2: Decide whether to scale standardize the data</h2>
+
+<pre><code>Error: object &#39;ProjectData&#39; not found
+</code></pre>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<hr/>
+
+<h2>Step 3:  Check correlation matrix to see if Factor Analysis makes sense</h2>
+
+<pre><code>Error: could not find function &quot;corstars&quot;
+</code></pre>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<p>** = correlation is significant at 1% level; * = correlation is significant at 5% level</p>
+
+<h4>Even if the data is not as neatly correlated as here, Factor analysis can be helpful</h4>
+
+<hr/>
+
+<h2>Step 4. Develop a scree plot and decide on the number of factors to be derived</h2>
+
+<ul>
+<li><p>Factors</p>
+
+<ul>
+<li>If there are n variables we will have n factors in total</li>
+<li>First factor will explain most variance, second next and so on.</li>
+</ul></li>
+<li><p>Variance Explained by Factors</p>
+
+<ul>
+<li>with standardized variables each variable has a variance of 1, so the total variance in n variables is n</li>
+<li>each factor will have an associated eigen value which is the amount of variance explained by that factor</li>
+</ul></li>
+</ul>
+
+<hr/>
+
+<h2>Example Factors</h2>
+
+<pre><code>Error: could not find function &quot;principal&quot;
+</code></pre>
+
+<pre><code>Error: object &#39;Unrotated_Results&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;Unrotated_Factors&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;Unrotated_Factors&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;Unrotated_Factors&#39; not found
+</code></pre>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<hr/>
+
+<h2>How Many Factors? Eigenvalues and Variance Explained</h2>
+
+<pre><code>Error: could not find function &quot;PCA&quot;
+</code></pre>
+
+<pre><code>Error: object &#39;Variance_Explained_Table_results&#39; not found
+</code></pre>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<hr/>
+
+<h2>How Many Factors? Scree Plot</h2>
+
+<pre><code>Error: object &#39;Unrotated_Results&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;eigenvalues&#39; not found
+</code></pre>
+
+<pre><code>Error: could not find function &quot;minor.tick&quot;
+</code></pre>
+
+<pre><code>Error: plot.new has not been called yet
+</code></pre>
+
+<hr/>
+
+<h2>How many factors?</h2>
+
+<ul>
+<li>The maximal number of factors is the number of original variables Eigenvalue&gt;1</li>
+<li>&ldquo;Elbow&rdquo; in the Scree plot</li>
+<li>Cumulative variance explained</li>
+</ul>
+
+<hr/>
+
+<h2>Step 5. Interpret the factors and Consider rotation of factors (technical but useful)</h2>
+
+<p>Rotated Factors</p>
+
+<pre><code>Error: could not find function &quot;principal&quot;
+</code></pre>
+
+<pre><code>Error: object &#39;Rotated_Results&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;Rotated_Factors&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;Rotated_Factors&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;Rotated_Factors&#39; not found
+</code></pre>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<hr/>
+
+<h2>What Factor Loads &ldquo;Look Good&rdquo;? Three Quality Criteria</h2>
+
+<ol>
+<li><p>For each factor (column) only a few loadings are large (in absolute value)</p></li>
+<li><p>For each initial variable (row) only a few loadings are large (in absolute value)</p></li>
+<li><p>Any pair of factors (columns) should have different &ldquo;patterns&rdquo; of loading</p></li>
+</ol>
+
+<hr/>
+
+<h2>Step 6. Save factor scores for subsequent analyses</h2>
+
+<pre><code>Error: object &#39;Rotated_Results&#39; not found
+</code></pre>
+
+<pre><code>Error: object &#39;NEW_ProjectData&#39; not found
+</code></pre>
+
+<pre><code>Error: could not find function &quot;xtable&quot;
+</code></pre>
+
+<hr/>
+
+<h2>Using the Factor Scores: Pereptual Maps</h2>
+
+<pre><code>Error: object &#39;NEW_ProjectData&#39; not found
+</code></pre>
+
+<h2>Factor Analysis: Key (Technical) Notions</h2>
+
+<ol>
+<li>Correlation</li>
+<li>Variance explained (eigenvalues)</li>
+<li>Scree plot</li>
+<li>Varimax rotation</li>
+<li>Factor Loadings (&ldquo;components&rdquo;)</li>
+<li>Factor scores</li>
+</ol>
+
+<hr/>
+
+<h2>Next Class: Cluster Analysis for Segmentation</h2>
+
+</body>
+
+</html>
+
