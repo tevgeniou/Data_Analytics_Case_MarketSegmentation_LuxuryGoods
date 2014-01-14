@@ -1,354 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!-- saved from url=(0014)about:internet -->
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-<title>What is Dimensionality Deduction and Factor Analysis?</title>
-
-<style type="text/css">
-body, td {
-   font-family: sans-serif;
-   background-color: white;
-   font-size: 12px;
-   margin: 8px;
-}
-
-tt, code, pre {
-   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
-}
-
-h1 { 
-   font-size:2.2em; 
-}
-
-h2 { 
-   font-size:1.8em; 
-}
-
-h3 { 
-   font-size:1.4em; 
-}
-
-h4 { 
-   font-size:1.0em; 
-}
-
-h5 { 
-   font-size:0.9em; 
-}
-
-h6 { 
-   font-size:0.8em; 
-}
-
-a:visited {
-   color: rgb(50%, 0%, 50%);
-}
-
-pre {	
-   margin-top: 0;
-   max-width: 95%;
-   border: 1px solid #ccc;
-   white-space: pre-wrap;
-}
-
-pre code {
-   display: block; padding: 0.5em;
-}
-
-code.r, code.cpp {
-   background-color: #F8F8F8;
-}
-
-table, td, th {
-  border: none;
-}
-
-blockquote {
-   color:#666666;
-   margin:0;
-   padding-left: 1em;
-   border-left: 0.5em #EEE solid;
-}
-
-hr {
-   height: 0px;
-   border-bottom: none;
-   border-top-width: thin;
-   border-top-style: dotted;
-   border-top-color: #999999;
-}
-
-@media print {
-   * { 
-      background: transparent !important; 
-      color: black !important; 
-      filter:none !important; 
-      -ms-filter: none !important; 
-   }
-
-   body { 
-      font-size:12pt; 
-      max-width:100%; 
-   }
-       
-   a, a:visited { 
-      text-decoration: underline; 
-   }
-
-   hr { 
-      visibility: hidden;
-      page-break-before: always;
-   }
-
-   pre, blockquote { 
-      padding-right: 1em; 
-      page-break-inside: avoid; 
-   }
-
-   tr, img { 
-      page-break-inside: avoid; 
-   }
-
-   img { 
-      max-width: 100% !important; 
-   }
-
-   @page :left { 
-      margin: 15mm 20mm 15mm 10mm; 
-   }
-     
-   @page :right { 
-      margin: 15mm 10mm 15mm 20mm; 
-   }
-
-   p, h2, h3 { 
-      orphans: 3; widows: 3; 
-   }
-
-   h2, h3 { 
-      page-break-after: avoid; 
-   }
-}
-
-</style>
-
-
-
-
-
-</head>
-
-<body>
-<hr/>
-
-<p>title : (Big) Data Analytics for Business
-subtitle : Segmentation in the Boating Industry
-author : T. Evgeniou and J. Niessing
-job : INSEAD
-widgets : []
-mode : selfcontained </p>
-
-<hr/>
-
-<h2>What is Dimensionality Deduction and Factor Analysis?</h2>
-
-<p>Derive new data variables which are linear combinations of the original ones and capture most of the information in the data. </p>
-
-<p>Is typically used as a first step in Data Analytics</p>
-
-<p>Can also be used to solve multicollinearity issues in regression.</p>
-
-<hr/>
-
-<h2>Factor Analysis: Key idea</h2>
-
-<ol>
-<li><p>Transform the original variables (ONLY the x&#39;s) into a smaller set of factors</p></li>
-<li><p>Understand the underlying structure of the data and the new factors</p></li>
-<li><p>Use the factors for subsequent analysis</p></li>
-</ol>
-
-<pre><code>## Error: could not find function &quot;readPNG&quot;
-</code></pre>
-
-<pre><code>## Error: could not find function &quot;grid.raster&quot;
-</code></pre>
-
-<hr/>
-
-<h2>Key Questions</h2>
-
-<ol>
-<li><p>Can we really simplify the data by grouping the columns?</p></li>
-<li><p>How many factors should we use?</p></li>
-<li><p>How good are the factors we found?</p></li>
-<li><p>How interpretable are the factors we found? </p></li>
-</ol>
-
-<hr/>
-
-<h2>Dimensionality Reduction and Factor Analysis: 8 (Easy) Steps</h2>
-
-<ol>
-<li><p>Confirm the data are metric (interval scale) </p></li>
-<li><p>Decide whether to scale standardize the data</p></li>
-<li><p>Check the correlation matrix to see if Factor Analysis makes sense</p></li>
-<li><p>Develop a scree plot and decide on the number of factors to be derived</p></li>
-<li><p>Interpret the factors and Consider rotation of factors (technical but useful)</p></li>
-<li><p>Save factor scores for subsequent analyses</p></li>
-</ol>
-
-<hr/>
-
-<h2>Applying Factor Analysis: Evaluating MBA Applications</h2>
-
-<p>Variables available:</p>
-
-<ul>
-<li>GPA</li>
-<li>GMAT score</li>
-<li>Scholarships, fellowships won</li>
-<li>Evidence of Communications skills </li>
-<li>Prior Job Experience</li>
-<li>Organizational Experience</li>
-<li>Other extra curricular achievements</li>
-</ul>
-
-<p>Which variables do you believe correlate with  each other?
-What do these variables capture?</p>
-
-<hr/>
-
-<h2>Step 1: Confirm the data are metric (interval scale)</h2>
-
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<hr/>
-
-<h2>Step 2: Decide whether to scale standardize the data</h2>
-
-<pre><code>Error: object &#39;ProjectData&#39; not found
-</code></pre>
-
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<hr/>
-
-<h2>Step 3:  Check correlation matrix to see if Factor Analysis makes sense</h2>
-
-<pre><code>Error: could not find function &quot;corstars&quot;
-</code></pre>
-
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<p>** = correlation is significant at 1% level; * = correlation is significant at 5% level</p>
-
-<h4>Even if the data is not as neatly correlated as here, Factor analysis can be helpful</h4>
-
-<hr/>
-
-<h2>Step 4. Develop a scree plot and decide on the number of factors to be derived</h2>
-
-<ul>
-<li><p>Factors</p>
-
-<ul>
-<li>If there are n variables we will have n factors in total</li>
-<li>First factor will explain most variance, second next and so on.</li>
-</ul></li>
-<li><p>Variance Explained by Factors</p>
-
-<ul>
-<li>with standardized variables each variable has a variance of 1, so the total variance in n variables is n</li>
-<li>each factor will have an associated eigen value which is the amount of variance explained by that factor</li>
-</ul></li>
-</ul>
-
-<hr/>
-
-<h2>Example Factors</h2>
-
-<pre><code>Error: could not find function &quot;principal&quot;
-</code></pre>
-
-<pre><code>Error: object &#39;Unrotated_Results&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;Unrotated_Factors&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;Unrotated_Factors&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;Unrotated_Factors&#39; not found
-</code></pre>
-
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<hr/>
-
-<h2>How Many Factors? Eigenvalues and Variance Explained</h2>
-
-<pre><code>Error: could not find function &quot;PCA&quot;
-</code></pre>
-
-<pre><code>Error: object &#39;Variance_Explained_Table_results&#39; not found
-</code></pre>
-
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<hr/>
-
-<h2>How Many Factors? Scree Plot</h2>
-
-<pre><code>Error: object &#39;Unrotated_Results&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;eigenvalues&#39; not found
-</code></pre>
-
-<pre><code>Error: could not find function &quot;minor.tick&quot;
-</code></pre>
-
-<pre><code>Error: plot.new has not been called yet
-</code></pre>
-
-<hr/>
-
-<h2>How many factors?</h2>
-
-<ul>
-<li>The maximal number of factors is the number of original variables Eigenvalue&gt;1</li>
-<li>&ldquo;Elbow&rdquo; in the Scree plot</li>
-<li>Cumulative variance explained</li>
-</ul>
-
-<hr/>
-
-<h2>Step 5. Interpret the factors and Consider rotation of factors (technical but useful)</h2>
-
-<p>Rotated Factors</p>
-
-<pre><code>Error: could not find function &quot;principal&quot;
-</code></pre>
-
-<pre><code>Error: object &#39;Rotated_Results&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;Rotated_Factors&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;Rotated_Factors&#39; not found
-</code></pre>
-=======
 <html>
 <head>
   <title>(Big) Data Analytics for Business</title>
@@ -358,43 +8,41 @@ What do these variables capture?</p>
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+  <link rel="stylesheet" href="http://slidifylibraries.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries.googlecode.com/git/inst/libraries/frameworks/io2012/phone.css" 
     media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
-  
-  <!-- Grab CDN jQuery, fall back to local if offline -->
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
-    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  <link rel="stylesheet" href="http://slidifylibraries.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="http://slidifylibraries.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
-  
-
+    
 </head>
 <body style="opacity: 0">
   <slides class="layout-widescreen">
     
     <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
-  <hgroup class="auto-fadein">
-    <h1>(Big) Data Analytics for Business</h1>
-    <h2>Segmentation in the Boating Industry</h2>
-    <p>T. Evgeniou and J. Niessing<br/>INSEAD</p>
-  </hgroup>
-  <article></article>  
-</slide>
+    <!-- END LOGO SLIDE -->
     
 
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>(Big) Data Analytics for Business</h1>
+        <h2>Segmentation in the Boating Industry</h2>
+        <p>T. Evgeniou and J. Niessing<br/>INSEAD</p>
+      </hgroup>
+          </slide>
+
     <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:;">
+      <slide class="" id="slide-1" style="background:;">
   <hgroup>
     <h2>Every factor analysis has three basic decision points</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>Decide the number of factors</p>
 
 <p>Choose an extraction method</p>
@@ -405,11 +53,11 @@ What do these variables capture?</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-2" style="background:;">
+      <slide class="" id="slide-2" style="background:;">
   <hgroup>
     <h2>Correlation matrix of the 29 attitudes as a pre-step</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <table border="1" class="data table table-bordered table-condensed">
   <thead class="thead">
     <tr>
@@ -1383,11 +1031,11 @@ What do these variables capture?</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+      <slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>Number of Factors</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>There are three commen ways to select the number of factors:</p>
 
 <ol>
@@ -1402,11 +1050,11 @@ What do these variables capture?</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+      <slide class="" id="slide-4" style="background:;">
   <hgroup>
     <h2>Eigenvalues and explained variance</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <TABLE class='table table-striped table-hover table-bordered'>
 <CAPTION ALIGN="top"> Eigenvalues and Variance Explained </CAPTION>
 <TR> <TH>  </TH> <TH> eigenvalue </TH> <TH> percentage of variance </TH> <TH> cumulative percentage of variance </TH>  </TR>
@@ -1441,16 +1089,16 @@ What do these variables capture?</p>
   <TR> <TD align="right"> comp 29 </TD> <TD align="right"> 0.335 </TD> <TD align="right"> 1.153 </TD> <TD align="right"> 100.000 </TD> </TR>
    </TABLE>
 
-<!-- Table generated in R 3.0.2 by googleVis 0.4.7 package -->
+<!-- Table generated in R 2.15.3 by googleVis 0.4.7 package -->
 
-<!-- Mon Jan 13 22:22:52 2014 -->
+<!-- Tue Jan 14 23:12:37 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTableID2100716d3417 () {
+function gvisDataTableID1ac443533c49 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1638,8 +1286,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartTableID2100716d3417() {
-var data = gvisDataTableID2100716d3417();
+function drawChartTableID1ac443533c49() {
+var data = gvisDataTableID1ac443533c49();
 var options = {};
 options["allowHtml"] = true;
 options["width"] =   1200;
@@ -1655,7 +1303,7 @@ options["page"] = "disable";
   dataFormat3.format(data, 3);
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableID2100716d3417')
+    document.getElementById('TableID1ac443533c49')
     );
     chart.draw(data,options);
     
@@ -1679,9 +1327,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableID2100716d3417);
+callbacks.push(drawChartTableID1ac443533c49);
 })();
-function displayChartTableID2100716d3417() {
+function displayChartTableID1ac443533c49() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1707,12 +1355,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID2100716d3417"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1ac443533c49"></script>
  
 
 <!-- divChart -->
 
-<div id="TableID2100716d3417"
+<div id="TableID1ac443533c49"
   style="width: 1200px; height: 400px;">
 </div>
 
@@ -1720,22 +1368,22 @@ callbacks.shift()();
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+      <slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>A common basic visualization when running the factor analysis is the Screeplot</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>The screeplot depicts the eigenvalues of the factors and thus allows gaining another quick overview on how many factors should be retained:</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Extraction Method</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>The extraction method will produce factor loadings for every item on every extracted factor. </p>
 
 <p>There at least five extraction methods. The evidence supports the use of one of these two:</p>
@@ -1751,11 +1399,11 @@ callbacks.shift()();
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+      <slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Rotation Method</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>Once an initial solution is obtained, the loadings are rotated. Rotation is a way of maximizing high loadings and minimizing low loadings so that the simplest possible structure is achieved.</p>
 
 <p>There are two types of rotation:</p>
@@ -1769,11 +1417,11 @@ callbacks.shift()();
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+      <slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Based on the critrion &#39;explained variance (65%)&#39; we have selected 10 factors that could now be used for the segmentation</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <pre><code>Error: object &#39;factors_selected&#39; not found
 </code></pre>
 
@@ -1796,71 +1444,16 @@ callbacks.shift()();
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Instead of the derived constructs we could also use &#39;a&#39; single statement from each factor as a proxy for the factor</h2>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>Usually researchers pick the attitudes with the highest factor loading</p>
->>>>>>> 8e5d6cbfe6814a856f3420690a335852edba27d1
 
 <pre><code>Error: object &#39;Rotated_Factors&#39; not found
 </code></pre>
 
-<<<<<<< HEAD
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<hr/>
-
-<h2>What Factor Loads &ldquo;Look Good&rdquo;? Three Quality Criteria</h2>
-
-<ol>
-<li><p>For each factor (column) only a few loadings are large (in absolute value)</p></li>
-<li><p>For each initial variable (row) only a few loadings are large (in absolute value)</p></li>
-<li><p>Any pair of factors (columns) should have different &ldquo;patterns&rdquo; of loading</p></li>
-</ol>
-
-<hr/>
-
-<h2>Step 6. Save factor scores for subsequent analyses</h2>
-
-<pre><code>Error: object &#39;Rotated_Results&#39; not found
-</code></pre>
-
-<pre><code>Error: object &#39;NEW_ProjectData&#39; not found
-</code></pre>
-
-<pre><code>Error: could not find function &quot;xtable&quot;
-</code></pre>
-
-<hr/>
-
-<h2>Using the Factor Scores: Pereptual Maps</h2>
-
-<pre><code>Error: object &#39;NEW_ProjectData&#39; not found
-</code></pre>
-
-<h2>Factor Analysis: Key (Technical) Notions</h2>
-
-<ol>
-<li>Correlation</li>
-<li>Variance explained (eigenvalues)</li>
-<li>Scree plot</li>
-<li>Varimax rotation</li>
-<li>Factor Loadings (&ldquo;components&rdquo;)</li>
-<li>Factor scores</li>
-</ol>
-
-<hr/>
-
-<h2>Next Class: Cluster Analysis for Segmentation</h2>
-
-</body>
-
-</html>
-
-=======
 <pre><code>Error: object &#39;large_loadings&#39; not found
 </code></pre>
 
@@ -1873,76 +1466,20 @@ callbacks.shift()();
 
     <slide class="backdrop"></slide>
   </slides>
-  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
-    <ul>
-      <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Every factor analysis has three basic decision points'>
-         1
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Correlation matrix of the 29 attitudes as a pre-step'>
-         2
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Number of Factors'>
-         3
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Eigenvalues and explained variance'>
-         4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='A common basic visualization when running the factor analysis is the Screeplot'>
-         5
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Extraction Method'>
-         6
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Rotation Method'>
-         7
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Based on the critrion &#39;explained variance (65%)&#39; we have selected 10 factors that could now be used for the segmentation'>
-         8
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Instead of the derived constructs we could also use &#39;a&#39; single statement from each factor as a proxy for the factor'>
-         9
-      </a>
-    </li>
-  </ul>
-  </div>  <!--[if IE]>
+
+  <!--[if IE]>
     <script 
       src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
     </script>
     <script>CFInstall.check({mode: 'overlay'});</script>
   <![endif]-->
 </body>
-  <!-- Load Javascripts for Widgets -->
-  
-  <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
-   
-  </html>
->>>>>>> 8e5d6cbfe6814a856f3420690a335852edba27d1
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://slidifylibraries.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="http://slidifylibraries.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
