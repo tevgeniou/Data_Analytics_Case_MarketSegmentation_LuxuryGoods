@@ -54,7 +54,22 @@ Every factor analysis has three basic decision points:
 
 
 Sometimes it makes sense to run a quick correlation matrix before the factor analysis. It usually gives a first glance at the inter-relationships between variables and it is often an input for factor analysis (i.e. eigenvalue decomposition of the correlation matrix). In this example the correlaton matrix for the 29 attitudes looks like this: 
-
+<style>
+.wrapper{
+            
+            
+            width: 100%;
+           
+            overflow-x: scroll;
+             
+          }
+.wrapper1{
+            
+           height:400px;
+             overflow-y: scroll;
+          }
+</style>
+<div class="wrapper wrapper1">
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
 thecor=cor(ProjectDataFactor)
 colnames(thecor)<-colnames(thecor)
@@ -64,7 +79,7 @@ cat(renderHeatmapX(thecor, border=1))
 
 ```
 ** = correlation is significant at 1% level; * = correlation is significant at 5% level
-
+</div>
 ### Number of Factors
 
 There are three commen ways to select the number of factors:
