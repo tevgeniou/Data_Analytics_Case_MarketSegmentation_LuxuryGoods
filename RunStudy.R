@@ -85,9 +85,6 @@ if (start_local_webapp){
   # first load the data files in the data directory so that the App see them
   Boats <- read.csv(paste(local_directory, "data/Boats.csv", sep = "/"), sep=";", dec=",") # this contains only the matrix ProjectData
   Boats=data.matrix(Boats) # this file needs to be converted to "numeric"....
-  Coffee <- read.csv(paste(local_directory, "data/Coffee.csv", sep = "/"), sep=";", dec=",") # this contains only the matrix ProjectData
-  Coffee=data.matrix(Coffee) # this file needs to be converted to "numeric"....
-  
   # now run the app
   runApp("tools")  
 }
