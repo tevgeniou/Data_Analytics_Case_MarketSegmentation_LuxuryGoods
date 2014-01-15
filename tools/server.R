@@ -1,3 +1,8 @@
+
+#  Copyright 2013, INSEAD
+#  by T. Evgeniou 
+#  Dual licensed under the MIT or GPL Version 2 licenses.
+
 if (!exists("local_directory")) {  
   local_directory <- "~/Data_Analytics_Case_MarketSegmentation_LuxuryGoods"
   source(paste(local_directory,"R/library.R",sep="/"))
