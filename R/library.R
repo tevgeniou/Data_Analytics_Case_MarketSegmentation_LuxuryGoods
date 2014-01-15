@@ -21,24 +21,10 @@ if (require(slidify) == FALSE)
 
 #############
 
-corstars <- function(x){
-  require(Hmisc)
-  x <- as.matrix(x)
-  R <- rcorr(x)$r
-  p <- rcorr(x)$P
-  mystars <- ifelse(p < 0.01, "**", ifelse(p < 0.05, "*", "  "))
-  R <- format(round(cbind(rep(-1.111, ncol(x)), R), 3))[,-1]
-  Rnew <- matrix(paste(R, mystars, sep=""), ncol=ncol(x))
-  diag(Rnew) <- paste(diag(R), "", sep = "")
-  rownames(Rnew) <- colnames(x)
-  colnames(Rnew) <- paste(colnames(x), "", sep = "")
-  Rnew <- as.data.frame(Rnew)
-  return(Rnew)
-}
-
 my_summary <- function(thedata){
   res = apply(thedata, 2, function(r) c(min(r), quantile(r, 0.25), quantile(r, 0.5), mean(r), quantile(r, 0.75), max(r), sd(r)))
+  res <- round(res,2)
   colnames(res) <- colnames(thedata)
   rownames(res) <- c("min", "25%", "median", "mean", "75%", "max", "std")
-  res
+  t(res)
 }
