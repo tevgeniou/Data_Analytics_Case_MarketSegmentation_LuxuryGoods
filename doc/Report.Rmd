@@ -174,7 +174,7 @@ UnRotated_Factors<-as.data.frame(unclass(UnRotated_Factors))
 colnames(UnRotated_Factors)<-paste("Component",1:ncol(UnRotated_Factors),sep=" ")
 
 UnRotated_Factors[abs(UnRotated_Factors) < MIN_VALUE]<-NA
-lista<-list(colnames(UnRotated_Factors))
+
 
 row<-rownames(UnRotated_Factors)
 
