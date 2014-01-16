@@ -1,7 +1,8 @@
 # Project Name: "Market Segmentation, Luxury Goods (Boats Case)"
 
 rm(list = ls( )) # clean up the workspace
-
+source("R/library.R")
+source("R/heatmapOutput.R")
 ######################################################################
 
 # THESE ARE THE PROJECT PARAMETERS NEEDED TO GENERATE THE REPORT
@@ -10,7 +11,7 @@ rm(list = ls( )) # clean up the workspace
 # (e.g. local_directory <- "C:/user/MyDocuments" )
 # type in the Console below help(getwd) and help(setwd) for more information
 local_directory <- getwd()
-local_directory <- "C:/Theos/insead/eLAB/Data_Analytics_Case_MarketSegmentation_LuxuryGoods"
+#local_directory <- "C:/Theos/insead/eLAB/Data_Analytics_Case_MarketSegmentation_LuxuryGoods"
 
 cat("\n *********\n WORKING DIRECTORY IS ", local_directory, "\n PLEASE CHANGE IT IF IT IS NOT CORRECT using setwd(..) - type help(setwd) for more information \n *********")
 
@@ -34,7 +35,7 @@ rotation_used="varimax"
 
 # Please ENTER the selection criterions for the factors to use. 
 # Choices: "eigenvalue", "variance", "manual"
-factor_selectionciterion = "eigenvalue"
+factor_selectionciterion = "variance"
 
 # Please ENTER the desired minumum variance explained (in case "variance" is the factor selection criterion used). 
 minimum_variance_explained = 65  # between 1 and 100
@@ -44,7 +45,7 @@ manual_numb_factors_used = 2
 
 # Please ENTER then original raw attributes to use (default is 1:ncol(ProjectData), namely all of them)
 factor_attributes_used= (min(ncol(ProjectData),2)):(min(ncol(ProjectData),30))
-
+#factor_attributes_used= which(sapply(colnames(ProjectData), function (s) str_detect(s,"Q1_")))
 # Please ENTER the distance metric eventually used for the clustering in case of hierarchical clustering (e.g. "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski" - see help(dist)). Defauls is "euclidean"
 distance_used="euclidean"
 
@@ -72,20 +73,35 @@ MIN_VALUE=0.4
 # 1: start application on LOCAL computer, 0: do not start it
 # SELECT 0 if you are running the application on a server 
 # (DEFAULT is 0). 
-start_local_webapp <- 0
-
+strat_webapp  <- 0
+ProjectDataFactor=ProjectData[,factor_attributes_used]
 ################################################
 # Now run everything
 
-source(paste(local_directory,"R/library.R", sep="/"))
-source(paste(local_directory,"R/heatmapOutput.R", sep = "/"))
-source(paste(local_directory,"R/runcode.R", sep = "/"))
 
-if (start_local_webapp){
-  # first load the data files in the data directory so that the App see them
-  Boats <- read.csv(paste(local_directory, "data/Boats.csv", sep = "/"), sep=";", dec=",") # this contains only the matrix ProjectData
-  Boats=data.matrix(Boats) # this file needs to be converted to "numeric"....
-  # now run the app
-  runApp("tools")  
+
+
+######################################################################
+if (1){ 
+    unlink( "TMPdirSlides", recursive = TRUE )      
+    dir.create( "TMPdirSlides" )
+    setwd( "TMPdirSlides" )
+    file.copy( "../doc/Slides.Rmd","Slides.Rmd", overwrite = T )
+    slidify( "Slides.Rmd" )
+    file.copy( 'Slides.html', "../doc/Slides.html", overwrite = T )
+    setwd( "../" )
+    unlink( "TMPdirSlides", recursive = TRUE )    
 }
 
+  unlink( "TMPdirReport", recursive = TRUE )      
+  dir.create( "TMPdirReport" )
+  setwd( "TMPdirReport" )
+  file.copy( "../doc/Report.Rmd","Report.Rmd", overwrite = T )
+  knit2html( 'Report.Rmd', quiet = TRUE )
+  file.copy( 'Report.html', "../doc/Report.html", overwrite = T )
+  setwd( "../" )
+  unlink( "TMPdirReport", recursive = TRUE )
+
+  
+  if ( strat_webapp )
+    runApp( "Web_Application" )   

@@ -1,16 +1,13 @@
 ---
-
 title : (Big) Data Analytics for Business
 subtitle : Segmentation in the Boating Industry
 author : T. Evgeniou and J. Niessing
 job : INSEAD
 widgets : []
 mode : standalone 
-
 ---
 
 
-<style type="text/css">table,th,tr,thead,tbody,td {font-size:8px; text-align: center;}</style>
 ## Every factor analysis has three basic decision points
 
 
@@ -48,7 +45,6 @@ cat(renderHeatmapX(thecor, border=1))
 </div>
 ** = correlation is significant at 1% level; * = correlation is significant at 5% level
 
-
 ---
 
 ## Number of Factors
@@ -73,7 +69,7 @@ The first two approaches to select the number of factors/derived variables are b
 ```{r echo=FALSE, comment=NA, warning=FALSE, error=FALSE,message=FALSE,results='asis'}
 Variance_Explained_Table_results<-PCA(ProjectDataFactor, graph=FALSE)
 Variance_Explained_Table<-Variance_Explained_Table_results$eig
-Variance_Explained_Table_copy<-Variance_Explained_Table
+Variance_Explained_Table_copy<-Variance_Explained_Table_results
 
 row=1:nrow(Variance_Explained_Table)
 name<-paste("Component No:",row,sep="")
@@ -131,11 +127,18 @@ There are two types of rotation:
 
 ## Based on the critrion 'explained variance (65%)' we have selected 10 factors that could now be used for the segmentation
 ```{r echo=FALSE, comment=NA, warning=FALSE,message=FALSE,results='hide'}
+
 if (factor_selectionciterion == "eigenvalue")
   factors_selected = which(Variance_Explained_Table_copy$eig$eigenvalue > 1)
 if (factor_selectionciterion == "variance")
-  factors_selected = 1:head(which(Variance_Explained_Table_copy[,"cumulative percentage of variance"]>65),1)
+  factors_selected = 1:head(which(Variance_Explained_Table_copy$eig[,"cumulative percentage of variance"]>= minimum_variance_explained),1)
+
+#if (factor_selectionciterion == "eigenvalue")
+ # factors_selected = which(keepthis> 1)
+#if (factor_selectionciterion == "variance")
+ # factors_selected = 1:head(which(Variance_Explained_Table1[,"Cumulative_percentage_of_explained_variance"]>= minimum_variance_explained),1)
 ```
+
 
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
 UnRotated_Results<-principal(ProjectDataFactor, nfactors=ncol(ProjectDataFactor), rotate="none",score=TRUE)
@@ -159,8 +162,10 @@ colnames (dfnew)<-change
 
 dfnew[,2:ncol(dfnew)]<-round(dfnew[,2:ncol(dfnew)],digits=2)
 
-m1<-gvisTable(dfnew,options=list(showRowNumber=TRUE,width=970, height=400,allowHTML=TRUE,page='disable'))
+m1<-gvisTable(dfnew,options=list(showRowNumber=TRUE,width=970, height=300,allowHTML=TRUE,page='disable'))
+
 print(m1,'chart')
+
 ```
 
 --- 
@@ -168,7 +173,7 @@ print(m1,'chart')
 ## Instead of the derived constructs we could also use 'a' single statement from each factor as a proxy for the factor
 
 Usually researchers pick the attitudes with the highest factor loading
-```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='hide'}
+```{r echo=FALSE, include=FALSE,comment=NA, error=FALSE,warning=FALSE, message=FALSE,results='hide'}
 if (factor_selectionciterion == "eigenvalue")
   factors_selected_tmp = which(UnRotated_Results$values> 1)
 Rotated_Results<-principal(ProjectDataFactor, nfactors=max(factors_selected_tmp), rotate=rotation_used,score=TRUE)
@@ -212,9 +217,9 @@ print(m2,'chart')
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
 large_loadings <-as.matrix(rownames(Rotated_Factors)[apply(Rotated_Factors,2,which.max)],ncol=1)
 rownames(large_loadings)<-paste("Factor",1:nrow(large_loadings), sep=" ")
+colnames("Raw Attributes")
 print(xtable(large_loadings ,paste("Raw attributes with highest loading per factor:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
 
 ```
 </div>
 
----
