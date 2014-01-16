@@ -168,9 +168,9 @@ shinyServer(function(input, output,session) {
     hist(data_used, breaks=numb_of_breaks,main = NULL, xlab=paste("Histogram of Variable: ",colnames(data_used)), ylab="Frequency", cex.lab=1.2, cex.axis=1.2)
   })
   
-  ########## The next few tabs use the same "heavy computation" results for Hclust, so we do these only once
+  ########## The next few tabs use the same "heavy computation" results, so we do these only once
   
-  the_computations<-reactive({
+  the_computations_fa<-reactive({
     # list the user inputs the tab depends on (easier to read the code)    
     input$datafile_name_coded
     input$factor_attributes_used
@@ -184,15 +184,15 @@ shinyServer(function(input, output,session) {
     all_inputs <- user_inputs()
     ProjectData = all_inputs$ProjectData 
     ProjectDataFactor = all_inputs$ProjectDataFactor
+    
     factor_attributes_used = all_inputs$factor_attributes_used
     manual_numb_factors_used = all_inputs$manual_numb_factors_used
     rotation_used = all_inputs$rotation_used
     MIN_VALUE = all_inputs$MIN_VALUE
     
-    
     unrot_number = max(1, min(input$unrot_number, length(factor_attributes_used)))
     
-    correl<-cor(ProjectDataFactor)
+    correl <- cor(ProjectDataFactor)
     
     Unrotated_Results<-principal(ProjectDataFactor, nfactors=ncol(ProjectDataFactor), rotate="none")
     Unrotated_Factors<-Unrotated_Results$loadings[,1:unrot_number,drop=F]
@@ -249,7 +249,7 @@ shinyServer(function(input, output,session) {
     input$factor_attributes_used
     input$show_colnames
     
-    data_used = the_computations()    
+    data_used = the_computations_fa()    
     the_data = data_used$correl
     if (input$show_colnames == "0"){
       colnames(the_data) <- NULL
@@ -263,13 +263,13 @@ shinyServer(function(input, output,session) {
   })
   
   output$Variance_Explained_Table<-renderTable({
-    data_used = the_computations()    
+    data_used = the_computations_fa()    
     round(data_used$Variance_Explained_Table,2)
   })
   
   output$Unrotated_Factors<-renderHeatmap({
     
-    data_used = the_computations()        
+    data_used = the_computations_fa()        
     
     the_data = round(data_used$Unrotated_Factors,2)
     the_data[abs(the_data) < input$MIN_VALUE] <- 0
@@ -277,7 +277,7 @@ shinyServer(function(input, output,session) {
   })
   
   output$Rotated_Factors<-renderHeatmap({
-    data_used = the_computations()        
+    data_used = the_computations_fa()        
     
     the_data = round(data_used$Rotated_Factors,2)
     the_data[abs(the_data) < input$MIN_VALUE] <- 0
@@ -285,14 +285,14 @@ shinyServer(function(input, output,session) {
   })
   
   output$scree <- renderPlot({  
-    data_used = the_computations()    
+    data_used = the_computations_fa()    
     plot(data_used$eigenvalues, type="l")
   })
   
   output$NEW_ProjectData<-renderPlot({  
     input$factor1
     input$factor
-    data_used = the_computations()    
+    data_used = the_computations_fa()    
     NEW_ProjectData <- data_used$NEW_ProjectData
     
     factor1 = max(1,min(input$factor1,ncol(NEW_ProjectData)))
@@ -445,7 +445,7 @@ shinyServer(function(input, output,session) {
   
   ########## The next few tabs use the same "heavy computation" results for Hclust, so we do these only once
   
-  the_computations<-reactive({
+  the_computations_hc<-reactive({
     # list the user inputs the tab depends on (easier to read the code)
     input$datafile_name_coded
     input$segmentation_attributes_used
@@ -490,7 +490,7 @@ shinyServer(function(input, output,session) {
   ########## The Hcluster related Tabs now
   
   output$dendrogram <- renderPlot({  
-    data_used = the_computations()
+    data_used = the_computations_hc()
     
     plot(data_used$Hierarchical_Cluster,main = NULL, sub=NULL,labels = 1:nrow(data_used$ProjectData_segment), xlab="Our Observations", cex.lab=1, cex.axis=1) 
     rect.hclust(data_used$Hierarchical_Cluster, k=input$numb_clusters_used, border="red") 
@@ -509,7 +509,7 @@ shinyServer(function(input, output,session) {
   the_Hcluster_member_tab<-reactive({
     # list the user inputs the tab depends on (easier to read the code)
     input$hclust_obs_chosen
-    data_used = the_computations()    
+    data_used = the_computations_hc()    
     
     hclust_obs_chosen=matrix(data_used$ProjectData_with_hclust_membership[input$hclust_obs_chosen,"Cluster_Membership"],ncol=1)
     rownames(hclust_obs_chosen)<-"Cluster Membership"

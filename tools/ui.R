@@ -26,7 +26,7 @@ shinyUI(pageWithSidebar(
     
     HTML("<center><h4>Choose a data file:<h4>"),    
     selectInput('datafile_name_coded', '',
-                c("MBAadmin","Boats"),multiple = FALSE),
+                c("Boats","MBAadmin"),multiple = FALSE),
     
     ###########################################################
     # STEP 2.2: read the INPUTS. 
@@ -121,7 +121,7 @@ shinyUI(pageWithSidebar(
                tableOutput('correlation')),
       tabPanel("Variance Explained",tableOutput('Variance_Explained_Table')),
       tabPanel("Scree Plot", plotOutput("scree")), 
-      tabPanel("Unotated Factors",
+      tabPanel("Unrotated Factors",
                numericInput("unrot_number", "Select the the number of factors to see:",3),
                selectInput("show_colnames_unrotate", "Show variable names? (0 or 1):", choices=c("0","1"),selected=1, multiple=FALSE),               
                tableOutput('Unrotated_Factors')),
