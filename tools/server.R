@@ -501,10 +501,14 @@ shinyServer(function(input, output,session) {
     rect.hclust(data_used$Hierarchical_Cluster, k=input$numb_clusters_used, border="red") 
   })
   
-  output$dendrogram_heights <- renderPlot({  
+  output$dendrogram_heights <- renderGvis({  
     data_used = the_computations_hc()
     
-    plot(data_used$Hierarchical_Cluster$height[length(data_used$Hierarchical_Cluster$height):1],type="l")
+    max <- nrow(data_used$ProjectData_segment)
+    num <- max - 1
+    df1 <- cbind(as.data.frame(data_used$Hierarchical_Cluster$height[length(data_used$Hierarchical_Cluster$height):1]), c(1:num))
+    colnames(df1) <- c("distances","index")
+    gvisLineChart(as.data.frame(df1), xvar="index", yvar="distances", options=list(title='Distances plot', legend="right", width=900, height=600, hAxis="{title:'Number of Components', titleTextStyle:{color:'black'}}", vAxes="[{title:'Distances'}]", series="[{color:'green',pointSize:12, targetAxisIndex: 0}]"))
   })
   
   

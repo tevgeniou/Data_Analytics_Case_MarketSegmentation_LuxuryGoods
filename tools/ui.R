@@ -149,7 +149,7 @@ shinyUI(pageWithSidebar(
       tabPanel("The Dendrogram", 
                div(class="span12",plotOutput('dendrogram'))), 
       tabPanel("The Dendrogram Heights Plot", 
-               div(class="span12",plotOutput('dendrogram_heights'))), 
+               div(class="span12",htmlOutput('dendrogram_heights'))), 
       tabPanel("Hclust Membership", 
                numericInput("hclust_obs_chosen", "Select the observation to see the Hclust cluster membership for:", 1),
                div(class="span12",tableOutput('hclust_membership'))), 
