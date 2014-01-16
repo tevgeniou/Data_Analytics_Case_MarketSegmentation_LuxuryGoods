@@ -120,7 +120,7 @@ shinyUI(pageWithSidebar(
                selectInput("show_colnames", "Show column names? (0 or 1):", choices=c("0","1"),selected=1, multiple=FALSE),               
                tableOutput('correlation')),
       tabPanel("Variance Explained",tableOutput('Variance_Explained_Table')),
-      tabPanel("Scree Plot", plotOutput("scree")), 
+      tabPanel("Scree Plot", htmlOutput("scree")), 
       tabPanel("Unrotated Factors",
                numericInput("unrot_number", "Select the the number of factors to see:",3),
                selectInput("show_colnames_unrotate", "Show variable names? (0 or 1):", choices=c("0","1"),selected=1, multiple=FALSE),               

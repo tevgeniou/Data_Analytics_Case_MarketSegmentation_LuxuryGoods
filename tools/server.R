@@ -284,9 +284,13 @@ shinyServer(function(input, output,session) {
     the_data
   })
   
-  output$scree <- renderPlot({  
-    data_used = the_computations_fa()    
-    plot(data_used$eigenvalues, type="l")
+  output$scree <- renderGvis({      
+    data_used = the_computations_fa()
+    
+    eigenvalues  <- data_used$eigenvalues
+    df           <- cbind(as.data.frame(eigenvalues), c(1:length(eigenvalues)), rep(1, length(eigenvalues)))
+    colnames(df) <- c("eigenvalues", "components", "abline")
+    gvisLineChart(as.data.frame(df), xvar="components", yvar=c("eigenvalues","abline"), options=list(title='Scree plot', legend="right", width=900, height=600, hAxis="{title:'Number of Components', titleTextStyle:{color:'black'}}", vAxes="[{title:'Eigenvalues'}]",  series="[{color:'green',pointSize:12, targetAxisIndex: 0}]"))
   })
   
   output$NEW_ProjectData<-renderPlot({  
