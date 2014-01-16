@@ -473,13 +473,14 @@ shinyServer(function(input, output,session) {
     
     cluster_memberships_hclust <- as.vector(cutree(Hierarchical_Cluster, k=numb_clusters_used)) # cut tree into 3 clusters
     cluster_ids_hclust=unique(cluster_memberships_hclust)
+    
     ProjectData_with_hclust_membership <- cbind(cluster_memberships_hclust, ProjectData)
     colnames(ProjectData_with_hclust_membership)<-c("Cluster_Membership",colnames(ProjectData))
-    Cluster_Profile_mean=sapply(cluster_ids_hclust,function(i) {
-      useonly = which((cluster_memberships_hclust==i))
-      apply(ProjectData_profile[useonly,,drop=F],2,mean)
-    })
-    colnames(Cluster_Profile_mean)<- paste("Segment",1:length(cluster_ids_hclust),sep=" ")
+    
+    Cluster_Profile_mean <- sapply(cluster_ids_hclust, function(i) apply(ProjectData_profile[(cluster_memberships_hclust==i), ,drop=F], 2, mean))
+    if (ncol(ProjectData_profile) <2)
+      Cluster_Profile_mean=t(Cluster_Profile_mean)
+    colnames(Cluster_Profile_mean) <- paste("Segment (AVG)", 1:length(cluster_ids_hclust), sep=" ")
     
     list(
       ProjectData_segment = ProjectData_segment,
@@ -501,7 +502,7 @@ shinyServer(function(input, output,session) {
   })
   
   output$dendrogram_heights <- renderPlot({  
-    data_used = the_computations()
+    data_used = the_computations_hc()
     
     plot(data_used$Hierarchical_Cluster$height[length(data_used$Hierarchical_Cluster$height):1],type="l")
   })
