@@ -557,17 +557,14 @@ shinyServer(function(input, output,session) {
     cluster_memberships_kmeans <- kmeans_clusters$cluster 
     cluster_ids_kmeans <- unique(cluster_memberships_kmeans)
     
-    cluster_memberships <- cluster_memberships_kmeans
-    cluster_ids <-  cluster_ids_kmeans
-    
-    Cluster_Profile_mean <- sapply(cluster_ids, function(i) apply(ProjectData_profile[(cluster_memberships==i), ], 2, mean))
-    colnames(Cluster_Profile_mean) <- paste("Segment (AVG)", 1:length(cluster_ids), sep=" ")
-    
+    Cluster_Profile_mean <- sapply(cluster_ids_kmeans, function(i) apply(ProjectData_profile[(cluster_memberships_kmeans==i), ,drop=F], 2, mean))
+    if (ncol(ProjectData_profile) <2)
+      Cluster_Profile_mean=t(Cluster_Profile_mean)
+    colnames(Cluster_Profile_mean) <- paste("Segment (AVG)", 1:length(cluster_ids_kmeans), sep=" ")
     
     list(
       kmeans_clusters = kmeans_clusters,
-      ProjectData_with_kmeans_membership = ProjectData_with_kmeans_membership,
-      cluster_memberships = cluster_memberships,
+      cluster_memberships = cluster_memberships_kmeans,
       Cluster_Profile_mean = Cluster_Profile_mean,
       ProjectData_with_kmeans_membership = ProjectData_with_kmeans_membership
     )
@@ -597,7 +594,6 @@ shinyServer(function(input, output,session) {
     data_used$Cluster_Profile_mean
   })  
   
-  
   ### Now do the snake plot tab. first the reactive
   
   snake_plot_tab <- reactive({  
@@ -608,7 +604,7 @@ shinyServer(function(input, output,session) {
     ProjectData_profile = all_inputs$ProjectData_profile
     
     data_used_kmeans = the_kmeans_tab()    
-    data_used_hclust = the_Hcluster_member_tab()
+    data_used_hclust = the_computations_hc()
     
     ProjectData_scaled_profile=apply(ProjectData_profile,2, function(r) {if (sd(r)!=0) res=(r-mean(r))/sd(r) else res=0*r; res})
     if (input$clust_method_used == "hclust"){ 
@@ -618,7 +614,9 @@ shinyServer(function(input, output,session) {
     }
     
     cluster_ids = unique(cluster_memberships)
-    Cluster_Profile_standar_mean <- sapply(cluster_ids, function(i) apply(ProjectData_scaled_profile[(cluster_memberships==i), ], 2, mean))
+    Cluster_Profile_standar_mean <- sapply(cluster_ids, function(i) apply(ProjectData_scaled_profile[(cluster_memberships==i), ,drop=F], 2, mean))
+    if (ncol(ProjectData_scaled_profile) < 2)
+      Cluster_Profile_standar_mean = t(Cluster_Profile_standar_mean)
     colnames(Cluster_Profile_standar_mean) <- paste("Segment (AVG)", 1:length(cluster_ids), sep=" ")
     
     list(Cluster_Profile_standar_mean = Cluster_Profile_standar_mean,
@@ -782,8 +780,3 @@ shinyServer(function(input, output,session) {
   )
   
 })
-
-
-
-
-
