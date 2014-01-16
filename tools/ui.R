@@ -147,7 +147,7 @@ shinyUI(pageWithSidebar(
                div(class="span12",plotOutput('dist_histogram')), 
                div(class="span12",tableOutput('pairwise_dist'))), 
       tabPanel("The Dendrogram", 
-               div(class="span12",plotOutput('dendrogram'))), 
+               div(class="span12",plotOutput('dendrogram', height='700px'))), 
       tabPanel("The Dendrogram Heights Plot", 
                div(class="span12",htmlOutput('dendrogram_heights'))), 
       tabPanel("Hclust Membership", 
