@@ -59,7 +59,9 @@ segmentation_attributes_used= (min(ncol(ProjectData),2)):(min(ncol(ProjectData),
 
 # Please ENTER then original raw attributes to use for the profiling of the segments (the "profiling attributes")
 profile_attributes_used=(min(ncol(ProjectData),28)):(min(ncol(ProjectData),35))
-
+profile_attributes_used1=2:30
+profile_attributes_used2=48:52
+profile_attributes_used3=31:47
 # Please enter the minimum number below which you would like not to print - this makes the readability of the tables easier. Default values are either 10e6 (to print everything) or 0.5. Try both to see the difference.
 MIN_VALUE=0.4
 

@@ -380,7 +380,85 @@ print(xtable(profile_table ,paste("Average value per clusters:",data_name,sep=" 
 
 ```
 <br>
+<br>
+<style>
+.wrapper{
+            
+            
+            width: 100%;
+           
+            overflow-x: scroll;
+             
+          }
+.wrapper1{
+            
+           height:400px;
+             overflow-y: scroll;
+          }
+</style>
+<div class="wrapper wrapper1">
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+profile_table1 <- Reduce(rbind, lapply(profile_attributes_used1, function(profile_id) (sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),profile_id ])))))
+colnames(profile_table1) <-paste("Average of Cluster", 1:length(cluster_ids_hclust), sep=" ")
+rownames(profile_table1)<- colnames(ProjectData)[profile_attributes_used1]
 
+print(xtable(profile_table1 ,paste("Average value per clusters:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
+</div>
+<br>
+<style>
+.wrapper{
+            
+            
+            width: 100%;
+           
+            overflow-x: scroll;
+             
+          }
+.wrapper1{
+            
+           height:400px;
+             overflow-y: scroll;
+          }
+</style>
+<div class="wrapper wrapper1">
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+profile_table2 <- Reduce(rbind, lapply(profile_attributes_used2, function(profile_id) (sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),profile_id ])))))
+colnames(profile_table2) <-paste("Average of Cluster", 1:length(cluster_ids_hclust), sep=" ")
+rownames(profile_table2)<- colnames(ProjectData)[profile_attributes_used2]
+
+print(xtable(profile_table2 ,paste("Average value per clusters:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
+</div>
+<br>
+<style>
+.wrapper{
+            
+            
+            width: 100%;
+           
+            overflow-x: scroll;
+             
+          }
+.wrapper1{
+            
+           height:400px;
+             overflow-y: scroll;
+          }
+</style>
+<div class="wrapper wrapper1">
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+profile_table3 <- Reduce(rbind, lapply(profile_attributes_used3, function(profile_id) (sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),profile_id ])))))
+colnames(profile_table3) <-paste("Average of Cluster", 1:length(cluster_ids_hclust), sep=" ")
+rownames(profile_table3)<- colnames(ProjectData)[profile_attributes_used3]
+
+print(xtable(profile_table3 ,paste("Average value per clusters:",data_name,sep=" "), digits=1,),type="html",html.table.attributes = "class='table table-striped table-hover table-bordered'",caption.placement="top",comment = FALSE,include.rownames = TRUE)
+
+```
+</div>
+<br>
 
 APPENDIX: The complete survey
 --------------------------------------------
