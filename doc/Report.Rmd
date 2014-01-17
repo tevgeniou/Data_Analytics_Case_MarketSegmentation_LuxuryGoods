@@ -138,7 +138,7 @@ if (factor_selectionciterion == "variance")
 ```
 <br>
 <br>
-In this data `r length(which(Variance_Explained_Table_copy$eig > 1))`  factors have an eigenvalue > 1. But the team didn't wanted to select the number based on statistical criteria only. They looked at different factor solutions (varying from 4 to 14 factors in total) and realized that they would loose too much information if they would only go with 5 factors. Looking also at the explained variance and based on business sense the team decided to use 10 factors. As shown in the table above these 10 factors explain  `r round(Variance_Explained_Table[10,4],2)% of the variance. If they would stick to the 5 factors with an eigenvalue over 1 they would only explain a little bit more than 50% of the variance. 
+In this data `r sum(Variance_Explained_Table[,2] > 1)`  factors have an eigenvalue > 1. But the team didn't wanted to select the number based on statistical criteria only. They looked at different factor solutions (varying from 4 to 14 factors in total) and realized that they would loose too much information if they would only go with 5 factors. Looking also at the explained variance and based on business sense the team decided to use 10 factors. As shown in the table above these 10 factors explain  `r round(Variance_Explained_Table[10,4],2)` % of the variance. If they would stick to the 5 factors with an eigenvalue over 1 they would only explain a little bit more than 50% of the variance. 
 
 A common basic visualization when running the factor analysis is the Screeplot, which depicts the eigenvalues of the factors and thus allows gaining a quick overview on how many factors should be retained:
 
