@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>(Big) Data Analytics for Business</title>
+  <meta charset="utf-8">
+  <meta name="description" content="(Big) Data Analytics for Business">
+  <meta name="author" content="T. Evgeniou and J. Niessing">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>(Big) Data Analytics for Business</h1>
+    <h2>Segmentation in the Boating Industry</h2>
+    <p>T. Evgeniou and J. Niessing<br/>INSEAD</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Every factor analysis has three basic decision points</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Decide the number of factors</p>
+
+<p>Choose an extraction method</p>
+
+<p>Choose a rotation method</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Correlation matrix of the 29 attitudes as a pre-step</h2>
+  </hgroup>
+  <article data-timings="">
+    <style>
+.wrapper{
+            
+            height: 400px;
+            width: 970px;
+            overflow-x: scroll;
+            overflow-y: scroll;
+          }
+</style>
+
+<div class="wrapper">
+<table border="1" class="data table table-bordered table-condensed">
+  <thead class="thead" style="font-size:12px;">
+    <tr>
+      <th></th>
+      <th>Q1_1_When.buying.a.boat..I.do.a.lot.of.shopping.around.and.visit.multiple.dealers</th>
+      <th>Q1_2_When.buying.a.boat..getting.the.lowest.price.is.more.important.than.the.boat.brand</th>
+      <th>Q1_3_The.brand.of.boat.I.buy.says.a.lot.about.who.I.am</th>
+      <th>Q1_4_I.only.consider.buying.a.boat.from.a.reputable.brand</th>
+      <th>Q1_5_I.am.willing.to.pay.a.premium.for.a.brand.with.a.reputation.for.high.quality</th>
+      <th>Q1_6_Owning.a.boat.is.a.way.of.rewarding.myself.for.my.hard.work</th>
+      <th>Q1_7_Owning.a.boat.gives.me.a.sense.of.achievement</th>
+      <th>Q1_8_When.buying.a.boat..functionality.is.more.important.than.style</th>
+      <th>Q1_9_I.see.my.boat.as.a.status.symbol</th>
+      <th>Q1_10_When.buying.a.boat..I.rely.more.on.expert.opinion.than.my.own..e.g..consumer.reports..salespeople.</th>
+      <th>Q1_11_I.tend.to.perform.minor.boat.repairs.and.maintenance.on.my.own</th>
+      <th>Q1_12_When.it.comes.to.boating..I.tend.to.prefer.a.basic.boat.with.little.to.no.frills</th>
+      <th>Q1_13_When.buying.a.boat..I.tend.to.buy.the.latest.and.greatest</th>
+      <th>Q1_14_When.buying.accessories.for.my.boat..I.tend.to.buy.the.latest.and.greatest</th>
+      <th>Q1_15_I.am.serious.about.the.technology.on.my.boat</th>
+      <th>Q1_16_People.tend.to.come.to.me.for.advice.about.boating</th>
+      <th>Q1_17_I.consider.myself.more.knowledgeable.about.boating.than.the.rest.of.my.boating.peers</th>
+      <th>Q1_18_Boating.gives.me.a.feeling.of.adventure</th>
+      <th>Q1_19_Boating.allows.me.to.experience.nature</th>
+      <th>Q1_20_When.not.on.my.boat..I.often.find.myself.doing.boating.related.activities</th>
+      <th>Q1_21_Boating.helps.me.escape.from.everyday.life.and.relax</th>
+      <th>Q1_22_Boating.helps.me.stay.active</th>
+      <th>Q1_23_Boating.allows.me.to.excel.in.the.sports.that.I.am.passionate.about...e.g..fishing..racing..water.sports.</th>
+      <th>Q1_24_Boating.gives.me.an.outlet.to.socialize.with.family.and.or.friends</th>
+      <th>Q1_25_Being.in.charge.of.my.boat.is.very.important.to.me</th>
+      <th>Q1_26_Having.a.powerful.boat.is.what.is.most.important.to.me</th>
+      <th>Q1_27_Boating.is.the.number.one.thing.I.do.with.my.spare.time</th>
+      <th>Q1_28_Boating.is.my.true.passion.in.life</th>
+      <th>Q1_29_Boating.is.one.of.many.things.I.do.in.my.spare.time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="right">Q1_1_When.buying.a.boat..I.do.a.lot.of.shopping.around.and.visit.multiple.dealers</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(253,255,253)">0.008983</td>
+      <td align="right" style="background-color: rgb(228,255,228)">0.1075</td>
+      <td align="right" style="background-color: rgb(205,255,205)">0.1983</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1835</td>
+      <td align="right" style="background-color: rgb(187,255,187)">0.2678</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1846</td>
+      <td align="right" style="background-color: rgb(233,255,233)">0.08861</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.0778</td>
+      <td align="right" style="background-color: rgb(228,255,228)">0.1071</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1449</td>
+      <td align="right" style="background-color: rgb(255,242,242)">-0.05305</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1225</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.1785</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2611</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.1572</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1478</td>
+      <td align="right" style="background-color: rgb(191,255,191)">0.2533</td>
+      <td align="right" style="background-color: rgb(185,255,185)">0.274</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1941</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2353</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2315</td>
+      <td align="right" style="background-color: rgb(207,255,207)">0.1876</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2091</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2271</td>
+      <td align="right" style="background-color: rgb(229,255,229)">0.1038</td>
+      <td align="right" style="background-color: rgb(223,255,223)">0.1268</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.176</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.2016</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_2_When.buying.a.boat..getting.the.lowest.price.is.more.important.than.the.boat.brand</td>
+      <td align="right" style="background-color: rgb(253,255,253)">0.008983</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.02956</td>
+      <td align="right" style="background-color: rgb(255,202,202)">-0.2101</td>
+      <td align="right" style="background-color: rgb(255,203,203)">-0.2058</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03727</td>
+      <td align="right" style="background-color: rgb(250,255,250)">0.02025</td>
+      <td align="right" style="background-color: rgb(205,255,205)">0.1967</td>
+      <td align="right" style="background-color: rgb(233,255,233)">0.08722</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.1583</td>
+      <td align="right" style="background-color: rgb(245,255,245)">0.04285</td>
+      <td align="right" style="background-color: rgb(161,255,161)">0.3702</td>
+      <td align="right" style="background-color: rgb(254,255,254)">0.006216</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.03048</td>
+      <td align="right" style="background-color: rgb(255,236,236)">-0.07769</td>
+      <td align="right" style="background-color: rgb(255,252,252)">-0.01528</td>
+      <td align="right" style="background-color: rgb(246,255,246)">0.03892</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03771</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03631</td>
+      <td align="right" style="background-color: rgb(242,255,242)">0.05335</td>
+      <td align="right" style="background-color: rgb(255,230,230)">-0.09945</td>
+      <td align="right" style="background-color: rgb(255,236,236)">-0.07645</td>
+      <td align="right" style="background-color: rgb(255,255,255)">0.002847</td>
+      <td align="right" style="background-color: rgb(255,236,236)">-0.0755</td>
+      <td align="right" style="background-color: rgb(253,255,253)">0.008886</td>
+      <td align="right" style="background-color: rgb(237,255,237)">0.0738</td>
+      <td align="right" style="background-color: rgb(244,255,244)">0.04546</td>
+      <td align="right" style="background-color: rgb(251,255,251)">0.01602</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.02895</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_3_The.brand.of.boat.I.buy.says.a.lot.about.who.I.am</td>
+      <td align="right" style="background-color: rgb(228,255,228)">0.1075</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.02956</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(188,255,188)">0.2636</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3997</td>
+      <td align="right" style="background-color: rgb(168,255,168)">0.3401</td>
+      <td align="right" style="background-color: rgb(142,255,142)">0.4436</td>
+      <td align="right" style="background-color: rgb(255,242,242)">-0.05102</td>
+      <td align="right" style="background-color: rgb(107,255,107)">0.5789</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1356</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09649</td>
+      <td align="right" style="background-color: rgb(255,233,233)">-0.08893</td>
+      <td align="right" style="background-color: rgb(131,255,131)">0.4845</td>
+      <td align="right" style="background-color: rgb(137,255,137)">0.4615</td>
+      <td align="right" style="background-color: rgb(159,255,159)">0.3762</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3872</td>
+      <td align="right" style="background-color: rgb(158,255,158)">0.379</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2379</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.1414</td>
+      <td align="right" style="background-color: rgb(157,255,157)">0.3856</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.182</td>
+      <td align="right" style="background-color: rgb(183,255,183)">0.2814</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3396</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2277</td>
+      <td align="right" style="background-color: rgb(164,255,164)">0.358</td>
+      <td align="right" style="background-color: rgb(135,255,135)">0.471</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.4008</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4253</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_4_I.only.consider.buying.a.boat.from.a.reputable.brand</td>
+      <td align="right" style="background-color: rgb(205,255,205)">0.1983</td>
+      <td align="right" style="background-color: rgb(255,202,202)">-0.2101</td>
+      <td align="right" style="background-color: rgb(188,255,188)">0.2636</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3667</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.2015</td>
+      <td align="right" style="background-color: rgb(211,255,211)">0.1753</td>
+      <td align="right" style="background-color: rgb(255,255,255)">0.003764</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1676</td>
+      <td align="right" style="background-color: rgb(230,255,230)">0.1001</td>
+      <td align="right" style="background-color: rgb(240,255,240)">0.0588</td>
+      <td align="right" style="background-color: rgb(255,215,215)">-0.1598</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2727</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2941</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2961</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1821</td>
+      <td align="right" style="background-color: rgb(211,255,211)">0.1749</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1845</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1855</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1833</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.183</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2335</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1642</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2291</td>
+      <td align="right" style="background-color: rgb(200,255,200)">0.218</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1923</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.165</td>
+      <td align="right" style="background-color: rgb(201,255,201)">0.2124</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1865</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_5_I.am.willing.to.pay.a.premium.for.a.brand.with.a.reputation.for.high.quality</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1835</td>
+      <td align="right" style="background-color: rgb(255,203,203)">-0.2058</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3997</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3667</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(181,255,181)">0.2929</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2854</td>
+      <td align="right" style="background-color: rgb(255,247,247)">-0.03322</td>
+      <td align="right" style="background-color: rgb(171,255,171)">0.3287</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1357</td>
+      <td align="right" style="background-color: rgb(238,255,238)">0.06923</td>
+      <td align="right" style="background-color: rgb(255,211,211)">-0.1725</td>
+      <td align="right" style="background-color: rgb(140,255,140)">0.4504</td>
+      <td align="right" style="background-color: rgb(138,255,138)">0.4599</td>
+      <td align="right" style="background-color: rgb(149,255,149)">0.4176</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.3553</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3184</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2342</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1842</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3229</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1873</td>
+      <td align="right" style="background-color: rgb(185,255,185)">0.2737</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2934</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2492</td>
+      <td align="right" style="background-color: rgb(181,255,181)">0.2903</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3372</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.294</td>
+      <td align="right" style="background-color: rgb(172,255,172)">0.325</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.1778</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_6_Owning.a.boat.is.a.way.of.rewarding.myself.for.my.hard.work</td>
+      <td align="right" style="background-color: rgb(187,255,187)">0.2678</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03727</td>
+      <td align="right" style="background-color: rgb(168,255,168)">0.3401</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.2015</td>
+      <td align="right" style="background-color: rgb(181,255,181)">0.2929</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(116,255,116)">0.546</td>
+      <td align="right" style="background-color: rgb(245,255,245)">0.04036</td>
+      <td align="right" style="background-color: rgb(166,255,166)">0.3489</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1245</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1461</td>
+      <td align="right" style="background-color: rgb(255,226,226)">-0.1154</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2857</td>
+      <td align="right" style="background-color: rgb(175,255,175)">0.3138</td>
+      <td align="right" style="background-color: rgb(175,255,175)">0.3143</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2718</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2362</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.4375</td>
+      <td align="right" style="background-color: rgb(164,255,164)">0.3555</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.354</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4242</td>
+      <td align="right" style="background-color: rgb(151,255,151)">0.4088</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3179</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.367</td>
+      <td align="right" style="background-color: rgb(148,255,148)">0.42</td>
+      <td align="right" style="background-color: rgb(177,255,177)">0.3074</td>
+      <td align="right" style="background-color: rgb(167,255,167)">0.3447</td>
+      <td align="right" style="background-color: rgb(155,255,155)">0.3924</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2715</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_7_Owning.a.boat.gives.me.a.sense.of.achievement</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1846</td>
+      <td align="right" style="background-color: rgb(250,255,250)">0.02025</td>
+      <td align="right" style="background-color: rgb(142,255,142)">0.4436</td>
+      <td align="right" style="background-color: rgb(211,255,211)">0.1753</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2854</td>
+      <td align="right" style="background-color: rgb(116,255,116)">0.546</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(255,254,254)">-0.005651</td>
+      <td align="right" style="background-color: rgb(130,255,130)">0.4908</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1217</td>
+      <td align="right" style="background-color: rgb(226,255,226)">0.1152</td>
+      <td align="right" style="background-color: rgb(255,228,228)">-0.1091</td>
+      <td align="right" style="background-color: rgb(166,255,166)">0.3489</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3619</td>
+      <td align="right" style="background-color: rgb(167,255,167)">0.3449</td>
+      <td align="right" style="background-color: rgb(176,255,176)">0.3091</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2852</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.4009</td>
+      <td align="right" style="background-color: rgb(183,255,183)">0.2815</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3633</td>
+      <td align="right" style="background-color: rgb(172,255,172)">0.3274</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3902</td>
+      <td align="right" style="background-color: rgb(178,255,178)">0.3044</td>
+      <td align="right" style="background-color: rgb(170,255,170)">0.3328</td>
+      <td align="right" style="background-color: rgb(148,255,148)">0.4194</td>
+      <td align="right" style="background-color: rgb(157,255,157)">0.3865</td>
+      <td align="right" style="background-color: rgb(161,255,161)">0.3706</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3994</td>
+      <td align="right" style="background-color: rgb(194,255,194)">0.2406</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_8_When.buying.a.boat..functionality.is.more.important.than.style</td>
+      <td align="right" style="background-color: rgb(233,255,233)">0.08861</td>
+      <td align="right" style="background-color: rgb(205,255,205)">0.1967</td>
+      <td align="right" style="background-color: rgb(255,242,242)">-0.05102</td>
+      <td align="right" style="background-color: rgb(255,255,255)">0.003764</td>
+      <td align="right" style="background-color: rgb(255,247,247)">-0.03322</td>
+      <td align="right" style="background-color: rgb(245,255,245)">0.04036</td>
+      <td align="right" style="background-color: rgb(255,254,254)">-0.005651</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(255,232,232)">-0.09188</td>
+      <td align="right" style="background-color: rgb(234,255,234)">0.08512</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.1426</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2354</td>
+      <td align="right" style="background-color: rgb(255,243,243)">-0.04788</td>
+      <td align="right" style="background-color: rgb(255,250,250)">-0.02173</td>
+      <td align="right" style="background-color: rgb(240,255,240)">0.06132</td>
+      <td align="right" style="background-color: rgb(250,255,250)">0.02284</td>
+      <td align="right" style="background-color: rgb(243,255,243)">0.04813</td>
+      <td align="right" style="background-color: rgb(237,255,237)">0.07381</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09498</td>
+      <td align="right" style="background-color: rgb(244,255,244)">0.04331</td>
+      <td align="right" style="background-color: rgb(239,255,239)">0.06314</td>
+      <td align="right" style="background-color: rgb(242,255,242)">0.05412</td>
+      <td align="right" style="background-color: rgb(230,255,230)">0.09931</td>
+      <td align="right" style="background-color: rgb(251,255,251)">0.0186</td>
+      <td align="right" style="background-color: rgb(230,255,230)">0.09906</td>
+      <td align="right" style="background-color: rgb(255,244,244)">-0.04454</td>
+      <td align="right" style="background-color: rgb(248,255,248)">0.0292</td>
+      <td align="right" style="background-color: rgb(244,255,244)">0.04579</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09732</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_9_I.see.my.boat.as.a.status.symbol</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.0778</td>
+      <td align="right" style="background-color: rgb(233,255,233)">0.08722</td>
+      <td align="right" style="background-color: rgb(107,255,107)">0.5789</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1676</td>
+      <td align="right" style="background-color: rgb(171,255,171)">0.3287</td>
+      <td align="right" style="background-color: rgb(166,255,166)">0.3489</td>
+      <td align="right" style="background-color: rgb(130,255,130)">0.4908</td>
+      <td align="right" style="background-color: rgb(255,232,232)">-0.09188</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.143</td>
+      <td align="right" style="background-color: rgb(240,255,240)">0.05987</td>
+      <td align="right" style="background-color: rgb(255,244,244)">-0.04386</td>
+      <td align="right" style="background-color: rgb(133,255,133)">0.4801</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4267</td>
+      <td align="right" style="background-color: rgb(170,255,170)">0.3327</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3892</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3656</td>
+      <td align="right" style="background-color: rgb(200,255,200)">0.218</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.0744</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3659</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.1435</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2325</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2887</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2304</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3191</td>
+      <td align="right" style="background-color: rgb(127,255,127)">0.5027</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3997</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4025</td>
+      <td align="right" style="background-color: rgb(226,255,226)">0.1147</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_10_When.buying.a.boat..I.rely.more.on.expert.opinion.than.my.own..e.g..consumer.reports..salespeople.</td>
+      <td align="right" style="background-color: rgb(228,255,228)">0.1071</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.1583</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1356</td>
+      <td align="right" style="background-color: rgb(230,255,230)">0.1001</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1357</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1245</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1217</td>
+      <td align="right" style="background-color: rgb(234,255,234)">0.08512</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.143</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(255,233,233)">-0.08855</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1223</td>
+      <td align="right" style="background-color: rgb(214,255,214)">0.1614</td>
+      <td align="right" style="background-color: rgb(229,255,229)">0.1051</td>
+      <td align="right" style="background-color: rgb(227,255,227)">0.1111</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.03012</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.02844</td>
+      <td align="right" style="background-color: rgb(220,255,220)">0.1406</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09459</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09628</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.07687</td>
+      <td align="right" style="background-color: rgb(232,255,232)">0.09113</td>
+      <td align="right" style="background-color: rgb(238,255,238)">0.06955</td>
+      <td align="right" style="background-color: rgb(222,255,222)">0.1312</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.07601</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1348</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.07711</td>
+      <td align="right" style="background-color: rgb(238,255,238)">0.06922</td>
+      <td align="right" style="background-color: rgb(242,255,242)">0.05107</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_11_I.tend.to.perform.minor.boat.repairs.and.maintenance.on.my.own</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1449</td>
+      <td align="right" style="background-color: rgb(245,255,245)">0.04285</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09649</td>
+      <td align="right" style="background-color: rgb(240,255,240)">0.0588</td>
+      <td align="right" style="background-color: rgb(238,255,238)">0.06923</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1461</td>
+      <td align="right" style="background-color: rgb(226,255,226)">0.1152</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.1426</td>
+      <td align="right" style="background-color: rgb(240,255,240)">0.05987</td>
+      <td align="right" style="background-color: rgb(255,233,233)">-0.08855</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(233,255,233)">0.08748</td>
+      <td align="right" style="background-color: rgb(235,255,235)">0.07991</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1345</td>
+      <td align="right" style="background-color: rgb(203,255,203)">0.205</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3192</td>
+      <td align="right" style="background-color: rgb(177,255,177)">0.308</td>
+      <td align="right" style="background-color: rgb(227,255,227)">0.1119</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1233</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.25</td>
+      <td align="right" style="background-color: rgb(222,255,222)">0.1291</td>
+      <td align="right" style="background-color: rgb(212,255,212)">0.1701</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1921</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.0773</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2489</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09386</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.157</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1829</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_12_When.it.comes.to.boating..I.tend.to.prefer.a.basic.boat.with.little.to.no.frills</td>
+      <td align="right" style="background-color: rgb(255,242,242)">-0.05305</td>
+      <td align="right" style="background-color: rgb(161,255,161)">0.3702</td>
+      <td align="right" style="background-color: rgb(255,233,233)">-0.08893</td>
+      <td align="right" style="background-color: rgb(255,215,215)">-0.1598</td>
+      <td align="right" style="background-color: rgb(255,211,211)">-0.1725</td>
+      <td align="right" style="background-color: rgb(255,226,226)">-0.1154</td>
+      <td align="right" style="background-color: rgb(255,228,228)">-0.1091</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2354</td>
+      <td align="right" style="background-color: rgb(255,244,244)">-0.04386</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1223</td>
+      <td align="right" style="background-color: rgb(233,255,233)">0.08748</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(255,227,227)">-0.1131</td>
+      <td align="right" style="background-color: rgb(255,213,213)">-0.1652</td>
+      <td align="right" style="background-color: rgb(255,213,213)">-0.1677</td>
+      <td align="right" style="background-color: rgb(255,250,250)">-0.02316</td>
+      <td align="right" style="background-color: rgb(251,255,251)">0.01641</td>
+      <td align="right" style="background-color: rgb(255,225,225)">-0.1194</td>
+      <td align="right" style="background-color: rgb(255,232,232)">-0.09364</td>
+      <td align="right" style="background-color: rgb(253,255,253)">0.008689</td>
+      <td align="right" style="background-color: rgb(255,212,212)">-0.1682</td>
+      <td align="right" style="background-color: rgb(255,226,226)">-0.1144</td>
+      <td align="right" style="background-color: rgb(255,247,247)">-0.03205</td>
+      <td align="right" style="background-color: rgb(255,212,212)">-0.1693</td>
+      <td align="right" style="background-color: rgb(255,241,241)">-0.0547</td>
+      <td align="right" style="background-color: rgb(255,239,239)">-0.06386</td>
+      <td align="right" style="background-color: rgb(255,255,255)">0.002133</td>
+      <td align="right" style="background-color: rgb(255,253,253)">-0.009516</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03549</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_13_When.buying.a.boat..I.tend.to.buy.the.latest.and.greatest</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1225</td>
+      <td align="right" style="background-color: rgb(254,255,254)">0.006216</td>
+      <td align="right" style="background-color: rgb(131,255,131)">0.4845</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2727</td>
+      <td align="right" style="background-color: rgb(140,255,140)">0.4504</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2857</td>
+      <td align="right" style="background-color: rgb(166,255,166)">0.3489</td>
+      <td align="right" style="background-color: rgb(255,243,243)">-0.04788</td>
+      <td align="right" style="background-color: rgb(133,255,133)">0.4801</td>
+      <td align="right" style="background-color: rgb(214,255,214)">0.1614</td>
+      <td align="right" style="background-color: rgb(235,255,235)">0.07991</td>
+      <td align="right" style="background-color: rgb(255,227,227)">-0.1131</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(92,255,92)">0.6382</td>
+      <td align="right" style="background-color: rgb(138,255,138)">0.4577</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4271</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4259</td>
+      <td align="right" style="background-color: rgb(203,255,203)">0.2035</td>
+      <td align="right" style="background-color: rgb(227,255,227)">0.1111</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3868</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1354</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2301</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3187</td>
+      <td align="right" style="background-color: rgb(205,255,205)">0.1963</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3234</td>
+      <td align="right" style="background-color: rgb(132,255,132)">0.481</td>
+      <td align="right" style="background-color: rgb(154,255,154)">0.3981</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4041</td>
+      <td align="right" style="background-color: rgb(207,255,207)">0.1903</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_14_When.buying.accessories.for.my.boat..I.tend.to.buy.the.latest.and.greatest</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.1785</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.03048</td>
+      <td align="right" style="background-color: rgb(137,255,137)">0.4615</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2941</td>
+      <td align="right" style="background-color: rgb(138,255,138)">0.4599</td>
+      <td align="right" style="background-color: rgb(175,255,175)">0.3138</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3619</td>
+      <td align="right" style="background-color: rgb(255,250,250)">-0.02173</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4267</td>
+      <td align="right" style="background-color: rgb(229,255,229)">0.1051</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1345</td>
+      <td align="right" style="background-color: rgb(255,213,213)">-0.1652</td>
+      <td align="right" style="background-color: rgb(92,255,92)">0.6382</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(128,255,128)">0.4999</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4272</td>
+      <td align="right" style="background-color: rgb(154,255,154)">0.3976</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2493</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.1773</td>
+      <td align="right" style="background-color: rgb(151,255,151)">0.4065</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2082</td>
+      <td align="right" style="background-color: rgb(183,255,183)">0.2852</td>
+      <td align="right" style="background-color: rgb(164,255,164)">0.3565</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.209</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.3533</td>
+      <td align="right" style="background-color: rgb(136,255,136)">0.4649</td>
+      <td align="right" style="background-color: rgb(155,255,155)">0.3934</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4049</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2109</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_15_I.am.serious.about.the.technology.on.my.boat</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2611</td>
+      <td align="right" style="background-color: rgb(255,236,236)">-0.07769</td>
+      <td align="right" style="background-color: rgb(159,255,159)">0.3762</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2961</td>
+      <td align="right" style="background-color: rgb(149,255,149)">0.4176</td>
+      <td align="right" style="background-color: rgb(175,255,175)">0.3143</td>
+      <td align="right" style="background-color: rgb(167,255,167)">0.3449</td>
+      <td align="right" style="background-color: rgb(240,255,240)">0.06132</td>
+      <td align="right" style="background-color: rgb(170,255,170)">0.3327</td>
+      <td align="right" style="background-color: rgb(227,255,227)">0.1111</td>
+      <td align="right" style="background-color: rgb(203,255,203)">0.205</td>
+      <td align="right" style="background-color: rgb(255,213,213)">-0.1677</td>
+      <td align="right" style="background-color: rgb(138,255,138)">0.4577</td>
+      <td align="right" style="background-color: rgb(128,255,128)">0.4999</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(150,255,150)">0.4117</td>
+      <td align="right" style="background-color: rgb(155,255,155)">0.3943</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3164</td>
+      <td align="right" style="background-color: rgb(188,255,188)">0.2634</td>
+      <td align="right" style="background-color: rgb(151,255,151)">0.407</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.21</td>
+      <td align="right" style="background-color: rgb(172,255,172)">0.3264</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.353</td>
+      <td align="right" style="background-color: rgb(188,255,188)">0.2655</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.428</td>
+      <td align="right" style="background-color: rgb(160,255,160)">0.3732</td>
+      <td align="right" style="background-color: rgb(166,255,166)">0.3504</td>
+      <td align="right" style="background-color: rgb(159,255,159)">0.3784</td>
+      <td align="right" style="background-color: rgb(193,255,193)">0.2449</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_16_People.tend.to.come.to.me.for.advice.about.boating</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.1572</td>
+      <td align="right" style="background-color: rgb(255,252,252)">-0.01528</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3872</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1821</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.3553</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2718</td>
+      <td align="right" style="background-color: rgb(176,255,176)">0.3091</td>
+      <td align="right" style="background-color: rgb(250,255,250)">0.02284</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3892</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.03012</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3192</td>
+      <td align="right" style="background-color: rgb(255,250,250)">-0.02316</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4271</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4272</td>
+      <td align="right" style="background-color: rgb(150,255,150)">0.4117</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(94,255,94)">0.6314</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.2029</td>
+      <td align="right" style="background-color: rgb(220,255,220)">0.138</td>
+      <td align="right" style="background-color: rgb(122,255,122)">0.5216</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.1584</td>
+      <td align="right" style="background-color: rgb(179,255,179)">0.30</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3996</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1941</td>
+      <td align="right" style="background-color: rgb(157,255,157)">0.3858</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.402</td>
+      <td align="right" style="background-color: rgb(134,255,134)">0.4758</td>
+      <td align="right" style="background-color: rgb(128,255,128)">0.4964</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.202</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_17_I.consider.myself.more.knowledgeable.about.boating.than.the.rest.of.my.boating.peers</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1478</td>
+      <td align="right" style="background-color: rgb(246,255,246)">0.03892</td>
+      <td align="right" style="background-color: rgb(158,255,158)">0.379</td>
+      <td align="right" style="background-color: rgb(211,255,211)">0.1749</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3184</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2362</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2852</td>
+      <td align="right" style="background-color: rgb(243,255,243)">0.04813</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3656</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.02844</td>
+      <td align="right" style="background-color: rgb(177,255,177)">0.308</td>
+      <td align="right" style="background-color: rgb(251,255,251)">0.01641</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.4259</td>
+      <td align="right" style="background-color: rgb(154,255,154)">0.3976</td>
+      <td align="right" style="background-color: rgb(155,255,155)">0.3943</td>
+      <td align="right" style="background-color: rgb(94,255,94)">0.6314</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(212,255,212)">0.1709</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1219</td>
+      <td align="right" style="background-color: rgb(141,255,141)">0.4456</td>
+      <td align="right" style="background-color: rgb(223,255,223)">0.1255</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2584</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3631</td>
+      <td align="right" style="background-color: rgb(217,255,217)">0.1486</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3624</td>
+      <td align="right" style="background-color: rgb(154,255,154)">0.3981</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.4379</td>
+      <td align="right" style="background-color: rgb(137,255,137)">0.4625</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2094</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_18_Boating.gives.me.a.feeling.of.adventure</td>
+      <td align="right" style="background-color: rgb(191,255,191)">0.2533</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03771</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2379</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1845</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2342</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.4375</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.4009</td>
+      <td align="right" style="background-color: rgb(237,255,237)">0.07381</td>
+      <td align="right" style="background-color: rgb(200,255,200)">0.218</td>
+      <td align="right" style="background-color: rgb(220,255,220)">0.1406</td>
+      <td align="right" style="background-color: rgb(227,255,227)">0.1119</td>
+      <td align="right" style="background-color: rgb(255,225,225)">-0.1194</td>
+      <td align="right" style="background-color: rgb(203,255,203)">0.2035</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2493</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3164</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.2029</td>
+      <td align="right" style="background-color: rgb(212,255,212)">0.1709</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(131,255,131)">0.4873</td>
+      <td align="right" style="background-color: rgb(184,255,184)">0.2811</td>
+      <td align="right" style="background-color: rgb(134,255,134)">0.4728</td>
+      <td align="right" style="background-color: rgb(144,255,144)">0.437</td>
+      <td align="right" style="background-color: rgb(181,255,181)">0.2903</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4227</td>
+      <td align="right" style="background-color: rgb(160,255,160)">0.3722</td>
+      <td align="right" style="background-color: rgb(194,255,194)">0.2386</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2467</td>
+      <td align="right" style="background-color: rgb(175,255,175)">0.3128</td>
+      <td align="right" style="background-color: rgb(179,255,179)">0.2992</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_19_Boating.allows.me.to.experience.nature</td>
+      <td align="right" style="background-color: rgb(185,255,185)">0.274</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03631</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.1414</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1855</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1842</td>
+      <td align="right" style="background-color: rgb(164,255,164)">0.3555</td>
+      <td align="right" style="background-color: rgb(183,255,183)">0.2815</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09498</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.0744</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09459</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1233</td>
+      <td align="right" style="background-color: rgb(255,232,232)">-0.09364</td>
+      <td align="right" style="background-color: rgb(227,255,227)">0.1111</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.1773</td>
+      <td align="right" style="background-color: rgb(188,255,188)">0.2634</td>
+      <td align="right" style="background-color: rgb(220,255,220)">0.138</td>
+      <td align="right" style="background-color: rgb(224,255,224)">0.1219</td>
+      <td align="right" style="background-color: rgb(131,255,131)">0.4873</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(201,255,201)">0.213</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.44</td>
+      <td align="right" style="background-color: rgb(158,255,158)">0.38</td>
+      <td align="right" style="background-color: rgb(193,255,193)">0.2436</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3658</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3239</td>
+      <td align="right" style="background-color: rgb(220,255,220)">0.1394</td>
+      <td align="right" style="background-color: rgb(211,255,211)">0.1756</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.232</td>
+      <td align="right" style="background-color: rgb(184,255,184)">0.2788</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_20_When.not.on.my.boat..I.often.find.myself.doing.boating.related.activities</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1941</td>
+      <td align="right" style="background-color: rgb(242,255,242)">0.05335</td>
+      <td align="right" style="background-color: rgb(157,255,157)">0.3856</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1833</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3229</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.354</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3633</td>
+      <td align="right" style="background-color: rgb(244,255,244)">0.04331</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3659</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09628</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.25</td>
+      <td align="right" style="background-color: rgb(253,255,253)">0.008689</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3868</td>
+      <td align="right" style="background-color: rgb(151,255,151)">0.4065</td>
+      <td align="right" style="background-color: rgb(151,255,151)">0.407</td>
+      <td align="right" style="background-color: rgb(122,255,122)">0.5216</td>
+      <td align="right" style="background-color: rgb(141,255,141)">0.4456</td>
+      <td align="right" style="background-color: rgb(184,255,184)">0.2811</td>
+      <td align="right" style="background-color: rgb(201,255,201)">0.213</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(198,255,198)">0.2258</td>
+      <td align="right" style="background-color: rgb(170,255,170)">0.3346</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4045</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2375</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4056</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4034</td>
+      <td align="right" style="background-color: rgb(127,255,127)">0.5033</td>
+      <td align="right" style="background-color: rgb(122,255,122)">0.5203</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2473</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_21_Boating.helps.me.escape.from.everyday.life.and.relax</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2353</td>
+      <td align="right" style="background-color: rgb(255,230,230)">-0.09945</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.182</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.183</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1873</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4242</td>
+      <td align="right" style="background-color: rgb(172,255,172)">0.3274</td>
+      <td align="right" style="background-color: rgb(239,255,239)">0.06314</td>
+      <td align="right" style="background-color: rgb(219,255,219)">0.1435</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.07687</td>
+      <td align="right" style="background-color: rgb(222,255,222)">0.1291</td>
+      <td align="right" style="background-color: rgb(255,212,212)">-0.1682</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1354</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2082</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.21</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.1584</td>
+      <td align="right" style="background-color: rgb(223,255,223)">0.1255</td>
+      <td align="right" style="background-color: rgb(134,255,134)">0.4728</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.44</td>
+      <td align="right" style="background-color: rgb(198,255,198)">0.2258</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(148,255,148)">0.4212</td>
+      <td align="right" style="background-color: rgb(194,255,194)">0.2391</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4242</td>
+      <td align="right" style="background-color: rgb(178,255,178)">0.3022</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1478</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2356</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2604</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2943</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_22_Boating.helps.me.stay.active</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2315</td>
+      <td align="right" style="background-color: rgb(255,236,236)">-0.07645</td>
+      <td align="right" style="background-color: rgb(183,255,183)">0.2814</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2335</td>
+      <td align="right" style="background-color: rgb(185,255,185)">0.2737</td>
+      <td align="right" style="background-color: rgb(151,255,151)">0.4088</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3902</td>
+      <td align="right" style="background-color: rgb(242,255,242)">0.05412</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2325</td>
+      <td align="right" style="background-color: rgb(232,255,232)">0.09113</td>
+      <td align="right" style="background-color: rgb(212,255,212)">0.1701</td>
+      <td align="right" style="background-color: rgb(255,226,226)">-0.1144</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2301</td>
+      <td align="right" style="background-color: rgb(183,255,183)">0.2852</td>
+      <td align="right" style="background-color: rgb(172,255,172)">0.3264</td>
+      <td align="right" style="background-color: rgb(179,255,179)">0.30</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2584</td>
+      <td align="right" style="background-color: rgb(144,255,144)">0.437</td>
+      <td align="right" style="background-color: rgb(158,255,158)">0.38</td>
+      <td align="right" style="background-color: rgb(170,255,170)">0.3346</td>
+      <td align="right" style="background-color: rgb(148,255,148)">0.4212</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3368</td>
+      <td align="right" style="background-color: rgb(158,255,158)">0.3828</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3662</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.232</td>
+      <td align="right" style="background-color: rgb(167,255,167)">0.3458</td>
+      <td align="right" style="background-color: rgb(159,255,159)">0.3756</td>
+      <td align="right" style="background-color: rgb(168,255,168)">0.3412</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_23_Boating.allows.me.to.excel.in.the.sports.that.I.am.passionate.about...e.g..fishing..racing..water.sports.</td>
+      <td align="right" style="background-color: rgb(207,255,207)">0.1876</td>
+      <td align="right" style="background-color: rgb(255,255,255)">0.002847</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3396</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1642</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2934</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3179</td>
+      <td align="right" style="background-color: rgb(178,255,178)">0.3044</td>
+      <td align="right" style="background-color: rgb(230,255,230)">0.09931</td>
+      <td align="right" style="background-color: rgb(182,255,182)">0.2887</td>
+      <td align="right" style="background-color: rgb(238,255,238)">0.06955</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1921</td>
+      <td align="right" style="background-color: rgb(255,247,247)">-0.03205</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3187</td>
+      <td align="right" style="background-color: rgb(164,255,164)">0.3565</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.353</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3996</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3631</td>
+      <td align="right" style="background-color: rgb(181,255,181)">0.2903</td>
+      <td align="right" style="background-color: rgb(193,255,193)">0.2436</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4045</td>
+      <td align="right" style="background-color: rgb(194,255,194)">0.2391</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3368</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2303</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3238</td>
+      <td align="right" style="background-color: rgb(171,255,171)">0.331</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3904</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.4386</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2344</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_24_Boating.gives.me.an.outlet.to.socialize.with.family.and.or.friends</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2091</td>
+      <td align="right" style="background-color: rgb(255,236,236)">-0.0755</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2277</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2291</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2492</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.367</td>
+      <td align="right" style="background-color: rgb(170,255,170)">0.3328</td>
+      <td align="right" style="background-color: rgb(251,255,251)">0.0186</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2304</td>
+      <td align="right" style="background-color: rgb(222,255,222)">0.1312</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.0773</td>
+      <td align="right" style="background-color: rgb(255,212,212)">-0.1693</td>
+      <td align="right" style="background-color: rgb(205,255,205)">0.1963</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.209</td>
+      <td align="right" style="background-color: rgb(188,255,188)">0.2655</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1941</td>
+      <td align="right" style="background-color: rgb(217,255,217)">0.1486</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4227</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3658</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2375</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4242</td>
+      <td align="right" style="background-color: rgb(158,255,158)">0.3828</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2303</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(177,255,177)">0.3058</td>
+      <td align="right" style="background-color: rgb(203,255,203)">0.2051</td>
+      <td align="right" style="background-color: rgb(193,255,193)">0.2442</td>
+      <td align="right" style="background-color: rgb(190,255,190)">0.2547</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2713</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_25_Being.in.charge.of.my.boat.is.very.important.to.me</td>
+      <td align="right" style="background-color: rgb(197,255,197)">0.2271</td>
+      <td align="right" style="background-color: rgb(253,255,253)">0.008886</td>
+      <td align="right" style="background-color: rgb(164,255,164)">0.358</td>
+      <td align="right" style="background-color: rgb(200,255,200)">0.218</td>
+      <td align="right" style="background-color: rgb(181,255,181)">0.2903</td>
+      <td align="right" style="background-color: rgb(148,255,148)">0.42</td>
+      <td align="right" style="background-color: rgb(148,255,148)">0.4194</td>
+      <td align="right" style="background-color: rgb(230,255,230)">0.09906</td>
+      <td align="right" style="background-color: rgb(174,255,174)">0.3191</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.07601</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2489</td>
+      <td align="right" style="background-color: rgb(255,241,241)">-0.0547</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3234</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.3533</td>
+      <td align="right" style="background-color: rgb(146,255,146)">0.428</td>
+      <td align="right" style="background-color: rgb(157,255,157)">0.3858</td>
+      <td align="right" style="background-color: rgb(163,255,163)">0.3624</td>
+      <td align="right" style="background-color: rgb(160,255,160)">0.3722</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3239</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4056</td>
+      <td align="right" style="background-color: rgb(178,255,178)">0.3022</td>
+      <td align="right" style="background-color: rgb(162,255,162)">0.3662</td>
+      <td align="right" style="background-color: rgb(173,255,173)">0.3238</td>
+      <td align="right" style="background-color: rgb(177,255,177)">0.3058</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3364</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.3532</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.4013</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2334</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_26_Having.a.powerful.boat.is.what.is.most.important.to.me</td>
+      <td align="right" style="background-color: rgb(229,255,229)">0.1038</td>
+      <td align="right" style="background-color: rgb(237,255,237)">0.0738</td>
+      <td align="right" style="background-color: rgb(135,255,135)">0.471</td>
+      <td align="right" style="background-color: rgb(206,255,206)">0.1923</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3372</td>
+      <td align="right" style="background-color: rgb(177,255,177)">0.3074</td>
+      <td align="right" style="background-color: rgb(157,255,157)">0.3865</td>
+      <td align="right" style="background-color: rgb(255,244,244)">-0.04454</td>
+      <td align="right" style="background-color: rgb(127,255,127)">0.5027</td>
+      <td align="right" style="background-color: rgb(221,255,221)">0.1348</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09386</td>
+      <td align="right" style="background-color: rgb(255,239,239)">-0.06386</td>
+      <td align="right" style="background-color: rgb(132,255,132)">0.481</td>
+      <td align="right" style="background-color: rgb(136,255,136)">0.4649</td>
+      <td align="right" style="background-color: rgb(160,255,160)">0.3732</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.402</td>
+      <td align="right" style="background-color: rgb(154,255,154)">0.3981</td>
+      <td align="right" style="background-color: rgb(194,255,194)">0.2386</td>
+      <td align="right" style="background-color: rgb(220,255,220)">0.1394</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4034</td>
+      <td align="right" style="background-color: rgb(218,255,218)">0.1478</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.232</td>
+      <td align="right" style="background-color: rgb(171,255,171)">0.331</td>
+      <td align="right" style="background-color: rgb(203,255,203)">0.2051</td>
+      <td align="right" style="background-color: rgb(169,255,169)">0.3364</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(140,255,140)">0.4504</td>
+      <td align="right" style="background-color: rgb(134,255,134)">0.4729</td>
+      <td align="right" style="background-color: rgb(217,255,217)">0.1499</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_27_Boating.is.the.number.one.thing.I.do.with.my.spare.time</td>
+      <td align="right" style="background-color: rgb(223,255,223)">0.1268</td>
+      <td align="right" style="background-color: rgb(244,255,244)">0.04546</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.4008</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.165</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.294</td>
+      <td align="right" style="background-color: rgb(167,255,167)">0.3447</td>
+      <td align="right" style="background-color: rgb(161,255,161)">0.3706</td>
+      <td align="right" style="background-color: rgb(248,255,248)">0.0292</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3997</td>
+      <td align="right" style="background-color: rgb(236,255,236)">0.07711</td>
+      <td align="right" style="background-color: rgb(215,255,215)">0.157</td>
+      <td align="right" style="background-color: rgb(255,255,255)">0.002133</td>
+      <td align="right" style="background-color: rgb(154,255,154)">0.3981</td>
+      <td align="right" style="background-color: rgb(155,255,155)">0.3934</td>
+      <td align="right" style="background-color: rgb(166,255,166)">0.3504</td>
+      <td align="right" style="background-color: rgb(134,255,134)">0.4758</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.4379</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2467</td>
+      <td align="right" style="background-color: rgb(211,255,211)">0.1756</td>
+      <td align="right" style="background-color: rgb(127,255,127)">0.5033</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2356</td>
+      <td align="right" style="background-color: rgb(167,255,167)">0.3458</td>
+      <td align="right" style="background-color: rgb(156,255,156)">0.3904</td>
+      <td align="right" style="background-color: rgb(193,255,193)">0.2442</td>
+      <td align="right" style="background-color: rgb(165,255,165)">0.3532</td>
+      <td align="right" style="background-color: rgb(140,255,140)">0.4504</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(98,255,98)">0.6153</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2336</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_28_Boating.is.my.true.passion.in.life</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.176</td>
+      <td align="right" style="background-color: rgb(251,255,251)">0.01602</td>
+      <td align="right" style="background-color: rgb(147,255,147)">0.4253</td>
+      <td align="right" style="background-color: rgb(201,255,201)">0.2124</td>
+      <td align="right" style="background-color: rgb(172,255,172)">0.325</td>
+      <td align="right" style="background-color: rgb(155,255,155)">0.3924</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.3994</td>
+      <td align="right" style="background-color: rgb(244,255,244)">0.04579</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4025</td>
+      <td align="right" style="background-color: rgb(238,255,238)">0.06922</td>
+      <td align="right" style="background-color: rgb(209,255,209)">0.1829</td>
+      <td align="right" style="background-color: rgb(255,253,253)">-0.009516</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4041</td>
+      <td align="right" style="background-color: rgb(152,255,152)">0.4049</td>
+      <td align="right" style="background-color: rgb(159,255,159)">0.3784</td>
+      <td align="right" style="background-color: rgb(128,255,128)">0.4964</td>
+      <td align="right" style="background-color: rgb(137,255,137)">0.4625</td>
+      <td align="right" style="background-color: rgb(175,255,175)">0.3128</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.232</td>
+      <td align="right" style="background-color: rgb(122,255,122)">0.5203</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2604</td>
+      <td align="right" style="background-color: rgb(159,255,159)">0.3756</td>
+      <td align="right" style="background-color: rgb(143,255,143)">0.4386</td>
+      <td align="right" style="background-color: rgb(190,255,190)">0.2547</td>
+      <td align="right" style="background-color: rgb(153,255,153)">0.4013</td>
+      <td align="right" style="background-color: rgb(134,255,134)">0.4729</td>
+      <td align="right" style="background-color: rgb(98,255,98)">0.6153</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2608</td>
+    </tr>
+    <tr>
+      <td align="right">Q1_29_Boating.is.one.of.many.things.I.do.in.my.spare.time</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.2016</td>
+      <td align="right" style="background-color: rgb(255,248,248)">-0.02895</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
+      <td align="right" style="background-color: rgb(208,255,208)">0.1865</td>
+      <td align="right" style="background-color: rgb(210,255,210)">0.1778</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2715</td>
+      <td align="right" style="background-color: rgb(194,255,194)">0.2406</td>
+      <td align="right" style="background-color: rgb(231,255,231)">0.09732</td>
+      <td align="right" style="background-color: rgb(226,255,226)">0.1147</td>
+      <td align="right" style="background-color: rgb(242,255,242)">0.05107</td>
+      <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
+      <td align="right" style="background-color: rgb(255,246,246)">-0.03549</td>
+      <td align="right" style="background-color: rgb(207,255,207)">0.1903</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2109</td>
+      <td align="right" style="background-color: rgb(193,255,193)">0.2449</td>
+      <td align="right" style="background-color: rgb(204,255,204)">0.202</td>
+      <td align="right" style="background-color: rgb(202,255,202)">0.2094</td>
+      <td align="right" style="background-color: rgb(179,255,179)">0.2992</td>
+      <td align="right" style="background-color: rgb(184,255,184)">0.2788</td>
+      <td align="right" style="background-color: rgb(192,255,192)">0.2473</td>
+      <td align="right" style="background-color: rgb(180,255,180)">0.2943</td>
+      <td align="right" style="background-color: rgb(168,255,168)">0.3412</td>
+      <td align="right" style="background-color: rgb(195,255,195)">0.2344</td>
+      <td align="right" style="background-color: rgb(186,255,186)">0.2713</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2334</td>
+      <td align="right" style="background-color: rgb(217,255,217)">0.1499</td>
+      <td align="right" style="background-color: rgb(196,255,196)">0.2336</td>
+      <td align="right" style="background-color: rgb(189,255,189)">0.2608</td>
+      <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<p>** = correlation is significant at 1% level; * = correlation is significant at 5% level</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Number of Factors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>There are three commen ways to select the number of factors:</p>
+
+<ol>
+<li><p>All factors with eigenvalue larger than 1</p></li>
+<li><p>Based on the cumulative variance we would like to explain (e.g. at least 50% for example).</p></li>
+<li><p>Pick the number of factrors corresponding to the &quot;elbow&quot; of the scree plot</p></li>
+</ol>
+
+<p>The first two approaches to select the number of factors/derived variables are based on statistical criteria and can be seen in the following table: </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Eigenvalues and explained variance</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- Table generated in R 3.0.2 by googleVis 0.4.7 package -->
+
+<!-- Fri Jan 17 13:30:10 2014 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataTableID8410359872a7 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Component No:1",
+8.432587556,
+29.07788813,
+29.07788813 
+],
+[
+ "Component No:2",
+2.33361054,
+8.046932896,
+37.12482102 
+],
+[
+ "Component No:3",
+1.862761596,
+6.423315849,
+43.54813687 
+],
+[
+ "Component No:4",
+1.45760376,
+5.026219862,
+48.57435673 
+],
+[
+ "Component No:5",
+1.207369537,
+4.163343232,
+52.73769996 
+],
+[
+ "Component No:6",
+0.8983140044,
+3.097634498,
+55.83533446 
+],
+[
+ "Component No:7",
+0.8167722721,
+2.816456111,
+58.65179057 
+],
+[
+ "Component No:8",
+0.7863380392,
+2.71151048,
+61.36330105 
+],
+[
+ "Component No:9",
+0.7804456033,
+2.691191736,
+64.05449279 
+],
+[
+ "Component No:10",
+0.74132309,
+2.556286517,
+66.61077931 
+],
+[
+ "Component No:11",
+0.6866324826,
+2.367698216,
+68.97847752 
+],
+[
+ "Component No:12",
+0.653629767,
+2.253895748,
+71.23237327 
+],
+[
+ "Component No:13",
+0.6479403874,
+2.234277198,
+73.46665047 
+],
+[
+ "Component No:14",
+0.6179773183,
+2.13095627,
+75.59760674 
+],
+[
+ "Component No:15",
+0.6090752632,
+2.100259528,
+77.69786627 
+],
+[
+ "Component No:16",
+0.5764801971,
+1.987862749,
+79.68572902 
+],
+[
+ "Component No:17",
+0.5616946604,
+1.936878139,
+81.62260715 
+],
+[
+ "Component No:18",
+0.5365101454,
+1.850034984,
+83.47264214 
+],
+[
+ "Component No:19",
+0.5241194143,
+1.807308325,
+85.27995046 
+],
+[
+ "Component No:20",
+0.5112100198,
+1.762793172,
+87.04274364 
+],
+[
+ "Component No:21",
+0.4995010415,
+1.722417384,
+88.76516102 
+],
+[
+ "Component No:22",
+0.489037857,
+1.686337438,
+90.45149846 
+],
+[
+ "Component No:23",
+0.4606701064,
+1.588517608,
+92.04001607 
+],
+[
+ "Component No:24",
+0.4559647353,
+1.572292191,
+93.61230826 
+],
+[
+ "Component No:25",
+0.4118909643,
+1.42031367,
+95.03262193 
+],
+[
+ "Component No:26",
+0.3836136381,
+1.322805649,
+96.35542758 
+],
+[
+ "Component No:27",
+0.3699973413,
+1.275852901,
+97.63128048 
+],
+[
+ "Component No:28",
+0.3524242857,
+1.215256157,
+98.84653663 
+],
+[
+ "Component No:29",
+0.3345043762,
+1.153463366,
+100 
+] 
+];
+data.addColumn('string','Components');
+data.addColumn('number','Eigenvalue');
+data.addColumn('number','Percentage_of_explained_variance');
+data.addColumn('number','Cumulative_percentage_of_explained_variance');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartTableID8410359872a7() {
+var data = gvisDataTableID8410359872a7();
+var options = {};
+options["allowHtml"] = true;
+options["width"] =    970;
+options["height"] =    400;
+options["allowHTML"] = true;
+options["page"] = "disable";
+
+  var dataFormat1 = new google.visualization.NumberFormat({pattern:"#.##"});
+  dataFormat1.format(data, 1);
+  var dataFormat2 = new google.visualization.NumberFormat({pattern:"#.##"});
+  dataFormat2.format(data, 2);
+  var dataFormat3 = new google.visualization.NumberFormat({pattern:"#.##"});
+  dataFormat3.format(data, 3);
+
+    var chart = new google.visualization.Table(
+    document.getElementById('TableID8410359872a7')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "table";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartTableID8410359872a7);
+})();
+function displayChartTableID8410359872a7() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID8410359872a7"></script>
+ 
+
+<!-- divChart -->
+
+<div id="TableID8410359872a7"
+  style="width: 970px; height: 400px;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>A common basic visualization when running the factor analysis is the Screeplot</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The screeplot depicts the eigenvalues of the factors and thus allows gaining another quick overview on how many factors should be retained:
+<center></p>
+
+<!-- LineChart generated in R 3.0.2 by googleVis 0.4.7 package -->
+
+<!-- Fri Jan 17 13:30:11 2014 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataLineChartID84104dda5115 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "1",
+8.432587556,
+1 
+],
+[
+ "2",
+2.33361054,
+1 
+],
+[
+ "3",
+1.862761596,
+1 
+],
+[
+ "4",
+1.45760376,
+1 
+],
+[
+ "5",
+1.207369537,
+1 
+],
+[
+ "6",
+0.8983140044,
+1 
+],
+[
+ "7",
+0.8167722721,
+1 
+],
+[
+ "8",
+0.7863380392,
+1 
+],
+[
+ "9",
+0.7804456033,
+1 
+],
+[
+ "10",
+0.74132309,
+1 
+],
+[
+ "11",
+0.6866324826,
+1 
+],
+[
+ "12",
+0.653629767,
+1 
+],
+[
+ "13",
+0.6479403874,
+1 
+],
+[
+ "14",
+0.6179773183,
+1 
+],
+[
+ "15",
+0.6090752632,
+1 
+],
+[
+ "16",
+0.5764801971,
+1 
+],
+[
+ "17",
+0.5616946604,
+1 
+],
+[
+ "18",
+0.5365101454,
+1 
+],
+[
+ "19",
+0.5241194143,
+1 
+],
+[
+ "20",
+0.5112100198,
+1 
+],
+[
+ "21",
+0.4995010415,
+1 
+],
+[
+ "22",
+0.489037857,
+1 
+],
+[
+ "23",
+0.4606701064,
+1 
+],
+[
+ "24",
+0.4559647353,
+1 
+],
+[
+ "25",
+0.4118909643,
+1 
+],
+[
+ "26",
+0.3836136381,
+1 
+],
+[
+ "27",
+0.3699973413,
+1 
+],
+[
+ "28",
+0.3524242857,
+1 
+],
+[
+ "29",
+0.3345043762,
+1 
+] 
+];
+data.addColumn('string','components');
+data.addColumn('number','eigenvalues');
+data.addColumn('number','abline');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartLineChartID84104dda5115() {
+var data = gvisDataLineChartID84104dda5115();
+var options = {};
+options["allowHtml"] = true;
+options["title"] = "Scree plot";
+options["legend"] = "right";
+options["width"] =    600;
+options["height"] =    400;
+options["hAxis"] = {title:'Number of Components', titleTextStyle:{color:'black'}};
+options["vAxes"] = [{title:'Eigenvalues'}];
+options["series"] = [{color:'green',pointSize:12, targetAxisIndex: 0}];
+
+    var chart = new google.visualization.LineChart(
+    document.getElementById('LineChartID84104dda5115')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "corechart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartLineChartID84104dda5115);
+})();
+function displayChartLineChartID84104dda5115() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID84104dda5115"></script>
+ 
+
+<!-- divChart -->
+
+<div id="LineChartID84104dda5115"
+  style="width: 600px; height: 400px;">
+</div>
+
+<p></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Extraction Method</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The extraction method will produce factor loadings for every item on every extracted factor. </p>
+
+<p>There at least five extraction methods. The evidence supports the use of one of these two:</p>
+
+<ul>
+<li>principal axis factoring</li>
+<li>maximum likelihood approaches (i.e. canonical factoring)</li>
+</ul>
+
+<p>The extraction and rotation steps are usually specificed in the same command in R (next subsection shows such commands).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Rotation Method</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Once an initial solution is obtained, the loadings are rotated. Rotation is a way of maximizing high loadings and minimizing low loadings so that the simplest possible structure is achieved.</p>
+
+<p>There are two types of rotation:</p>
+
+<ul>
+<li><p>no rotation</p></li>
+<li><p>varimax, which is one of the key rotation methods used</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Based on the critrion &#39;explained variance (65%)&#39; we have selected 10 factors that could now be used for the segmentation</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- Table generated in R 3.0.2 by googleVis 0.4.7 package -->
+
+<!-- Fri Jan 17 13:30:11 2014 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataTableID8410437e3547 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Q1_1_When.buying.a.boat..I.do.a.lot.of.shopping.around.and.visit.multiple.dealers",
+null,
+null,
+null,
+null,
+null,
+null,
+-0.58,
+null,
+null,
+null 
+],
+[
+ "Q1_2_When.buying.a.boat..getting.the.lowest.price.is.more.important.than.the.boat.brand",
+null,
+null,
+0.63,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_3_The.brand.of.boat.I.buy.says.a.lot.about.who.I.am",
+0.65,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_4_I.only.consider.buying.a.boat.from.a.reputable.brand",
+0.4,
+null,
+null,
+null,
+0.46,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_5_I.am.willing.to.pay.a.premium.for.a.brand.with.a.reputation.for.high.quality",
+0.57,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_6_Owning.a.boat.is.a.way.of.rewarding.myself.for.my.hard.work",
+0.63,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_7_Owning.a.boat.gives.me.a.sense.of.achievement",
+0.65,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_8_When.buying.a.boat..functionality.is.more.important.than.style",
+null,
+null,
+0.56,
+null,
+null,
+null,
+0.49,
+null,
+null,
+null 
+],
+[
+ "Q1_9_I.see.my.boat.as.a.status.symbol",
+0.61,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_10_When.buying.a.boat..I.rely.more.on.expert.opinion.than.my.own..e.g..consumer.reports..salespeople.",
+null,
+null,
+null,
+0.62,
+0.41,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_11_I.tend.to.perform.minor.boat.repairs.and.maintenance.on.my.own",
+null,
+null,
+null,
+-0.51,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_12_When.it.comes.to.boating..I.tend.to.prefer.a.basic.boat.with.little.to.no.frills",
+null,
+null,
+0.67,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_13_When.buying.a.boat..I.tend.to.buy.the.latest.and.greatest",
+0.64,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_14_When.buying.accessories.for.my.boat..I.tend.to.buy.the.latest.and.greatest",
+0.67,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_15_I.am.serious.about.the.technology.on.my.boat",
+0.65,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_16_People.tend.to.come.to.me.for.advice.about.boating",
+0.65,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_17_I.consider.myself.more.knowledgeable.about.boating.than.the.rest.of.my.boating.peers",
+0.61,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_18_Boating.gives.me.a.feeling.of.adventure",
+0.55,
+0.48,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_19_Boating.allows.me.to.experience.nature",
+0.44,
+0.56,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_20_When.not.on.my.boat..I.often.find.myself.doing.boating.related.activities",
+0.67,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_21_Boating.helps.me.escape.from.everyday.life.and.relax",
+0.47,
+0.55,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_22_Boating.helps.me.stay.active",
+0.59,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_23_Boating.allows.me.to.excel.in.the.sports.that.I.am.passionate.about...e.g..fishing..racing..water.sports.",
+0.59,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_24_Boating.gives.me.an.outlet.to.socialize.with.family.and.or.friends",
+0.49,
+0.43,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_25_Being.in.charge.of.my.boat.is.very.important.to.me",
+0.64,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_26_Having.a.powerful.boat.is.what.is.most.important.to.me",
+0.63,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_27_Boating.is.the.number.one.thing.I.do.with.my.spare.time",
+0.66,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_28_Boating.is.my.true.passion.in.life",
+0.7,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null 
+],
+[
+ "Q1_29_Boating.is.one.of.many.things.I.do.in.my.spare.time",
+0.42,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+0.62,
+null 
+] 
+];
+data.addColumn('string','Attitudes');
+data.addColumn('number','Component 1');
+data.addColumn('number','Component 2');
+data.addColumn('number','Component 3');
+data.addColumn('number','Component 4');
+data.addColumn('number','Component 5');
+data.addColumn('number','Component 6');
+data.addColumn('number','Component 7');
+data.addColumn('number','Component 8');
+data.addColumn('number','Component 9');
+data.addColumn('number','Component 10');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartTableID8410437e3547() {
+var data = gvisDataTableID8410437e3547();
+var options = {};
+options["allowHtml"] = true;
+options["showRowNumber"] = true;
+options["width"] =    970;
+options["height"] =    300;
+options["allowHTML"] = true;
+options["page"] = "disable";
+
+    var chart = new google.visualization.Table(
+    document.getElementById('TableID8410437e3547')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "table";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartTableID8410437e3547);
+})();
+function displayChartTableID8410437e3547() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID8410437e3547"></script>
+ 
+
+<!-- divChart -->
+
+<div id="TableID8410437e3547"
+  style="width: 970px; height: 300px;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Instead of the derived constructs we could also use &#39;a&#39; single statement from each factor as a proxy for the factor</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Usually researchers pick the attitudes with the highest factor loading</p>
+
+<style>
+.wrapper{
+            
+            
+            width: 100%;
+           
+            overflow-x: scroll;
+             
+          }
+.wrapper1{
+            
+           height:300px;
+             overflow-y: scroll;
+          }
+</style>
+
+<div class="wrapper wrapper1">
+NULL
+<TABLE class='table table-striped table-hover table-bordered'>
+<CAPTION ALIGN="top"> Raw attributes with highest loading per factor: Boating Company </CAPTION>
+<TR> <TH>  </TH> <TH> x </TH>  </TR>
+  <TR> <TD align="right"> Factor 1 </TD> <TD> Q1_27_Boating.is.the.number.one.thing.I.do.with.my.spare.time </TD> </TR>
+  <TR> <TD align="right"> Factor 2 </TD> <TD> Q1_18_Boating.gives.me.a.feeling.of.adventure </TD> </TR>
+  <TR> <TD align="right"> Factor 3 </TD> <TD> Q1_14_When.buying.accessories.for.my.boat..I.tend.to.buy.the.latest.and.greatest </TD> </TR>
+  <TR> <TD align="right"> Factor 4 </TD> <TD> Q1_7_Owning.a.boat.gives.me.a.sense.of.achievement </TD> </TR>
+  <TR> <TD align="right"> Factor 5 </TD> <TD> Q1_4_I.only.consider.buying.a.boat.from.a.reputable.brand </TD> </TR>
+  <TR> <TD align="right"> Factor 6 </TD> <TD> Q1_11_I.tend.to.perform.minor.boat.repairs.and.maintenance.on.my.own </TD> </TR>
+  <TR> <TD align="right"> Factor 7 </TD> <TD> Q1_10_When.buying.a.boat..I.rely.more.on.expert.opinion.than.my.own..e.g..consumer.reports..salespeople. </TD> </TR>
+  <TR> <TD align="right"> Factor 8 </TD> <TD> Q1_8_When.buying.a.boat..functionality.is.more.important.than.style </TD> </TR>
+  <TR> <TD align="right"> Factor 9 </TD> <TD> Q1_1_When.buying.a.boat..I.do.a.lot.of.shopping.around.and.visit.multiple.dealers </TD> </TR>
+  <TR> <TD align="right"> Factor 10 </TD> <TD> Q1_29_Boating.is.one.of.many.things.I.do.in.my.spare.time </TD> </TR>
+   </TABLE>
+
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Every factor analysis has three basic decision points'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Correlation matrix of the 29 attitudes as a pre-step'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Number of Factors'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Eigenvalues and explained variance'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='A common basic visualization when running the factor analysis is the Screeplot'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Extraction Method'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Rotation Method'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Based on the critrion &#39;explained variance (65%)&#39; we have selected 10 factors that could now be used for the segmentation'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Instead of the derived constructs we could also use &#39;a&#39; single statement from each factor as a proxy for the factor'>
+         9
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
