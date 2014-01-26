@@ -75,7 +75,7 @@ MIN_VALUE=0.4
 # 1: start application on LOCAL computer, 0: do not start it
 # SELECT 0 if you are running the application on a server 
 # (DEFAULT is 0). 
-strat_webapp  <- 0
+strat_webapp  <- 1
 ProjectDataFactor=ProjectData[,factor_attributes_used]
 ################################################
 # Now run everything

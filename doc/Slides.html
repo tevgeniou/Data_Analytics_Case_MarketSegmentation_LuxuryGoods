@@ -58,55 +58,57 @@
     <h2>Correlation matrix of the 29 attitudes as a pre-step</h2>
   </hgroup>
   <article>
-    <style>
+    <p><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"></p>
+
+<style>
 .wrapper{
             
-            height: 400px;
+            height: 350px;
             width: 970px;
             overflow-x: scroll;
             overflow-y: scroll;
           }
 </style>
 
-<div class="wrapper">
+<div class="wrapper" style="font-size:10px;">
 <table border="1" class="data table table-bordered table-condensed">
-  <thead class="thead" style="font-size:12px;">
+  <thead class="thead" style="font-size:10px;">
     <tr>
-      <th></th>
-      <th>Q1_1_When.buying.a.boat..I.do.a.lot.of.shopping.around.and.visit.multiple.dealers</th>
-      <th>Q1_2_When.buying.a.boat..getting.the.lowest.price.is.more.important.than.the.boat.brand</th>
-      <th>Q1_3_The.brand.of.boat.I.buy.says.a.lot.about.who.I.am</th>
-      <th>Q1_4_I.only.consider.buying.a.boat.from.a.reputable.brand</th>
-      <th>Q1_5_I.am.willing.to.pay.a.premium.for.a.brand.with.a.reputation.for.high.quality</th>
-      <th>Q1_6_Owning.a.boat.is.a.way.of.rewarding.myself.for.my.hard.work</th>
-      <th>Q1_7_Owning.a.boat.gives.me.a.sense.of.achievement</th>
-      <th>Q1_8_When.buying.a.boat..functionality.is.more.important.than.style</th>
-      <th>Q1_9_I.see.my.boat.as.a.status.symbol</th>
-      <th>Q1_10_When.buying.a.boat..I.rely.more.on.expert.opinion.than.my.own..e.g..consumer.reports..salespeople.</th>
-      <th>Q1_11_I.tend.to.perform.minor.boat.repairs.and.maintenance.on.my.own</th>
-      <th>Q1_12_When.it.comes.to.boating..I.tend.to.prefer.a.basic.boat.with.little.to.no.frills</th>
-      <th>Q1_13_When.buying.a.boat..I.tend.to.buy.the.latest.and.greatest</th>
-      <th>Q1_14_When.buying.accessories.for.my.boat..I.tend.to.buy.the.latest.and.greatest</th>
-      <th>Q1_15_I.am.serious.about.the.technology.on.my.boat</th>
-      <th>Q1_16_People.tend.to.come.to.me.for.advice.about.boating</th>
-      <th>Q1_17_I.consider.myself.more.knowledgeable.about.boating.than.the.rest.of.my.boating.peers</th>
-      <th>Q1_18_Boating.gives.me.a.feeling.of.adventure</th>
-      <th>Q1_19_Boating.allows.me.to.experience.nature</th>
-      <th>Q1_20_When.not.on.my.boat..I.often.find.myself.doing.boating.related.activities</th>
-      <th>Q1_21_Boating.helps.me.escape.from.everyday.life.and.relax</th>
-      <th>Q1_22_Boating.helps.me.stay.active</th>
-      <th>Q1_23_Boating.allows.me.to.excel.in.the.sports.that.I.am.passionate.about...e.g..fishing..racing..water.sports.</th>
-      <th>Q1_24_Boating.gives.me.an.outlet.to.socialize.with.family.and.or.friends</th>
-      <th>Q1_25_Being.in.charge.of.my.boat.is.very.important.to.me</th>
-      <th>Q1_26_Having.a.powerful.boat.is.what.is.most.important.to.me</th>
-      <th>Q1_27_Boating.is.the.number.one.thing.I.do.with.my.spare.time</th>
-      <th>Q1_28_Boating.is.my.true.passion.in.life</th>
-      <th>Q1_29_Boating.is.one.of.many.things.I.do.in.my.spare.time</th>
+      <th style="position:fixed;"></th>
+      <th>Q1_1_When buying a boat  I do a lot of shopping around and visit multiple dealers</th>
+      <th>Q1_2_When buying a boat  getting the lowest price is more important than the boat brand</th>
+      <th>Q1_3_The brand of boat I buy says a lot about who I am</th>
+      <th>Q1_4_I only consider buying a boat from a reputable brand</th>
+      <th>Q1_5_I am willing to pay a premium for a brand with a reputation for high quality</th>
+      <th>Q1_6_Owning a boat is a way of rewarding myself for my hard work</th>
+      <th>Q1_7_Owning a boat gives me a sense of achievement</th>
+      <th>Q1_8_When buying a boat  functionality is more important than style</th>
+      <th>Q1_9_I see my boat as a status symbol</th>
+      <th>Q1_10_When buying a boat  I rely more on expert opinion than my own  e g  consumer reports  salespeople </th>
+      <th>Q1_11_I tend to perform minor boat repairs and maintenance on my own</th>
+      <th>Q1_12_When it comes to boating  I tend to prefer a basic boat with little to no frills</th>
+      <th>Q1_13_When buying a boat  I tend to buy the latest and greatest</th>
+      <th>Q1_14_When buying accessories for my boat  I tend to buy the latest and greatest</th>
+      <th>Q1_15_I am serious about the technology on my boat</th>
+      <th>Q1_16_People tend to come to me for advice about boating</th>
+      <th>Q1_17_I consider myself more knowledgeable about boating than the rest of my boating peers</th>
+      <th>Q1_18_Boating gives me a feeling of adventure</th>
+      <th>Q1_19_Boating allows me to experience nature</th>
+      <th>Q1_20_When not on my boat  I often find myself doing boating related activities</th>
+      <th>Q1_21_Boating helps me escape from everyday life and relax</th>
+      <th>Q1_22_Boating helps me stay active</th>
+      <th>Q1_23_Boating allows me to excel in the sports that I am passionate about   e g  fishing  racing  water sports </th>
+      <th>Q1_24_Boating gives me an outlet to socialize with family and or friends</th>
+      <th>Q1_25_Being in charge of my boat is very important to me</th>
+      <th>Q1_26_Having a powerful boat is what is most important to me</th>
+      <th>Q1_27_Boating is the number one thing I do with my spare time</th>
+      <th>Q1_28_Boating is my true passion in life</th>
+      <th>Q1_29_Boating is one of many things I do in my spare time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td align="right">Q1_1_When.buying.a.boat..I.do.a.lot.of.shopping.around.and.visit.multiple.dealers</td>
+      <td align="center" style="font-size:10px;">Q1_1_When buying a boat  I do a lot of shopping around and visit multiple dealers</td>
       <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
       <td align="right" style="background-color: rgb(253,255,253)">0.008983</td>
       <td align="right" style="background-color: rgb(228,255,228)">0.1075</td>
@@ -138,7 +140,7 @@
       <td align="right" style="background-color: rgb(204,255,204)">0.2016</td>
     </tr>
     <tr>
-      <td align="right">Q1_2_When.buying.a.boat..getting.the.lowest.price.is.more.important.than.the.boat.brand</td>
+      <td align="center" style="font-size:10px;">Q1_2_When buying a boat  getting the lowest price is more important than the boat brand</td>
       <td align="right" style="background-color: rgb(253,255,253)">0.008983</td>
       <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
       <td align="right" style="background-color: rgb(255,248,248)">-0.02956</td>
@@ -170,7 +172,7 @@
       <td align="right" style="background-color: rgb(255,248,248)">-0.02895</td>
     </tr>
     <tr>
-      <td align="right">Q1_3_The.brand.of.boat.I.buy.says.a.lot.about.who.I.am</td>
+      <td align="center" style="font-size:10px;">Q1_3_The brand of boat I buy says a lot about who I am</td>
       <td align="right" style="background-color: rgb(228,255,228)">0.1075</td>
       <td align="right" style="background-color: rgb(255,248,248)">-0.02956</td>
       <td align="right" style="background-color: rgb(0,255,0)">1.00</td>
@@ -202,7 +204,7 @@
       <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
     </tr>
     <tr>
-      <td align="right">Q1_4_I.only.consider.buying.a.boat.from.a.reputable.brand</td>
+      <td align="center" style="font-size:10px;">Q1_4_I only consider buying a boat from a reputable brand</td>
       <td align="right" style="background-color: rgb(205,255,205)">0.1983</td>
       <td align="right" style="background-color: rgb(255,202,202)">-0.2101</td>
       <td align="right" style="background-color: rgb(188,255,188)">0.2636</td>
@@ -234,7 +236,7 @@
       <td align="right" style="background-color: rgb(208,255,208)">0.1865</td>
     </tr>
     <tr>
-      <td align="right">Q1_5_I.am.willing.to.pay.a.premium.for.a.brand.with.a.reputation.for.high.quality</td>
+      <td align="center" style="font-size:10px;">Q1_5_I am willing to pay a premium for a brand with a reputation for high quality</td>
       <td align="right" style="background-color: rgb(209,255,209)">0.1835</td>
       <td align="right" style="background-color: rgb(255,203,203)">-0.2058</td>
       <td align="right" style="background-color: rgb(153,255,153)">0.3997</td>
@@ -266,7 +268,7 @@
       <td align="right" style="background-color: rgb(210,255,210)">0.1778</td>
     </tr>
     <tr>
-      <td align="right">Q1_6_Owning.a.boat.is.a.way.of.rewarding.myself.for.my.hard.work</td>
+      <td align="center" style="font-size:10px;">Q1_6_Owning a boat is a way of rewarding myself for my hard work</td>
       <td align="right" style="background-color: rgb(187,255,187)">0.2678</td>
       <td align="right" style="background-color: rgb(255,246,246)">-0.03727</td>
       <td align="right" style="background-color: rgb(168,255,168)">0.3401</td>
@@ -298,7 +300,7 @@
       <td align="right" style="background-color: rgb(186,255,186)">0.2715</td>
     </tr>
     <tr>
-      <td align="right">Q1_7_Owning.a.boat.gives.me.a.sense.of.achievement</td>
+      <td align="center" style="font-size:10px;">Q1_7_Owning a boat gives me a sense of achievement</td>
       <td align="right" style="background-color: rgb(208,255,208)">0.1846</td>
       <td align="right" style="background-color: rgb(250,255,250)">0.02025</td>
       <td align="right" style="background-color: rgb(142,255,142)">0.4436</td>
@@ -330,7 +332,7 @@
       <td align="right" style="background-color: rgb(194,255,194)">0.2406</td>
     </tr>
     <tr>
-      <td align="right">Q1_8_When.buying.a.boat..functionality.is.more.important.than.style</td>
+      <td align="center" style="font-size:10px;">Q1_8_When buying a boat  functionality is more important than style</td>
       <td align="right" style="background-color: rgb(233,255,233)">0.08861</td>
       <td align="right" style="background-color: rgb(205,255,205)">0.1967</td>
       <td align="right" style="background-color: rgb(255,242,242)">-0.05102</td>
@@ -362,7 +364,7 @@
       <td align="right" style="background-color: rgb(231,255,231)">0.09732</td>
     </tr>
     <tr>
-      <td align="right">Q1_9_I.see.my.boat.as.a.status.symbol</td>
+      <td align="center" style="font-size:10px;">Q1_9_I see my boat as a status symbol</td>
       <td align="right" style="background-color: rgb(236,255,236)">0.0778</td>
       <td align="right" style="background-color: rgb(233,255,233)">0.08722</td>
       <td align="right" style="background-color: rgb(107,255,107)">0.5789</td>
@@ -394,7 +396,7 @@
       <td align="right" style="background-color: rgb(226,255,226)">0.1147</td>
     </tr>
     <tr>
-      <td align="right">Q1_10_When.buying.a.boat..I.rely.more.on.expert.opinion.than.my.own..e.g..consumer.reports..salespeople.</td>
+      <td align="center" style="font-size:10px;">Q1_10_When buying a boat  I rely more on expert opinion than my own  e g  consumer reports  salespeople </td>
       <td align="right" style="background-color: rgb(228,255,228)">0.1071</td>
       <td align="right" style="background-color: rgb(215,255,215)">0.1583</td>
       <td align="right" style="background-color: rgb(221,255,221)">0.1356</td>
@@ -426,7 +428,7 @@
       <td align="right" style="background-color: rgb(242,255,242)">0.05107</td>
     </tr>
     <tr>
-      <td align="right">Q1_11_I.tend.to.perform.minor.boat.repairs.and.maintenance.on.my.own</td>
+      <td align="center" style="font-size:10px;">Q1_11_I tend to perform minor boat repairs and maintenance on my own</td>
       <td align="right" style="background-color: rgb(218,255,218)">0.1449</td>
       <td align="right" style="background-color: rgb(245,255,245)">0.04285</td>
       <td align="right" style="background-color: rgb(231,255,231)">0.09649</td>
@@ -458,7 +460,7 @@
       <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
     </tr>
     <tr>
-      <td align="right">Q1_12_When.it.comes.to.boating..I.tend.to.prefer.a.basic.boat.with.little.to.no.frills</td>
+      <td align="center" style="font-size:10px;">Q1_12_When it comes to boating  I tend to prefer a basic boat with little to no frills</td>
       <td align="right" style="background-color: rgb(255,242,242)">-0.05305</td>
       <td align="right" style="background-color: rgb(161,255,161)">0.3702</td>
       <td align="right" style="background-color: rgb(255,233,233)">-0.08893</td>
@@ -490,7 +492,7 @@
       <td align="right" style="background-color: rgb(255,246,246)">-0.03549</td>
     </tr>
     <tr>
-      <td align="right">Q1_13_When.buying.a.boat..I.tend.to.buy.the.latest.and.greatest</td>
+      <td align="center" style="font-size:10px;">Q1_13_When buying a boat  I tend to buy the latest and greatest</td>
       <td align="right" style="background-color: rgb(224,255,224)">0.1225</td>
       <td align="right" style="background-color: rgb(254,255,254)">0.006216</td>
       <td align="right" style="background-color: rgb(131,255,131)">0.4845</td>
@@ -522,7 +524,7 @@
       <td align="right" style="background-color: rgb(207,255,207)">0.1903</td>
     </tr>
     <tr>
-      <td align="right">Q1_14_When.buying.accessories.for.my.boat..I.tend.to.buy.the.latest.and.greatest</td>
+      <td align="center" style="font-size:10px;">Q1_14_When buying accessories for my boat  I tend to buy the latest and greatest</td>
       <td align="right" style="background-color: rgb(210,255,210)">0.1785</td>
       <td align="right" style="background-color: rgb(255,248,248)">-0.03048</td>
       <td align="right" style="background-color: rgb(137,255,137)">0.4615</td>
@@ -554,7 +556,7 @@
       <td align="right" style="background-color: rgb(202,255,202)">0.2109</td>
     </tr>
     <tr>
-      <td align="right">Q1_15_I.am.serious.about.the.technology.on.my.boat</td>
+      <td align="center" style="font-size:10px;">Q1_15_I am serious about the technology on my boat</td>
       <td align="right" style="background-color: rgb(189,255,189)">0.2611</td>
       <td align="right" style="background-color: rgb(255,236,236)">-0.07769</td>
       <td align="right" style="background-color: rgb(159,255,159)">0.3762</td>
@@ -586,7 +588,7 @@
       <td align="right" style="background-color: rgb(193,255,193)">0.2449</td>
     </tr>
     <tr>
-      <td align="right">Q1_16_People.tend.to.come.to.me.for.advice.about.boating</td>
+      <td align="center" style="font-size:10px;">Q1_16_People tend to come to me for advice about boating</td>
       <td align="right" style="background-color: rgb(215,255,215)">0.1572</td>
       <td align="right" style="background-color: rgb(255,252,252)">-0.01528</td>
       <td align="right" style="background-color: rgb(156,255,156)">0.3872</td>
@@ -618,7 +620,7 @@
       <td align="right" style="background-color: rgb(204,255,204)">0.202</td>
     </tr>
     <tr>
-      <td align="right">Q1_17_I.consider.myself.more.knowledgeable.about.boating.than.the.rest.of.my.boating.peers</td>
+      <td align="center" style="font-size:10px;">Q1_17_I consider myself more knowledgeable about boating than the rest of my boating peers</td>
       <td align="right" style="background-color: rgb(218,255,218)">0.1478</td>
       <td align="right" style="background-color: rgb(246,255,246)">0.03892</td>
       <td align="right" style="background-color: rgb(158,255,158)">0.379</td>
@@ -650,7 +652,7 @@
       <td align="right" style="background-color: rgb(202,255,202)">0.2094</td>
     </tr>
     <tr>
-      <td align="right">Q1_18_Boating.gives.me.a.feeling.of.adventure</td>
+      <td align="center" style="font-size:10px;">Q1_18_Boating gives me a feeling of adventure</td>
       <td align="right" style="background-color: rgb(191,255,191)">0.2533</td>
       <td align="right" style="background-color: rgb(255,246,246)">-0.03771</td>
       <td align="right" style="background-color: rgb(195,255,195)">0.2379</td>
@@ -682,7 +684,7 @@
       <td align="right" style="background-color: rgb(179,255,179)">0.2992</td>
     </tr>
     <tr>
-      <td align="right">Q1_19_Boating.allows.me.to.experience.nature</td>
+      <td align="center" style="font-size:10px;">Q1_19_Boating allows me to experience nature</td>
       <td align="right" style="background-color: rgb(185,255,185)">0.274</td>
       <td align="right" style="background-color: rgb(255,246,246)">-0.03631</td>
       <td align="right" style="background-color: rgb(219,255,219)">0.1414</td>
@@ -714,7 +716,7 @@
       <td align="right" style="background-color: rgb(184,255,184)">0.2788</td>
     </tr>
     <tr>
-      <td align="right">Q1_20_When.not.on.my.boat..I.often.find.myself.doing.boating.related.activities</td>
+      <td align="center" style="font-size:10px;">Q1_20_When not on my boat  I often find myself doing boating related activities</td>
       <td align="right" style="background-color: rgb(206,255,206)">0.1941</td>
       <td align="right" style="background-color: rgb(242,255,242)">0.05335</td>
       <td align="right" style="background-color: rgb(157,255,157)">0.3856</td>
@@ -746,7 +748,7 @@
       <td align="right" style="background-color: rgb(192,255,192)">0.2473</td>
     </tr>
     <tr>
-      <td align="right">Q1_21_Boating.helps.me.escape.from.everyday.life.and.relax</td>
+      <td align="center" style="font-size:10px;">Q1_21_Boating helps me escape from everyday life and relax</td>
       <td align="right" style="background-color: rgb(195,255,195)">0.2353</td>
       <td align="right" style="background-color: rgb(255,230,230)">-0.09945</td>
       <td align="right" style="background-color: rgb(209,255,209)">0.182</td>
@@ -778,7 +780,7 @@
       <td align="right" style="background-color: rgb(180,255,180)">0.2943</td>
     </tr>
     <tr>
-      <td align="right">Q1_22_Boating.helps.me.stay.active</td>
+      <td align="center" style="font-size:10px;">Q1_22_Boating helps me stay active</td>
       <td align="right" style="background-color: rgb(196,255,196)">0.2315</td>
       <td align="right" style="background-color: rgb(255,236,236)">-0.07645</td>
       <td align="right" style="background-color: rgb(183,255,183)">0.2814</td>
@@ -810,7 +812,7 @@
       <td align="right" style="background-color: rgb(168,255,168)">0.3412</td>
     </tr>
     <tr>
-      <td align="right">Q1_23_Boating.allows.me.to.excel.in.the.sports.that.I.am.passionate.about...e.g..fishing..racing..water.sports.</td>
+      <td align="center" style="font-size:10px;">Q1_23_Boating allows me to excel in the sports that I am passionate about   e g  fishing  racing  water sports </td>
       <td align="right" style="background-color: rgb(207,255,207)">0.1876</td>
       <td align="right" style="background-color: rgb(255,255,255)">0.002847</td>
       <td align="right" style="background-color: rgb(169,255,169)">0.3396</td>
@@ -842,7 +844,7 @@
       <td align="right" style="background-color: rgb(195,255,195)">0.2344</td>
     </tr>
     <tr>
-      <td align="right">Q1_24_Boating.gives.me.an.outlet.to.socialize.with.family.and.or.friends</td>
+      <td align="center" style="font-size:10px;">Q1_24_Boating gives me an outlet to socialize with family and or friends</td>
       <td align="right" style="background-color: rgb(202,255,202)">0.2091</td>
       <td align="right" style="background-color: rgb(255,236,236)">-0.0755</td>
       <td align="right" style="background-color: rgb(197,255,197)">0.2277</td>
@@ -874,7 +876,7 @@
       <td align="right" style="background-color: rgb(186,255,186)">0.2713</td>
     </tr>
     <tr>
-      <td align="right">Q1_25_Being.in.charge.of.my.boat.is.very.important.to.me</td>
+      <td align="center" style="font-size:10px;">Q1_25_Being in charge of my boat is very important to me</td>
       <td align="right" style="background-color: rgb(197,255,197)">0.2271</td>
       <td align="right" style="background-color: rgb(253,255,253)">0.008886</td>
       <td align="right" style="background-color: rgb(164,255,164)">0.358</td>
@@ -906,7 +908,7 @@
       <td align="right" style="background-color: rgb(196,255,196)">0.2334</td>
     </tr>
     <tr>
-      <td align="right">Q1_26_Having.a.powerful.boat.is.what.is.most.important.to.me</td>
+      <td align="center" style="font-size:10px;">Q1_26_Having a powerful boat is what is most important to me</td>
       <td align="right" style="background-color: rgb(229,255,229)">0.1038</td>
       <td align="right" style="background-color: rgb(237,255,237)">0.0738</td>
       <td align="right" style="background-color: rgb(135,255,135)">0.471</td>
@@ -938,7 +940,7 @@
       <td align="right" style="background-color: rgb(217,255,217)">0.1499</td>
     </tr>
     <tr>
-      <td align="right">Q1_27_Boating.is.the.number.one.thing.I.do.with.my.spare.time</td>
+      <td align="center" style="font-size:10px;">Q1_27_Boating is the number one thing I do with my spare time</td>
       <td align="right" style="background-color: rgb(223,255,223)">0.1268</td>
       <td align="right" style="background-color: rgb(244,255,244)">0.04546</td>
       <td align="right" style="background-color: rgb(153,255,153)">0.4008</td>
@@ -970,7 +972,7 @@
       <td align="right" style="background-color: rgb(196,255,196)">0.2336</td>
     </tr>
     <tr>
-      <td align="right">Q1_28_Boating.is.my.true.passion.in.life</td>
+      <td align="center" style="font-size:10px;">Q1_28_Boating is my true passion in life</td>
       <td align="right" style="background-color: rgb(210,255,210)">0.176</td>
       <td align="right" style="background-color: rgb(251,255,251)">0.01602</td>
       <td align="right" style="background-color: rgb(147,255,147)">0.4253</td>
@@ -1002,7 +1004,7 @@
       <td align="right" style="background-color: rgb(189,255,189)">0.2608</td>
     </tr>
     <tr>
-      <td align="right">Q1_29_Boating.is.one.of.many.things.I.do.in.my.spare.time</td>
+      <td align="center" style="font-size:10px;">Q1_29_Boating is one of many things I do in my spare time</td>
       <td align="right" style="background-color: rgb(204,255,204)">0.2016</td>
       <td align="right" style="background-color: rgb(255,248,248)">-0.02895</td>
       <td align="right" style="background-color: rgb(213,255,213)">0.1659</td>
@@ -1070,14 +1072,14 @@
   <article>
     <!-- Table generated in R 2.15.3 by googleVis 0.4.7 package -->
 
-<!-- Thu Jan 16 17:10:06 2014 -->
+<!-- Sun Jan 26 15:52:50 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTableIDa3418cc5573 () {
+function gvisDataTableID1c9c57715680 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1265,8 +1267,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartTableIDa3418cc5573() {
-var data = gvisDataTableIDa3418cc5573();
+function drawChartTableID1c9c57715680() {
+var data = gvisDataTableID1c9c57715680();
 var options = {};
 options["allowHtml"] = true;
 options["width"] =    970;
@@ -1282,7 +1284,7 @@ options["page"] = "disable";
   dataFormat3.format(data, 3);
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableIDa3418cc5573')
+    document.getElementById('TableID1c9c57715680')
     );
     chart.draw(data,options);
     
@@ -1306,9 +1308,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableIDa3418cc5573);
+callbacks.push(drawChartTableID1c9c57715680);
 })();
-function displayChartTableIDa3418cc5573() {
+function displayChartTableID1c9c57715680() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1334,12 +1336,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableIDa3418cc5573"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1c9c57715680"></script>
  
 
 <!-- divChart -->
 
-<div id="TableIDa3418cc5573"
+<div id="TableID1c9c57715680"
   style="width: 970px; height: 400px;">
 </div>
 
@@ -1357,14 +1359,14 @@ callbacks.shift()();
 
 <!-- LineChart generated in R 2.15.3 by googleVis 0.4.7 package -->
 
-<!-- Thu Jan 16 17:10:07 2014 -->
+<!-- Sun Jan 26 15:52:50 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataLineChartIDa3477641e0a () {
+function gvisDataLineChartID1c9c3c14574f () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1522,8 +1524,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartLineChartIDa3477641e0a() {
-var data = gvisDataLineChartIDa3477641e0a();
+function drawChartLineChartID1c9c3c14574f() {
+var data = gvisDataLineChartID1c9c3c14574f();
 var options = {};
 options["allowHtml"] = true;
 options["title"] = "Scree plot";
@@ -1535,7 +1537,7 @@ options["vAxes"] = [{title:'Eigenvalues'}];
 options["series"] = [{color:'green',pointSize:12, targetAxisIndex: 0}];
 
     var chart = new google.visualization.LineChart(
-    document.getElementById('LineChartIDa3477641e0a')
+    document.getElementById('LineChartID1c9c3c14574f')
     );
     chart.draw(data,options);
     
@@ -1559,9 +1561,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartLineChartIDa3477641e0a);
+callbacks.push(drawChartLineChartID1c9c3c14574f);
 })();
-function displayChartLineChartIDa3477641e0a() {
+function displayChartLineChartID1c9c3c14574f() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1587,12 +1589,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartIDa3477641e0a"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID1c9c3c14574f"></script>
  
 
 <!-- divChart -->
 
-<div id="LineChartIDa3477641e0a"
+<div id="LineChartID1c9c3c14574f"
   style="width: 600px; height: 400px;">
 </div>
 
@@ -1647,14 +1649,14 @@ callbacks.shift()();
   <article>
     <!-- Table generated in R 2.15.3 by googleVis 0.4.7 package -->
 
-<!-- Thu Jan 16 17:10:07 2014 -->
+<!-- Sun Jan 26 15:52:51 2014 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTableIDa341e3d6b46 () {
+function gvisDataTableID1c9c64c55b57 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -2052,8 +2054,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartTableIDa341e3d6b46() {
-var data = gvisDataTableIDa341e3d6b46();
+function drawChartTableID1c9c64c55b57() {
+var data = gvisDataTableID1c9c64c55b57();
 var options = {};
 options["allowHtml"] = true;
 options["showRowNumber"] = true;
@@ -2063,7 +2065,7 @@ options["allowHTML"] = true;
 options["page"] = "disable";
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableIDa341e3d6b46')
+    document.getElementById('TableID1c9c64c55b57')
     );
     chart.draw(data,options);
     
@@ -2087,9 +2089,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableIDa341e3d6b46);
+callbacks.push(drawChartTableID1c9c64c55b57);
 })();
-function displayChartTableIDa341e3d6b46() {
+function displayChartTableID1c9c64c55b57() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -2115,12 +2117,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableIDa341e3d6b46"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1c9c64c55b57"></script>
  
 
 <!-- divChart -->
 
-<div id="TableIDa341e3d6b46"
+<div id="TableID1c9c64c55b57"
   style="width: 970px; height: 300px;">
 </div>
 

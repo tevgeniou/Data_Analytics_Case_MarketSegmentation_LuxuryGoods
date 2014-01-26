@@ -54,29 +54,46 @@ Every factor analysis has three basic decision points:
 
 
 Sometimes it makes sense to run a quick correlation matrix before the factor analysis. It usually gives a first glance at the inter-relationships between variables and it is often an input for factor analysis (i.e. eigenvalue decomposition of the correlation matrix). In this example the correlaton matrix for the 29 attitudes looks like this: 
+
 <style>
 .wrapper{
-            
-            
-            width: 100%;
-           
-            overflow-x: scroll;
-             
-          }
+
+
+width: 100%;
+
+overflow-x: scroll;
+
+}
 .wrapper1{
-            
-           height:400px;
-             overflow-y: scroll;
-          }
+
+height:400px;
+overflow-y: scroll;
+}
+th.wrapper{
+display:block;
+}
+
 </style>
-<div class="wrapper wrapper1">
+
+
+
+
+<div class="wrapper wrapper1 th.display">
+
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
 thecor = round(cor(ProjectDataFactor),2)
-colnames(thecor)<-colnames(thecor)
+thecor=cor(ProjectDataFactor)
+#colnames(thecor)<-colnames(thecor)
 rownames(thecor)<-rownames(thecor)
 ## printing the result in a clean-slate table
+colnames(thecor)<-gsub("\\."," ",colnames(thecor))
+rownames(thecor)<-gsub("\\."," ",rownames(thecor))
+
+
 cat(renderHeatmapX(thecor, border=1))
+
 ```
+
 </div>
 ### Number of Factors
 
@@ -131,9 +148,9 @@ if (factor_selectionciterion == "variance")
   factors_selected = 1:head(which(Variance_Explained_Table_copy$eig[,"cumulative percentage of variance"]>= minimum_variance_explained),1)
 
 #if (factor_selectionciterion == "eigenvalue")
- # factors_selected = which(keepthis> 1)
+# factors_selected = which(keepthis> 1)
 #if (factor_selectionciterion == "variance")
- # factors_selected = 1:head(which(Variance_Explained_Table1[,"Cumulative_percentage_of_explained_variance"]>= minimum_variance_explained),1)
+# factors_selected = 1:head(which(Variance_Explained_Table1[,"Cumulative_percentage_of_explained_variance"]>= minimum_variance_explained),1)
 ```
 <br>
 <br>
@@ -339,25 +356,25 @@ d<-as.data.frame(d)
 colnames(d)<-c("fit","Q12_HOUSEHOLD.income")
 r<-0
 mean<-list()
-  for (j in 1:length(cluster_ids_hclust)){
-   sum<-0
-   k<-0
-    for (i in 1:nrow(d)){
+for (j in 1:length(cluster_ids_hclust)){
+  sum<-0
+  k<-0
+  for (i in 1:nrow(d)){
     if (d$fit[i]==j){
       k<-k+1
       sum<-sum+d$Q12_HOUSEHOLD.income[i]
+      }
+    
     }
-   
-  }
-    r<-r+1
-    mean[[r]]<-sum/k
+  r<-r+1
+  mean[[r]]<-sum/k
   
-}
+  }
 income_table<-as.data.frame(mean)
 names<-vector()
 for (p in 1:length(cluster_ids_hclust) ){
   names[p]<-paste("Average income in cluster:",p,sep="")
-}
+  }
 
 colnames(income_table)<-names
 income_table<-as.data.frame(income_table)
@@ -383,18 +400,18 @@ print(xtable(profile_table ,paste("Average value per clusters:",data_name,sep=" 
 <br>
 <style>
 .wrapper{
-            
-            
-            width: 100%;
-           
-            overflow-x: scroll;
-             
-          }
+
+
+width: 100%;
+
+overflow-x: scroll;
+
+}
 .wrapper1{
-            
-           height:400px;
-             overflow-y: scroll;
-          }
+
+height:400px;
+overflow-y: scroll;
+}
 </style>
 <div class="wrapper wrapper1">
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
@@ -409,18 +426,18 @@ print(xtable(profile_table1 ,paste("Average value per clusters:",data_name,sep="
 <br>
 <style>
 .wrapper{
-            
-            
-            width: 100%;
-           
-            overflow-x: scroll;
-             
-          }
+
+
+width: 100%;
+
+overflow-x: scroll;
+
+}
 .wrapper1{
-            
-           height:400px;
-             overflow-y: scroll;
-          }
+
+height:400px;
+overflow-y: scroll;
+}
 </style>
 <div class="wrapper wrapper1">
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
@@ -435,18 +452,18 @@ print(xtable(profile_table2 ,paste("Average value per clusters:",data_name,sep="
 <br>
 <style>
 .wrapper{
-            
-            
-            width: 100%;
-           
-            overflow-x: scroll;
-             
-          }
+
+
+width: 100%;
+
+overflow-x: scroll;
+
+}
 .wrapper1{
-            
-           height:400px;
-             overflow-y: scroll;
-          }
+
+height:400px;
+overflow-y: scroll;
+}
 </style>
 <div class="wrapper wrapper1">
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
@@ -476,7 +493,7 @@ Neither Agree or Disagree (3)
 Agree (4)
 
 Strongly Agree (5)
- 
+
 1.  When buying a boat, I do a lot of shopping around and visit multiple dealers
 2.        When buying a boat, getting the lowest price is more important than the boat brand
 3.        The brand of boat I buy says a lot about who I am
@@ -510,7 +527,7 @@ Strongly Agree (5)
 **PURCHASE PROCESS AND BEHAVIOR**
 
 2. How many powerboats do you currently own?
- 
+
 3. How likely would you be to purchase a new boat in the future?
 
 Definitely will not (1)
@@ -525,45 +542,45 @@ Definitely will (5)
 
 4. Not including any taxes, fees or accessories, approximately how much did you pay for your boat? How much are you planning to spend on your new boat?
 
-  a. Less than $5K
-  
-  b. $5K to $9K
-  
-  c. $10K to $14K
-  
-  d. $15K to $19K
-  
-  e. $20K to $24K
-  
-  f. $25K to $29K
-  
-  g. $30K to $49K
-  
-  h. $50K to $59K
-  
-  i. $60K to $79K
-  
-  j. $80K to $99K
-  
-  k. $100K to $149K
-  
-  l. $150K to $199K
-  
-  m. $200 or more
-  
-  n. Don't know
+a. Less than $5K
+
+b. $5K to $9K
+
+c. $10K to $14K
+
+d. $15K to $19K
+
+e. $20K to $24K
+
+f. $25K to $29K
+
+g. $30K to $49K
+
+h. $50K to $59K
+
+i. $60K to $79K
+
+j. $80K to $99K
+
+k. $100K to $149K
+
+l. $150K to $199K
+
+m. $200 or more
+
+n. Don't know
 
 5. What is the horse power of your engine? What horse power are you looking for? 
 
-  1. 0 - 14 HP
-  2. 15- 60 HP
-  3. 61 - 115 HP
-  4. 116 - 150 HP
-  5. 151 - 200 HP
-  6. 201 - 250 HP
-  7. 251 - 350 HP
-  8. > 350 HP
-  9. Don't Know
+1. 0 - 14 HP
+2. 15- 60 HP
+3. 61 - 115 HP
+4. 116 - 150 HP
+5. 151 - 200 HP
+6. 201 - 250 HP
+7. 251 - 350 HP
+8. > 350 HP
+9. Don't Know
 
 
 6. What is the length of your boat? What is the length of the boat you are considering buying? (e.g., 20 feet) 
@@ -571,18 +588,18 @@ Definitely will (5)
 7. Which of the following statements best describes WHO you boat with?
 
 Never (1), Rarely (2), Sometimes (3), Often (4), Most of the time (5)
-  
-  1.        I normally boat alone
-  2.        I boat with my spouse or significant other
-  3.        I boat with my family, including kids
-  4.        I boat with my friends
+
+1.        I normally boat alone
+2.        I boat with my spouse or significant other
+3.        I boat with my family, including kids
+4.        I boat with my friends
 
 8. How would you rate your experience regarding boating?
 
-  1. Beginner
-  2. Intermediate
-  3. Advanced
-  4. Expert
+1. Beginner
+2. Intermediate
+3. Advanced
+4. Expert
 
 9. Below is a list of activities that may or may not do while boating. Using the scale provided, please indicate how often you engage in each of these activities.  
 
@@ -591,58 +608,58 @@ Rarely (2)
 Sometimes (3) 
 Often (4)
 Most of the time (5)
-  
-  1.        Fishing
-  2.        Swimming
-  3.        Cruising
-  4.        Water Sports (e.g., skiing, tubing, wakeboarding)
-  5.        Entertaining/socializing
+
+1.        Fishing
+2.        Swimming
+3.        Cruising
+4.        Water Sports (e.g., skiing, tubing, wakeboarding)
+5.        Entertaining/socializing
 
 10. During your boating season, how many days out of the year do you typically use your boat?
 
 **DEMOGRAPHICS**
 
 11. What is your gender? 
-        1. Male         
-        2. Female         
-  
+1. Male         
+2. Female         
+
 12.   We would like to get a better estimate of your total HOUSEHOLD income in the past 12 months before taxes.
-        1. Less than $5,000        
-        2. $5,000 to $7,499        
-        3. $7,500 to $9,999        
-        4. $10,000 to $12,499        
-        5. $12,500 to $14,999        
-        6. $15,000 to $19,999        
-        7. $20,000 to $24,999        
-        8. $25,000 to $29,999        
-        9. $30,000 to $34,999        
-        10. $35,000 to $39,999        
-        11. $40,000 to $49,999        
-        12. $50,000 to $59,999        
-        13. $60,000 to $74,999        
-        14. $75,000 to $84,999                
-        15. $85,000 to $99,999        
-        16. $100,000 to $124,999        
-        17. $125,000 to $149,999        
-        18. $150,000 to $174,999        
-        19. $175,000 or more
-  
+1. Less than $5,000        
+2. $5,000 to $7,499        
+3. $7,500 to $9,999        
+4. $10,000 to $12,499        
+5. $12,500 to $14,999        
+6. $15,000 to $19,999        
+7. $20,000 to $24,999        
+8. $25,000 to $29,999        
+9. $30,000 to $34,999        
+10. $35,000 to $39,999        
+11. $40,000 to $49,999        
+12. $50,000 to $59,999        
+13. $60,000 to $74,999        
+14. $75,000 to $84,999                
+15. $85,000 to $99,999        
+16. $100,000 to $124,999        
+17. $125,000 to $149,999        
+18. $150,000 to $174,999        
+19. $175,000 or more
+
 13.   Are you now married, widowed, divorced, separated, never married, or living with a partner?
-        1. Married        
-        2. Widowed        
-        3. Divorced        
-        4. Separated        
-        5. Never married        
-        6. Living with partner
-  
+1. Married        
+2. Widowed        
+3. Divorced        
+4. Separated        
+5. Never married        
+6. Living with partner
+
 14.   Which statement best describes your current employment status?
-        1. Working - as a paid employee        1
-        2. Working - self-employed         2
-        3. Not working - on temporary layoff from a job
-        4. Not working - looking for work
-        5. Not working - retired        
-        6. Not working - disabled        
-        7. Not working - other        
+1. Working - as a paid employee        1
+2. Working - self-employed         2
+3. Not working - on temporary layoff from a job
+4. Not working - looking for work
+5. Not working - retired        
+6. Not working - disabled        
+7. Not working - other        
 
 15.   What is your age?
 
@@ -742,7 +759,7 @@ BOATS:
 BRAND FUNNEL
 
 17. How likely would you be to recommend that brand to other boaters?   
-                
+
 0=would not recommend/don't know                 
 
 1=would definitely recommend

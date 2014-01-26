@@ -37,15 +37,14 @@ renderHeatmapX <- function(data, style="norm", include.rownames = TRUE, include.
     tags$table(
       border = border,
       class = 'data table table-bordered table-condensed',
-      style="font-size: 12px;",
       tagList({
         if (include.colnames)
-          tags$thead(style="font-size: 12px;"
-            class = 'thead',
-            tags$tr(style="font-size: 12px;",
+          tags$thead(
+            class = 'thead',style='font-size:12px;',
+            tags$tr(
               tagList({
                 if (include.rownames)
-                  tags$th(style="font-size: 12px;")
+                  tags$th()
                 else
                   list()
               }),
@@ -72,8 +71,8 @@ renderHeatmapX <- function(data, style="norm", include.rownames = TRUE, include.
             lapply(1:ncol(data), function(j) {
               if (is.numeric(data[i,j]))
                 tags$td(
-                  align="center",
-                  style=heatmap(data[i,j], style),style="font-size:12px;",
+                  align="right",
+                  style=heatmap(data[i,j], style),
                   format(data[i,j], nsmall=nsmall)
                 )
               else

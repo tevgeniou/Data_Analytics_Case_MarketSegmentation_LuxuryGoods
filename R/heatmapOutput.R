@@ -40,11 +40,11 @@ renderHeatmapX <- function(data, style="norm", include.rownames = TRUE, include.
       tagList({
         if (include.colnames)
           tags$thead(
-            class = 'thead',style='font-size:12px;',
+            class = 'thead',style='font-size:10px;',
             tags$tr(
               tagList({
                 if (include.rownames)
-                  tags$th()
+                  tags$th(style='position:fixed;')
                 else
                   list()
               }),
@@ -62,7 +62,7 @@ renderHeatmapX <- function(data, style="norm", include.rownames = TRUE, include.
             tagList({
               if (include.rownames)
                 tags$td(
-                  align="right",
+                  align="center",style='font-size:10px;',
                   rownames(data)[i]
                 )
               else
@@ -73,7 +73,7 @@ renderHeatmapX <- function(data, style="norm", include.rownames = TRUE, include.
                 tags$td(
                   align="right",
                   style=heatmap(data[i,j], style),
-                  format(data[i,j], nsmall=nsmall)
+                  format(data[i,j], nsmall=nsmall,width=4)
                 )
               else
                 tags$td(

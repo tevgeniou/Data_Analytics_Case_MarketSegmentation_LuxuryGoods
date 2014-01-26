@@ -22,23 +22,24 @@ Choose a rotation method
 ---
 
 ## Correlation matrix of the 29 attitudes as a pre-step
-
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <style>
 .wrapper{
             
-            height: 400px;
+            height: 350px;
             width: 970px;
             overflow-x: scroll;
             overflow-y: scroll;
           }
 </style>
-<div class="wrapper">
+<div class="wrapper" style="font-size:10px;">
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
 thecor=cor(ProjectDataFactor)
 colnames(thecor)<-colnames(thecor)
 rownames(thecor)<-rownames(thecor)
 ## printing the result in a clean-slate table
-
+colnames(thecor)<-gsub("\\."," ",colnames(thecor))
+rownames(thecor)<-gsub("\\."," ",rownames(thecor))
 cat(renderHeatmapX(thecor, border=1))
 
 ```
@@ -223,3 +224,4 @@ print(xtable(large_loadings ,paste("Raw attributes with highest loading per fact
 ```
 </div>
 
+ 

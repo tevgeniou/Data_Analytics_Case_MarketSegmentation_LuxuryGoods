@@ -28,6 +28,7 @@ shinyServer(function(input, output,session) {
     # ProjectData with the filethe user loads
     ProjectData <- read.csv(paste(paste(local_directory,"data",sep="/"), paste(input$datafile_name_coded, "csv", sep="."), sep = "/"), sep=";", dec=",") # this contains only the matrix ProjectData
     ProjectData=data.matrix(ProjectData)
+    colnames(ProjectData)<-gsub("\\."," ",colnames(ProjectData))
     
     updateSelectInput(session, "factor_attributes_used","Variables used for Factor Analysis",  colnames(ProjectData), selected=colnames(ProjectData)[1])
     updateSelectInput(session, "segmentation_attributes_used","Segmentation variables used",  colnames(ProjectData), selected=colnames(ProjectData)[1])
@@ -135,7 +136,8 @@ shinyServer(function(input, output,session) {
     ProjectData = all_inputs$ProjectData
     ProjectDataFactor = all_inputs$ProjectDataFactor
     factor_attributes_used = all_inputs$factor_attributes_used
-    
+    colnames(ProjectDataFactor)<-gsub("\\."," ",colnames(ProjectDataFactor))
+  
     my_summary(ProjectDataFactor)
   })
   
@@ -156,7 +158,7 @@ shinyServer(function(input, output,session) {
     
     all_inputs <- user_inputs()
     ProjectData = all_inputs$ProjectData
-    
+    colnames(ProjectData)<-gsub("\\."," ",colnames(ProjectData))
     var_chosen = max(0,min(input$var_chosen,ncol(ProjectData)))
     ProjectData[,var_chosen,drop=F]
   })
@@ -193,14 +195,16 @@ shinyServer(function(input, output,session) {
     unrot_number = max(1, min(input$unrot_number, length(factor_attributes_used)))
     
     correl <- cor(ProjectDataFactor)
-    
+    colnames(correl)<-gsub("\\."," ",colnames(correl))
+    rownames(correl)<-gsub("\\."," ",rownames(correl))
     Unrotated_Results<-principal(ProjectDataFactor, nfactors=ncol(ProjectDataFactor), rotate="none")
     Unrotated_Factors<-Unrotated_Results$loadings[,1:unrot_number,drop=F]
     
     Unrotated_Factors<-as.data.frame(unclass(Unrotated_Factors))
     colnames(Unrotated_Factors)<-paste("Component",1:ncol(Unrotated_Factors),sep=" ")
     rownames(Unrotated_Factors) <- colnames(ProjectDataFactor)
-    
+    colnames(Unrotated_Factors)<-gsub("\\."," ",colnames(Unrotated_Factors))
+    rownames(Unrotated_Factors)<-gsub("\\."," ",rownames(Unrotated_Factors))
     if (input$show_colnames_unrotate==0)
       rownames(Unrotated_Factors)<- NULL
     
@@ -221,7 +225,8 @@ shinyServer(function(input, output,session) {
     Rotated_Factors<-as.data.frame(unclass(Rotated_Factors))
     colnames(Rotated_Factors)<-paste("Component",1:ncol(Rotated_Factors),sep=" ")
     rownames(Rotated_Factors) <- colnames(ProjectDataFactor)
-    
+    colnames(Rotated_Factors)<-gsub("\\."," ",colnames(Rotated_Factors))
+    rownames(Rotated_Factors)<-gsub("\\."," ",rownames(Rotated_Factors))
     if (input$show_colnames_rotate==0)
       rownames(Rotated_Factors)<- NULL
     
@@ -256,9 +261,11 @@ shinyServer(function(input, output,session) {
       rownames(the_data) <- NULL
     }
     round(the_data,2)
+    
   })
   
   output$correlation <- renderHeatmap({  
+    
     round(the_correlation_tab(),2)   
   })
   
