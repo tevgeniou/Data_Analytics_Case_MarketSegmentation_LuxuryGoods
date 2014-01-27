@@ -22,24 +22,23 @@ Choose a rotation method
 ---
 
 ## Correlation matrix of the 29 attitudes as a pre-step
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
 <style>
 .wrapper{
             
-            height: 350px;
+            height: 400px;
             width: 970px;
             overflow-x: scroll;
             overflow-y: scroll;
           }
 </style>
-<div class="wrapper" style="font-size:10px;">
+<div class="wrapper">
 ```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE, results='asis'}
 thecor=cor(ProjectDataFactor)
 colnames(thecor)<-colnames(thecor)
 rownames(thecor)<-rownames(thecor)
 ## printing the result in a clean-slate table
-colnames(thecor)<-gsub("\\."," ",colnames(thecor))
-rownames(thecor)<-gsub("\\."," ",rownames(thecor))
+
 cat(renderHeatmapX(thecor, border=1))
 
 ```
@@ -133,8 +132,6 @@ if (factor_selectionciterion == "eigenvalue")
   factors_selected = which(Variance_Explained_Table_copy$eig$eigenvalue > 1)
 if (factor_selectionciterion == "variance")
   factors_selected = 1:head(which(Variance_Explained_Table_copy$eig[,"cumulative percentage of variance"]>= minimum_variance_explained),1)
-if (factor_selectionciterion == "manual")
-  factors_selected = manual_numb_factors_used
 
 #if (factor_selectionciterion == "eigenvalue")
  # factors_selected = which(keepthis> 1)
@@ -225,5 +222,3 @@ print(xtable(large_loadings ,paste("Raw attributes with highest loading per fact
 
 ```
 </div>
-
- 

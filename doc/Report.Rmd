@@ -86,8 +86,6 @@ thecor=cor(ProjectDataFactor)
 #colnames(thecor)<-colnames(thecor)
 rownames(thecor)<-rownames(thecor)
 ## printing the result in a clean-slate table
-colnames(thecor)<-gsub("\\."," ",colnames(thecor))
-rownames(thecor)<-gsub("\\."," ",rownames(thecor))
 
 
 cat(renderHeatmapX(thecor, border=1))
@@ -356,9 +354,9 @@ In this example most of the variables are categorical. In such cases we can look
 #income_table <- matrix(sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),"Q12_HOUSEHOLD.income"])), nrow=1)
 #colnames(income_table) <-paste("Average Income of Cluster", 1:length(cluster_ids_hclust), #sep=" ")
 #Stratos lines below:
-d<-cbind(cluster_memberships_hclust,ProjectData[,"Q12_HOUSEHOLD.income"])
+d<-cbind(cluster_memberships_hclust,ProjectData[,"Q12_HOUSEHOLD income"])
 d<-as.data.frame(d)
-colnames(d)<-c("fit","Q12_HOUSEHOLD.income")
+colnames(d)<-c("fit","Q12_HOUSEHOLD income")
 r<-0
 mean<-list()
 for (j in 1:length(cluster_ids_hclust)){
@@ -552,36 +550,7 @@ Definitely will (5)
 
 4. Not including any taxes, fees or accessories, approximately how much did you pay for your boat? How much are you planning to spend on your new boat?
 
-
-a. Less than $5K
-
-b. $5K to $9K
-
-c. $10K to $14K
-
-d. $15K to $19K
-
-e. $20K to $24K
-
-f. $25K to $29K
-
-g. $30K to $49K
-
-h. $50K to $59K
-
-i. $60K to $79K
-
-j. $80K to $99K
-
-k. $100K to $149K
-
-l. $150K to $199K
-
-m. $200 or more
-
-n. Don't know
-=======
-  1. Less than $10K
+ 1. Less than $10K
   
   2. $10K to $19,999K
   
@@ -603,7 +572,6 @@ n. Don't know
   
   11. Don't know
 
-
 5. What is the horse power of your engine? What horse power are you looking for? 
 
 1. 0 - 14 HP
@@ -613,7 +581,7 @@ n. Don't know
 5. 151 - 200 HP
 6. 201 - 250 HP
 7. 251 - 350 HP
-8. > 350 HP
+8. more than 350 HP
 9. Don't Know
 
 

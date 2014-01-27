@@ -1,8 +1,8 @@
 # Project Name: "Market Segmentation, Luxury Goods (Boats Case)"
 
+
 rm(list = ls( )) # clean up the workspace
-source("R/library.R")
-source("R/heatmapOutput.R")
+
 ######################################################################
 
 # THESE ARE THE PROJECT PARAMETERS NEEDED TO GENERATE THE REPORT
@@ -20,6 +20,7 @@ datafile_name="Boats"
 # this loads the selected data: DO NOT EDIT THIS LINE
 ProjectData <- read.csv(paste(paste(local_directory, "data", sep="/"), paste(datafile_name,"csv", sep="."), sep = "/"), sep=";", dec=",") # this contains only the matrix ProjectData
 ProjectData=data.matrix(ProjectData) # make sure the data are numeric!!!! check your file!
+colnames(ProjectData)<-gsub("\\."," ",colnames(ProjectData))
 
 # Please ENTER a name that describes the data for this project (which will appear on the titles of the plots)
 data_name="Boating Company"
@@ -34,7 +35,7 @@ rotation_used="varimax"
 
 # Please ENTER the selection criterions for the factors to use. 
 # Choices: "eigenvalue", "variance", "manual"
-factor_selectionciterion = "manual"
+factor_selectionciterion = "variance"
 
 # Please ENTER the desired minumum variance explained (in case "variance" is the factor selection criterion used). 
 minimum_variance_explained = 65  # between 1 and 100
@@ -44,7 +45,6 @@ manual_numb_factors_used = 2
 
 # Please ENTER then original raw attributes to use (default is 1:ncol(ProjectData), namely all of them)
 factor_attributes_used= (min(ncol(ProjectData),2)):(min(ncol(ProjectData),30))
-#factor_attributes_used= which(sapply(colnames(ProjectData), function (s) str_detect(s,"Q1_")))
 # Please ENTER the distance metric eventually used for the clustering in case of hierarchical clustering (e.g. "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski" - see help(dist)). Defauls is "euclidean"
 distance_used="euclidean"
 
@@ -64,6 +64,9 @@ profile_attributes_used3=31:47
 # Please enter the minimum number below which you would like not to print - this makes the readability of the tables easier. Default values are either 10e6 (to print everything) or 0.5. Try both to see the difference.
 MIN_VALUE=0.4
 
+
+ProjectDataFactor=ProjectData[,factor_attributes_used]
+
 ###########################
 # Would you like to also start a web application on YOUR LOCAL COMPUTER once the report and slides are generated?
 # Select start_webapp <- 1 ONLY if you run the case on your local computer
@@ -74,35 +77,25 @@ MIN_VALUE=0.4
 # 1: start application on LOCAL computer, 0: do not start it
 # SELECT 0 if you are running the application on a server 
 # (DEFAULT is 0). 
-strat_webapp  <- 1
-ProjectDataFactor=ProjectData[,factor_attributes_used]
+start_local_webapp <- 0
+# NOTE: You need to make sure the shiny library is installing (see below)
+
 ################################################
 # Now run everything
 
+ProjectDataFactor=ProjectData[,factor_attributes_used]
+source(paste(local_directory,"R/library.R", sep="/"))
+if (require(shiny) == FALSE) 
+  install_libraries("shiny")
+source(paste(local_directory,"R/heatmapOutput.R", sep = "/"))
+source(paste(local_directory,"R/runcode.R", sep = "/"))
 
-
-
-######################################################################
-if (1){ 
-    unlink( "TMPdirSlides", recursive = TRUE )      
-    dir.create( "TMPdirSlides" )
-    setwd( "TMPdirSlides" )
-    file.copy( "../doc/Slides.Rmd","Slides.Rmd", overwrite = T )
-    slidify( "Slides.Rmd" )
-    file.copy( 'Slides.html', "../doc/Slides.html", overwrite = T )
-    setwd( "../" )
-    unlink( "TMPdirSlides", recursive = TRUE )    
-}
-
-  unlink( "TMPdirReport", recursive = TRUE )      
-  dir.create( "TMPdirReport" )
-  setwd( "TMPdirReport" )
-  file.copy( "../doc/Report.Rmd","Report.Rmd", overwrite = T )
-  knit2html( 'Report.Rmd', quiet = TRUE )
-  file.copy( 'Report.html', "../doc/Report.html", overwrite = T )
-  setwd( "../" )
-  unlink( "TMPdirReport", recursive = TRUE )
-
+if (start_local_webapp){
   
-  if ( strat_webapp )
-    runApp( "tools" )   
+  # first load the data files in the data directory so that the App see them
+  Boats <- read.csv(paste(local_directory, "data/Boats.csv", sep = "/"), sep=";", dec=",") # this contains only the matrix ProjectData
+  Boats=data.matrix(Boats) # this file needs to be converted to "numeric"....
+  
+  # now run the app
+  runApp(paste(local_directory,"tools", sep="/"))  
+}
