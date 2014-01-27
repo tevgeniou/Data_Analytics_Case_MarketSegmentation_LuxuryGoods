@@ -403,13 +403,13 @@ shinyServer(function(input, output,session) {
   the_histogram_cluster_tab<-reactive({
     # list the user inputs the tab depends on (easier to read the code)
     input$datafile_name_coded
-    input$var_chosen
+    input$var_chosen1
     
     all_inputs <- user_inputs()
     ProjectData = all_inputs$ProjectData
-    var_chosen = max(0,min(input$var_chosen,ncol(ProjectData)))
+    var_chosen1 = max(0,min(input$var_chosen1,ncol(ProjectData)))
     
-    ProjectData[,var_chosen,drop=F]
+    ProjectData[,var_chosen1,drop=F]
   })
   
   # Now pass to ui.R what it needs to display this tab

@@ -11,7 +11,6 @@ source("R/heatmapOutput.R")
 # (e.g. local_directory <- "C:/user/MyDocuments" )
 # type in the Console below help(getwd) and help(setwd) for more information
 local_directory <- getwd()
-#local_directory <- "C:/Theos/insead/eLAB/Data_Analytics_Case_MarketSegmentation_LuxuryGoods"
 
 cat("\n *********\n WORKING DIRECTORY IS ", local_directory, "\n PLEASE CHANGE IT IF IT IS NOT CORRECT using setwd(..) - type help(setwd) for more information \n *********")
 
@@ -35,7 +34,7 @@ rotation_used="varimax"
 
 # Please ENTER the selection criterions for the factors to use. 
 # Choices: "eigenvalue", "variance", "manual"
-factor_selectionciterion = "variance"
+factor_selectionciterion = "manual"
 
 # Please ENTER the desired minumum variance explained (in case "variance" is the factor selection criterion used). 
 minimum_variance_explained = 65  # between 1 and 100

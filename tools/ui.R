@@ -138,7 +138,7 @@ shinyUI(pageWithSidebar(
       tabPanel("Summary Cluster", 
                div(class="span12",tableOutput('summary_cluster'))), 
       tabPanel("Histograms Cluster", 
-               numericInput("var_chosen", "Select the attribute to see the Histogram for:", 1),
+               numericInput("var_chosen1", "Select the attribute to see the Histogram for:", 1),
                div(class="span12",plotOutput('histograms_cluster'))), 
       tabPanel("Pairwise Distances",
                selectInput("dist_chosen", "Select the distance metric:",  c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"),selected="euclidean"),

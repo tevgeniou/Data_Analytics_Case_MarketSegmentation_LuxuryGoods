@@ -133,6 +133,8 @@ if (factor_selectionciterion == "eigenvalue")
   factors_selected = which(Variance_Explained_Table_copy$eig$eigenvalue > 1)
 if (factor_selectionciterion == "variance")
   factors_selected = 1:head(which(Variance_Explained_Table_copy$eig[,"cumulative percentage of variance"]>= minimum_variance_explained),1)
+if (factor_selectionciterion == "manual")
+  factors_selected = manual_numb_factors_used
 
 #if (factor_selectionciterion == "eigenvalue")
  # factors_selected = which(keepthis> 1)
