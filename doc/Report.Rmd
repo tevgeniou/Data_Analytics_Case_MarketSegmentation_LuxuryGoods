@@ -351,7 +351,7 @@ In this example most of the variables are categorical. In such cases we can look
 
 <br>
 
-```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis'}
+```{r echo=FALSE, comment=NA, warning=FALSE,error=FALSE, message=FALSE,results='asis'}
 ###THESE LINES PRODUCE THE PROBLEM######
 #income_table <- matrix(sapply(cluster_ids_hclust,function(s) mean(ProjectData[which(cluster_memberships_hclust==s),"Q12_HOUSEHOLD.income"])), nrow=1)
 #colnames(income_table) <-paste("Average Income of Cluster", 1:length(cluster_ids_hclust), #sep=" ")
