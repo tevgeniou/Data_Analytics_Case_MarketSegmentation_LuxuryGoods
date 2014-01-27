@@ -26,7 +26,7 @@ shinyUI(pageWithSidebar(
     
     HTML("<center><h4>Choose a data file:<h4>"),    
     selectInput('datafile_name_coded', '',
-                c("Boats","MBAadmin"),multiple = FALSE),
+                c("Boats"),multiple = FALSE),
     
     ###########################################################
     # STEP 2.2: read the INPUTS. 
