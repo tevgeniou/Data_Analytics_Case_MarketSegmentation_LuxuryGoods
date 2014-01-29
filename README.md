@@ -10,11 +10,11 @@ Data_Analytics_Case_MarketSegmentation_LuxuryGoods
 
 **Project Description:** Some basic equities trading strategies using Daily Returns of S&P500 Stocks 
 
-**Data Description:** Put here something. 
+**Data Description:** Daily returns of 423 stocks in the S&P500 index as of February 2013. Time period of the data: 2003-2013. Data matrix has 2586 rows and 423 columns. 
 
-**Author(s):** Put authors here 
+**Author(s):** T. Evgeniou , N. Nassuphis, D. Spinellis 
 
-**Author(s)' Affiliations:** Put affiliations here
+**Author(s)' Affiliations:** INSEAD, Satrapade, AUEB 
 
 **Date:** January 2014 
 
