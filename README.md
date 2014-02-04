@@ -4,17 +4,17 @@ Data Analytics Case Study:
 Data_Analytics_Case_MarketSegmentation_LuxuryGoods
 ---------------------------------------------------------
 
-**Organization:** Put Here Description
+**Organization:** Boating Company
 
-**Industry:** Put Here Description
+**Industry:** Boats Industry
 
-**Project Description:** Put Here Description
+**Project Description:** Segment the market based on a market research survey
 
-**Data Description:** Put Here Description 
+**Data Description:** Survey data
 
-**Author(s):** Put Here Description 
+**Author(s):** J. Niessing and T. Evgeniou 
 
-**Author(s)' Affiliations:** Put Here Description 
+**Author(s)' Affiliations:** INSEAD
 
 **Date:** January 2014 
 
