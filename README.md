@@ -4,17 +4,17 @@ Data Analytics Case Study:
 Data_Analytics_Case_MarketSegmentation_LuxuryGoods
 ---------------------------------------------------------
 
-**Organization:** Test 
+**Organization:** Put Here Description
 
-**Industry:** Financial Sector 
+**Industry:** Put Here Description
 
-**Project Description:** Some basic equities trading strategies using Daily Returns of S&P500 Stocks 
+**Project Description:** Put Here Description
 
-**Data Description:** Daily returns of 423 stocks in the S&P500 index as of February 2013. Time period of the data: 2003-2013. Data matrix has 2586 rows and 423 columns. 
+**Data Description:** Put Here Description 
 
-**Author(s):** T. Evgeniou , N. Nassuphis, D. Spinellis 
+**Author(s):** Put Here Description 
 
-**Author(s)' Affiliations:** INSEAD, Satrapade, AUEB 
+**Author(s)' Affiliations:** Put Here Description 
 
 **Date:** January 2014 
 
