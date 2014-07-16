@@ -1,4 +1,4 @@
-# Project Name: "Market Segmentation, Luxury Goods (Boats Case)"
+# The Project Name: "Market Segmentation, Luxury Goods (Boats Case)"
 
 
 rm(list = ls( )) # clean up the workspace
